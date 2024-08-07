@@ -6,7 +6,7 @@ import retrofit2.Call
 import retrofit2.http.GET
 
 interface GetHomeDataService {
-    @GET("${Constants.API_VERSION}home?populate=true")
+    @GET("${Constants.API_VERSION}home")
     fun getHomeData()
     : Call<GetHomeDataResponse>
 }

@@ -16,10 +16,18 @@ object Constants {
     const val ABOUT_KUWAIT_URL = "https://kifmc.com/about-kuwait.html"
 
 
+
+    const val WELCOME_URL = "https://app.medconfworld.com/#sections3"
+    const val DATES_AND_DETAILS_URL = "https://kifmc.com/#sections3"
+
+
+
+
     const val CONFERENCE_READ_MORE_URL = "https://kifmc.com/index.html#sections2"
 
     const val INSTAGRAM_URL = "https://www.instagram.com/swaacelso2024/"
     const val LINKED_IN_URL = "https://www.linkedin.com/in/swaac-elso-elso-2b079528a/"
+    const val YOUTUBE_URL = "https://www.linkedin.com/in/swaac-elso-elso-2b079528a/"
     const val FACEBOOK_URL = "https://www.facebook.com/swaacelso2024"
     const val TWITTER_URL = "https://twitter.com/swaacelso2024"
     const val WHATSAPP_URL = "https://api.whatsapp.com/send?phone=96565084326"

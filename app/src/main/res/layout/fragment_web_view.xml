@@ -8,8 +8,7 @@
     <im.delight.android.webview.AdvancedWebView
         android:id="@+id/webview"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="17dp"/>
+        android:layout_height="match_parent"/>
 
     <ProgressBar
         android:id="@+id/progress"

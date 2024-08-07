@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="primary">#318DD4</color>
-    <color name="primaryLight">#4D9EDC</color>
-    <color name="primaryLight2">#F3F9FF</color>
+    <color name="primary">#6F508F</color>
+    <color name="primaryTransparent">#666F508F</color>
+    <color name="primaryLight">#E4D6F4</color>
+    <color name="primaryLight2">#ECE1F7</color>
+    <color name="primary2">#EF9696</color>
     <color name="black">#FF000000</color>
 
     <color name="lightBlack">#2E2C2C</color>
@@ -30,8 +32,8 @@
     <color name="rippleColorWhiteLight">@color/white</color>
     <color name="rippleColorLightBlack">@color/lightBlack</color>
 
-    <color name="actionBarTitleColor">@color/white</color>
-    <color name="normalActionBarIconColor">@color/white</color>
+    <color name="actionBarTitleColor">@color/primary</color>
+    <color name="normalActionBarIconColor">@color/primary</color>
 
     <color name="windowBackgroundColor">#EBF7FE</color>
 
@@ -47,9 +49,9 @@
     <!--  BottomNavigation Colors  -->
     <color name="bottomNavigationTextColor">@color/whiteTextColor</color>
     <color name="bottomNavigationActiveTabIconColor">@color/white</color>
-    <color name="bottomNavigationInActiveTabIconColor">@color/black</color>
-    <color name="bottomNavigationBackgroundColor">@color/white</color>
-    <color name="bottomNavigationIconRoundBackgroundColor">@color/primary</color>
+    <color name="bottomNavigationInActiveTabIconColor">@color/white</color>
+    <color name="bottomNavigationBackgroundColor">@color/primary</color>
+    <color name="bottomNavigationIconRoundBackgroundColor">@color/primary2</color>
 
     
     <color name="otpBoxBackColor">#EFEFEF</color>

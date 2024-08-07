@@ -17,19 +17,20 @@
 
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/btn_drawer"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:cardCornerRadius="35dp"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            app:cardCornerRadius="10dp"
+            android:layout_margin="2dp"
             app:rippleColor="@color/rippleColorLightBlack"
-            app:cardBackgroundColor="@color/transparent"
-            app:cardElevation="0dp"
+            app:cardBackgroundColor="@color/white"
+            app:cardElevation="4dp"
             android:layout_gravity="center_vertical"
             android:theme="@style/Theme.MaterialComponents">
 
             <ImageView
-                android:layout_width="35dp"
-                android:layout_height="35dp"
-                android:padding="5dp"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_gravity="center"
                 android:src="@drawable/ic_menu"
                 app:tint="@color/normalActionBarIconColor" />
 
@@ -37,23 +38,25 @@
 
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/btn_back"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:cardCornerRadius="35dp"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            app:cardCornerRadius="10dp"
+            android:layout_margin="2dp"
             app:rippleColor="@color/rippleColorLightBlack"
-            app:cardBackgroundColor="@color/transparent"
-            app:cardElevation="0dp"
+            app:cardBackgroundColor="@color/white"
+            app:cardElevation="4dp"
             android:layout_gravity="center_vertical"
             android:theme="@style/Theme.MaterialComponents">
 
             <ImageView
-                android:layout_width="35dp"
-                android:layout_height="35dp"
-                android:padding="5dp"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_gravity="center"
                 android:src="@drawable/ic_back"
                 app:tint="@color/normalActionBarIconColor" />
 
         </com.google.android.material.card.MaterialCardView>
+
 
         <LinearLayout
             android:layout_width="0dp"
@@ -67,7 +70,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:layout_gravity="center"
-                android:src="@drawable/logo_image" />
+                android:src="@drawable/action_bar_logo" />
 
             <TextView
                 android:id="@+id/title"
@@ -88,19 +91,20 @@
 
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/btn_notification"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:cardCornerRadius="35dp"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            app:cardCornerRadius="10dp"
+            android:layout_margin="2dp"
             app:rippleColor="@color/rippleColorLightBlack"
-            app:cardBackgroundColor="@color/transparent"
-            app:cardElevation="0dp"
+            app:cardBackgroundColor="@color/white"
+            app:cardElevation="4dp"
             android:layout_gravity="center_vertical"
             android:theme="@style/Theme.MaterialComponents">
 
             <ImageView
-                android:layout_width="35dp"
-                android:layout_height="35dp"
-                android:padding="5dp"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_gravity="center"
                 android:src="@drawable/ic_notification"
                 app:tint="@color/normalActionBarIconColor" />
 
@@ -108,24 +112,24 @@
 
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/btn_tick"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:cardCornerRadius="35dp"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            app:cardCornerRadius="10dp"
+            android:layout_margin="2dp"
             app:rippleColor="@color/rippleColorLightBlack"
-            app:cardBackgroundColor="@color/transparent"
-            app:cardElevation="0dp"
+            app:cardBackgroundColor="@color/white"
+            app:cardElevation="4dp"
             android:layout_gravity="center_vertical"
             android:theme="@style/Theme.MaterialComponents">
 
             <ImageView
-                android:layout_width="35dp"
-                android:layout_height="35dp"
-                android:padding="7dp"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_gravity="center"
                 android:src="@drawable/ic_tick"
                 app:tint="@color/normalActionBarIconColor" />
 
         </com.google.android.material.card.MaterialCardView>
-
 
     </LinearLayout>
 

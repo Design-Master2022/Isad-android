@@ -14,6 +14,7 @@ import androidx.activity.viewModels
 import androidx.core.view.isVisible
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.NavigationUI
 import androidx.work.ExistingPeriodicWorkPolicy
 import androidx.work.PeriodicWorkRequest
@@ -27,6 +28,7 @@ import com.design_master.isad.model.listeners.BackPressedListener
 import com.design_master.isad.model.view_models.activities.MainActivityViewModel
 import com.design_master.isad.service.LocationUpdateService
 import com.design_master.isad.ui.fragments.QrCodeFragmentDirections
+import com.design_master.isad.ui.fragments.WebViewFragmentDirections
 import com.design_master.isad.utils.helper.PermissionHelper
 import com.design_master.isad.utils.worker.MyWorker
 import dagger.hilt.android.AndroidEntryPoint
@@ -207,75 +209,80 @@ class MainActivity : AppCompatActivity() {
 //            window.addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN)
 
         mBinding.actionBar.btnBack.setOnClickListener {
-            backBtnClickListener?.onClick()
+            mNavController.popBackStack()
         }
         mBinding.actionBar.btnDrawer.setOnClickListener {
             mBinding.drawer.open()
-//            drawerMenuBtnClickListener?.onClick()
         }
         mBinding.actionBar.btnNotification.setOnClickListener {
-            notificationBtnClickListener?.onClick()
+            mNavController.navigate(R.id.action_global_notificationsFragment)
         }
         mBinding.actionBar.btnTick.setOnClickListener {
             tickBtnClickListener?.onClick()
         }
-        mBinding.drawerLayout.home.setOnClickListener {
+        mBinding.drawerLayout.welcomeWord.setOnClickListener {
             mBinding.drawer.close()
-            drawerItemsClickListener?.onHomeClick()
+            mNavController.navigate(
+                WebViewFragmentDirections.actionGlobalWebViewFragment(
+                    Constants.CHAIRMAN_MESSAGE_URL
+                )
+            )
         }
-        mBinding.drawerLayout.qrCode.setOnClickListener {
+        mBinding.drawerLayout.committees.setOnClickListener {
             mBinding.drawer.close()
-            if (mViewModel.mPrefsController.getRegistrationCode() != null){
-                mNavController.navigate(QrCodeFragmentDirections.actionGlobalQrCodeFragment(mViewModel.mMagician.decrypt(mViewModel.mPrefsController.getRegistrationCode()!!)))
-            }else{
-                mViewModel.isForQrCodeFragment = true
-                mNavController.navigate(R.id.action_global_loginWithOtpFragment)
-            }
+            mNavController.navigate(
+                WebViewFragmentDirections.actionGlobalWebViewFragment(
+                    Constants.COMMITTEE_URL
+                )
+            )
         }
-        mBinding.drawerLayout.chairmanMessage.setOnClickListener {
+        mBinding.drawerLayout.datesAndDetails.setOnClickListener {
             mBinding.drawer.close()
-            drawerItemsClickListener?.chairmanMessageClick()
+            mNavController.navigate(
+                WebViewFragmentDirections.actionGlobalWebViewFragment(
+                    Constants.CHAIRMAN_MESSAGE_URL
+                )
+            )
         }
-        mBinding.drawerLayout.committee.setOnClickListener {
+        mBinding.drawerLayout.endorsements.setOnClickListener {
             mBinding.drawer.close()
-            drawerItemsClickListener?.onCommitteeClick()
+            drawerItemsClickListener?.onEndorsementsClick()
         }
-        mBinding.drawerLayout.speakers.setOnClickListener {
+        mBinding.drawerLayout.sponsorOurMeeting.setOnClickListener {
             mBinding.drawer.close()
-            drawerItemsClickListener?.onSpeakersClick()
+            drawerItemsClickListener?.onSponsorOurMeetingClick()
         }
-        mBinding.drawerLayout.sponsors.setOnClickListener {
+        mBinding.drawerLayout.callForAbstracts.setOnClickListener {
             mBinding.drawer.close()
-            drawerItemsClickListener?.onSponsorsClick()
+            drawerItemsClickListener?.onCallForAbstractsClick()
         }
-        mBinding.drawerLayout.eventLocation.setOnClickListener {
+        mBinding.drawerLayout.registrationInfo.setOnClickListener {
             mBinding.drawer.close()
-            drawerItemsClickListener?.onEventLocationClick()
+            drawerItemsClickListener?.onRegistrationInfoClick()
         }
-        mBinding.drawerLayout.hostelsVisa.setOnClickListener {
+        mBinding.drawerLayout.venueAndAccommodations.setOnClickListener {
             mBinding.drawer.close()
-            drawerItemsClickListener?.onHostelsAndVisaClick()
+            drawerItemsClickListener?.onVenueAndAccommodationsClick()
         }
-        mBinding.drawerLayout.myPage.setOnClickListener {
+        mBinding.drawerLayout.socialEvents.setOnClickListener {
             mBinding.drawer.close()
-            mBinding.bottomNavigation.selectedItemId = R.id.loginWithOtpFragment
-            updateCustomNavigationLayout(getString(R.string.post_conference))
+            drawerItemsClickListener?.onSocialEventsClick()
         }
-        mBinding.drawerLayout.aboutKuwait.setOnClickListener {
+        mBinding.drawerLayout.whatToDo.setOnClickListener {
             mBinding.drawer.close()
-            drawerItemsClickListener?.onAboutKuwaitClick()
+            drawerItemsClickListener?.onWhatToDoInQatarClick()
         }
-        mBinding.drawerLayout.posters.setOnClickListener {
+        mBinding.drawerLayout.ourSponsors.setOnClickListener {
             mBinding.drawer.close()
-            drawerItemsClickListener?.onPostersClick()
+            drawerItemsClickListener?.onOurSponsorsClick()
         }
-        mBinding.drawerLayout.feedBack.setOnClickListener {
+        mBinding.drawerLayout.visaTips.setOnClickListener {
             mBinding.drawer.close()
-            drawerItemsClickListener?.onFeedbackClick()
+            drawerItemsClickListener?.onVisaTipsClick()
         }
-        mBinding.drawerLayout.askQuestion.setOnClickListener {
+        mBinding.drawerLayout.contacts.setOnClickListener {
             mBinding.drawer.close()
-            drawerItemsClickListener?.onAskQuestionClick()
+            drawerItemsClickListener?.onContactsClick()
         }
         mBinding.drawerLayout.facebook.setOnClickListener {
             mBinding.drawer.close()
@@ -292,6 +299,10 @@ class MainActivity : AppCompatActivity() {
         mBinding.drawerLayout.linkedIn.setOnClickListener {
             mBinding.drawer.close()
             openLink(Constants.LINKED_IN_URL)
+        }
+        mBinding.drawerLayout.youtube.setOnClickListener {
+            mBinding.drawer.close()
+            openLink(Constants.YOUTUBE_URL)
         }
         mBinding.drawerLayout.whatsapp.setOnClickListener {
             mBinding.drawer.close()
@@ -353,17 +364,19 @@ class MainActivity : AppCompatActivity() {
             fun onClick()
         }
         interface DrawerItemsClickListener{
-            fun onHomeClick()
-            fun chairmanMessageClick()
-            fun onCommitteeClick()
-            fun onSpeakersClick()
-            fun onSponsorsClick()
-            fun onEventLocationClick()
-            fun onHostelsAndVisaClick()
-            fun onAboutKuwaitClick()
-            fun onPostersClick()
-            fun onFeedbackClick()
-            fun onAskQuestionClick()
+            fun onWelcomeClick()
+            fun onCommitteesClick()
+            fun onDatesAndDetailsClick()
+            fun onEndorsementsClick()
+            fun onSponsorOurMeetingClick()
+            fun onCallForAbstractsClick()
+            fun onRegistrationInfoClick()
+            fun onVenueAndAccommodationsClick()
+            fun onSocialEventsClick()
+            fun onWhatToDoInQatarClick()
+            fun onOurSponsorsClick()
+            fun onVisaTipsClick()
+            fun onContactsClick()
         }
     }
     private fun startWork(){

@@ -16,7 +16,7 @@
     <string name="register_now">Register Now</string>
     <string name="submit_your_abstract">Submit your Abstract</string>
     <string name="chairman_s_message">Chairman\'s Message</string>
-    <string name="committee">Committee</string>
+    <string name="committees">Committees</string>
     <string name="event_location">Event Location</string>
     <string name="hostels_visa"><![CDATA[Hostels & Visa]]></string>
     <string name="abstractt">Abstract</string>
@@ -89,6 +89,18 @@
     <string name="qr_code">Qr Code</string>
     <string name="my_qr_code">My QR Code</string>
     <string name="please_enter_you_registered_email">Please Enter you Registered Email</string>
+    <string name="welcome_word">Welcome Word</string>
+    <string name="important_dates_details"><![CDATA[Important dates & details]]></string>
+    <string name="endorsements">Endorsements</string>
+    <string name="sponsor_our_meeting">Sponsor our meeting!</string>
+    <string name="call_for_abstracts">Call for Abstracts</string>
+    <string name="registration_info">Registration info</string>
+    <string name="venue_and_accommodations">Venue and Accommodations</string>
+    <string name="social_events">Social Events</string>
+    <string name="what_to_do_in_qatar">What to do in Qatar?</string>
+    <string name="visa_tips">VISA-Tips</string>
+    <string name="contacts">Contacts</string>
+    <string name="read_full_message"><u>Read Full Message</u></string>
 
 
 </resources>

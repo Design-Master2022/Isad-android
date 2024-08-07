@@ -1,4 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="BottomNavigationHeight">50dp</dimen>
+    <dimen name="BottomNavigationHeight">100dp</dimen>
 </resources>

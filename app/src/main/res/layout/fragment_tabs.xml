@@ -10,7 +10,6 @@
     <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:layout_marginTop="17dp"
         app:cardCornerRadius="0dp"
         app:rippleColor="@color/rippleColorLightBlack"
         app:cardBackgroundColor="@color/transparent"

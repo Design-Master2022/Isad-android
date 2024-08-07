@@ -18,7 +18,6 @@
         android:id="@+id/normal_parent"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
         android:layout_marginBottom="10dp"
         android:fillViewport="true">
 
@@ -127,79 +126,11 @@
 
             </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:orientation="horizontal">
-
-                <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/conference_recommendation"
-                    android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    app:cardCornerRadius="10dp"
-                    android:layout_marginHorizontal="10dp"
-                    android:clickable="true"
-                    android:focusable="true"
-                    android:layout_weight="1"
-                    app:rippleColor="@color/rippleColorWhiteLight"
-                    app:cardElevation="0dp"
-                    android:layout_gravity="center_vertical"
-                    android:theme="@style/Theme.MaterialComponents">
-
-                    <TextView
-                        android:id="@+id/txt_conference_recommendation"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:text="@string/conference_recommendation"
-                        android:gravity="center"
-                        android:textSize="13sp"
-                        android:textAllCaps="true"
-                        android:fontFamily="@font/bold"
-                        android:textColor="@color/whiteTextColor"
-                        android:background="@color/dark_blue"/>
-
-                </com.google.android.material.card.MaterialCardView>
-
-                <View
-                    android:layout_width="1dp"
-                    android:layout_height="match_parent"
-                    android:background="@color/lightBlack"/>
-
-                <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/ask_question"
-                    android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    app:cardCornerRadius="10dp"
-                    android:layout_marginHorizontal="10dp"
-                    android:clickable="true"
-                    android:focusable="true"
-                    android:layout_weight="1"
-                    app:rippleColor="@color/rippleColorWhiteLight"
-                    app:cardElevation="0dp"
-                    android:layout_gravity="center_vertical"
-                    android:theme="@style/Theme.MaterialComponents">
-
-                    <TextView
-                        android:id="@+id/txt_ask_question"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:text="@string/ask_a_question"
-                        android:gravity="center"
-                        android:textSize="13sp"
-                        android:textAllCaps="true"
-                        android:fontFamily="@font/bold"
-                        android:textColor="@color/whiteTextColor"
-                        android:background="@color/red"/>
-
-                </com.google.android.material.card.MaterialCardView>
-
-            </LinearLayout>
-
             <com.google.android.material.card.MaterialCardView
+                android:id="@+id/layout_txt_1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:cardCornerRadius="20dp"
+                app:cardCornerRadius="10dp"
                 android:layout_marginTop="40dp"
                 android:layout_marginHorizontal="10dp"
                 app:cardElevation="0dp"
@@ -207,347 +138,316 @@
                 android:layout_gravity="center_vertical"
                 android:theme="@style/Theme.MaterialComponents">
 
-                <LinearLayout
+                <TextView
+                    android:id="@+id/txt1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:minHeight="200dp"
-                    android:paddingHorizontal="10dp"
-                    android:paddingVertical="5dp"
-                    android:orientation="horizontal">
+                    android:fontFamily="@font/bold"
+                    android:padding="10dp"
+                    android:textSize="13sp"
+                    android:textColor="@color/whiteTextColor" />
 
-                    <FrameLayout
-                        android:layout_width="100dp"
-                        android:layout_height="150dp"
-                        android:layout_gravity="center">
 
-                        <ImageView
-                            android:id="@+id/conference_img"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:background="@drawable/oval_shape"
-                            android:scaleType="centerCrop"/>
+            </com.google.android.material.card.MaterialCardView>
 
-                        <com.facebook.shimmer.ShimmerFrameLayout
-                            android:id="@+id/shimmer_conference_img"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:visibility="gone"
-                            android:background="@color/shimmerColor"/>
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/layout_img_person"
+                android:layout_width="130dp"
+                android:layout_height="130dp"
+                app:cardCornerRadius="100dp"
+                android:layout_marginTop="20dp"
+                app:cardElevation="0dp"
+                app:cardBackgroundColor="@color/transparent"
+                android:layout_gravity="center"
+                android:theme="@style/Theme.MaterialComponents">
 
-                    </FrameLayout>
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
 
-                    <LinearLayout
+                    <ImageView
+                        android:id="@+id/img_person"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="10dp"
-                        android:orientation="vertical">
+                        android:layout_height="match_parent"
+                        android:src="@drawable/image_1"
+                        android:visibility="gone"
+                        android:scaleType="centerCrop"/>
 
-                        <TextView
-                            android:id="@+id/conference_title"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="@string/register_now"
-                            android:textSize="15sp"
-                            android:fontFamily="@font/bold"
-                            android:textColor="@color/whiteTextColor" />
+                    <com.facebook.shimmer.ShimmerFrameLayout
+                        android:id="@+id/shimmer_img_person"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:visibility="visible"
+                        android:background="@color/shimmerColor"/>
 
-                        <TextView
-                            android:id="@+id/conference_message"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="@string/register_now"
-                            android:fontFamily="@font/light"
-                            android:layout_marginTop="5dp"
-                            android:textSize="13sp"
-                            android:textColor="@color/whiteTextColor" />
-
-                        <TextView
-                            android:id="@+id/conference_read_more"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="@string/read_more"
-                            android:fontFamily="@font/bold"
-                            android:textSize="15sp"
-                            android:layout_marginTop="5dp"
-                            android:textColor="@color/whiteTextColor" />
-
-                    </LinearLayout>
-
-                </LinearLayout>
+                </FrameLayout>
 
             </com.google.android.material.card.MaterialCardView>
 
             <TextView
+                android:id="@+id/title_person"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/under_the_patronage_of_his_excellency_minister_of_health_n_dr_ahmed_al_awadhi"
+                tools:text="@string/under_the_patronage_of_his_excellency_minister_of_health_n_dr_ahmed_al_awadhi"
                 android:fontFamily="@font/bold"
                 android:gravity="center"
-                android:layout_marginTop="30dp"
+                android:textSize="15sp"
+                android:layout_marginTop="10dp"
                 android:layout_marginHorizontal="10dp"
                 android:textColor="@color/primaryTextColor" />
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recycler_sponsors"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_marginHorizontal="10dp"/>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="10dp"
-                android:layout_marginTop="30dp"
-                android:orientation="vertical">
-
-                <com.google.android.material.card.MaterialCardView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
-                    app:cardElevation="0dp"
-                    app:cardCornerRadius="15dp">
-
-                    <FrameLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-
-                        <ImageView
-                            android:id="@+id/img_about"
-                            android:layout_width="match_parent"
-                            android:layout_height="150dp"
-                            android:src="@drawable/image_1"
-                            android:scaleType="centerCrop"/>
-
-                        <com.facebook.shimmer.ShimmerFrameLayout
-                            android:id="@+id/shimmer_img_about"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:background="@color/shimmerColor"/>
-
-                    </FrameLayout>
-
-                </com.google.android.material.card.MaterialCardView>
-
-                <TextView
-                    android:id="@+id/description_about"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    tools:text="State of the art workshops with hands on training on new technologies"
-                    android:textColor="@color/blackTextColor"
-                    android:textSize="13sp"
-                    android:layout_marginHorizontal="5dp"
-                    android:fontFamily="@font/regular"/>
-
-            </LinearLayout>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginTop="30dp"
-                android:background="@color/lightWhite"/>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
-                android:orientation="horizontal">
-
-                <LinearLayout
-                    android:id="@+id/layout_speakers"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_weight="1">
-
-                    <ImageView
-                        android:id="@+id/img1"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:layout_gravity="center" />
-
-                    <TextView
-                        android:id="@+id/name1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        tools:text="60+\nSpeakers"
-                        android:gravity="center"
-                        android:layout_marginTop="5dp"
-                        android:textAllCaps="true"
-                        android:textSize="13sp"
-                        android:textColor="@color/blackTextColor"/>
-
-                </LinearLayout>
-
-                <View
-                    android:layout_width="1dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginVertical="10dp"
-                    android:background="@color/lightBlack"/>
-
-                <LinearLayout
-                    android:id="@+id/layout_workshops"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_weight="1">
-
-                    <ImageView
-                        android:id="@+id/img2"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:layout_gravity="center" />
-
-                    <TextView
-                        android:id="@+id/name2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        tools:text="7+\nShops"
-                        android:gravity="center"
-                        android:layout_marginTop="5dp"
-                        android:textAllCaps="true"
-                        android:textSize="13sp"
-                        android:textColor="@color/blackTextColor"/>
-
-                </LinearLayout>
-
-                <View
-                    android:layout_width="1dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginVertical="10dp"
-                    android:background="@color/lightBlack"/>
-
-                <LinearLayout
-                    android:id="@+id/layout_accredited"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_weight="1">
-
-                    <ImageView
-                        android:id="@+id/img3"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:layout_gravity="center" />
-
-                    <TextView
-                        android:id="@+id/name3"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        tools:text="CME / CPD\nACCREDITED"
-                        android:gravity="center"
-                        android:layout_marginTop="5dp"
-                        android:textAllCaps="true"
-                        android:textSize="13sp"
-                        android:textColor="@color/blackTextColor"/>
-
-                </LinearLayout>
-
-                <View
-                    android:layout_width="1dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginVertical="10dp"
-                    android:background="@color/lightBlack"/>
-
-                <LinearLayout
-                    android:id="@+id/layout_topics"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_weight="1">
-
-                    <ImageView
-                        android:id="@+id/img4"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:layout_gravity="center" />
-
-                    <TextView
-                        android:id="@+id/name4"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        tools:text="100\nTopics"
-                        android:gravity="center"
-                        android:layout_marginTop="5dp"
-                        android:textAllCaps="true"
-                        android:textSize="13sp"
-                        android:textColor="@color/blackTextColor"/>
-
-                </LinearLayout>
-
-            </LinearLayout>
 
             <TextView
+                android:id="@+id/info_person"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/about_kuwait"
+                tools:text="@string/under_the_patronage_of_his_excellency_minister_of_health_n_dr_ahmed_al_awadhi"
+                android:fontFamily="@font/regular"
+                android:gravity="center"
+                android:textSize="15sp"
+                android:layout_marginTop="10dp"
+                android:layout_marginHorizontal="10dp"
+                android:textColor="@color/lightBlackTextColor" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/layout_img_more_info"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_margin="10dp"
+                app:cardElevation="0dp"
+                app:cardBackgroundColor="@color/transparent"
+                app:cardCornerRadius="15dp">
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:id="@+id/img_more_info"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/image_1"
+                        android:visibility="visible"
+                        android:scaleType="centerCrop"/>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@color/primaryTransparent"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="bottom"
+                        android:layout_marginHorizontal="10dp"
+                        android:layout_marginBottom="20dp"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:id="@+id/layout_speakers"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:layout_weight="1">
+
+                            <ImageView
+                                android:id="@+id/img1"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:layout_gravity="center" />
+
+                            <TextView
+                                android:id="@+id/name1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                tools:text="60+\nSpeakers"
+                                android:gravity="center"
+                                android:fontFamily="@font/bold"
+                                android:layout_marginTop="5dp"
+                                android:textAllCaps="true"
+                                android:textSize="13sp"
+                                android:textColor="@color/whiteTextColor"/>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/layout_workshops"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:layout_weight="1">
+
+                            <ImageView
+                                android:id="@+id/img2"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:layout_gravity="center" />
+
+                            <TextView
+                                android:id="@+id/name2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                tools:text="7+\nShops"
+                                android:gravity="center"
+                                android:fontFamily="@font/bold"
+                                android:layout_marginTop="5dp"
+                                android:textAllCaps="true"
+                                android:textSize="13sp"
+                                android:textColor="@color/whiteTextColor"/>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/layout_accredited"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:layout_weight="1">
+
+                            <ImageView
+                                android:id="@+id/img3"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:layout_gravity="center" />
+
+                            <TextView
+                                android:id="@+id/name3"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                tools:text="CME / CPD\nACCREDITED"
+                                android:gravity="center"
+                                android:fontFamily="@font/bold"
+                                android:layout_marginTop="5dp"
+                                android:textAllCaps="true"
+                                android:textSize="13sp"
+                                android:textColor="@color/whiteTextColor"/>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/layout_topics"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:layout_weight="1">
+
+                            <ImageView
+                                android:id="@+id/img4"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:layout_gravity="center" />
+
+                            <TextView
+                                android:id="@+id/name4"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                tools:text="100\nTopics"
+                                android:gravity="center"
+                                android:fontFamily="@font/bold"
+                                android:layout_marginTop="5dp"
+                                android:textAllCaps="true"
+                                android:textSize="13sp"
+                                android:textColor="@color/whiteTextColor"/>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <com.facebook.shimmer.ShimmerFrameLayout
+                        android:id="@+id/shimmer_img_more_info"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@color/shimmerColor"/>
+
+                </FrameLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <TextView
+                android:id="@+id/txt_more_info_1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:text="@string/under_the_patronage_of_his_excellency_minister_of_health_n_dr_ahmed_al_awadhi"
+                android:fontFamily="@font/regular"
+                android:gravity="center"
+                android:textSize="15sp"
+                android:layout_marginTop="10dp"
+                android:layout_marginHorizontal="10dp"
+                android:textColor="@color/lightBlackTextColor" />
+
+            <TextView
+                android:id="@+id/txt_more_info_2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:text="@string/under_the_patronage_of_his_excellency_minister_of_health_n_dr_ahmed_al_awadhi"
+                android:fontFamily="@font/regular"
+                android:gravity="center"
+                android:textSize="15sp"
+                android:layout_marginTop="10dp"
+                android:layout_marginHorizontal="10dp"
+                android:textColor="@color/lightBlackTextColor" />
+
+            <TextView
+                android:id="@+id/txt_more_info_read_more"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/read_full_message"
                 android:fontFamily="@font/bold"
                 android:gravity="center"
-                android:layout_marginTop="30dp"
+                android:textSize="13sp"
                 android:layout_marginHorizontal="10dp"
                 android:textColor="@color/primaryTextColor" />
 
-            <LinearLayout
+
+
+
+
+            <TextView
+                android:id="@+id/title_footer1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                tools:text="@string/under_the_patronage_of_his_excellency_minister_of_health_n_dr_ahmed_al_awadhi"
+                android:fontFamily="@font/regular"
+                android:gravity="center"
+                android:textSize="13sp"
+                android:layout_marginTop="40dp"
                 android:layout_marginHorizontal="10dp"
-                android:layout_marginBottom="20dp"
-                android:orientation="vertical">
+                android:textColor="@color/lightBlackTextColor" />
 
-                <com.google.android.material.card.MaterialCardView
+            <TextView
+                android:id="@+id/title_footer2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:text="Uniting for better Care"
+                android:fontFamily="@font/bold"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:textSize="15sp"
+                android:layout_marginHorizontal="10dp"
+                android:textColor="@color/primaryTextColor" />
+
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_marginTop="10dp">
+
+                <ImageView
+                    android:id="@+id/img_footer"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginHorizontal="5dp"
-                    app:cardElevation="0dp"
-                    app:cardCornerRadius="15dp">
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"/>
 
-                    <FrameLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-
-                        <ImageView
-                            android:id="@+id/img_about_kuwait"
-                            android:layout_width="match_parent"
-                            android:layout_height="150dp"
-                            android:src="@drawable/image_1"
-                            android:scaleType="centerCrop"/>
-
-                        <com.facebook.shimmer.ShimmerFrameLayout
-                            android:id="@+id/shimmer_img_about_kuwait"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:background="@color/shimmerColor"/>
-
-                    </FrameLayout>
-
-                </com.google.android.material.card.MaterialCardView>
-
-                <TextView
-                    android:id="@+id/title_about_kuwait"
+                <com.facebook.shimmer.ShimmerFrameLayout
+                    android:id="@+id/shimmer_img_footer"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    tools:text="Pre Conference Workshops"
-                    android:textColor="@color/primaryTextColor"
-                    android:textSize="15sp"
-                    android:layout_margin="5dp"
-                    android:fontFamily="@font/bold"/>
+                    android:layout_height="match_parent"
+                    android:background="@color/shimmerColor"/>
 
-                <TextView
-                    android:id="@+id/description_about_kuwait"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    tools:text="State of the art workshops with hands on training on new technologies"
-                    android:textColor="@color/blackTextColor"
-                    android:textSize="13sp"
-                    android:layout_marginHorizontal="5dp"
-                    android:fontFamily="@font/regular"/>
-
-            </LinearLayout>
+            </FrameLayout>
 
         </LinearLayout>
 

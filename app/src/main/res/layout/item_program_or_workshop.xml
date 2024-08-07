@@ -140,7 +140,8 @@
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:padding="5dp"
-                    android:src="@drawable/ic_add_to_wishlist" />
+                    android:src="@drawable/ic_add_to_wishlist"
+                    app:tint="@color/primary"/>
 
             </FrameLayout>
 

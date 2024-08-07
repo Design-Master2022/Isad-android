@@ -6,7 +6,7 @@ JNIEXPORT jstring JNICALL
 Java_com_design_1master_isad_model_provider_ElectroLibAccessProvider_getServerBaseUrl(JNIEnv *env,jobject thiz) {
 
     // TODO Also update base url in Location Update Service and LoginWithOtpViewModel line 136
-    std::string s = "https://app.kifmc.com/";
+    std::string s = "https://app.medconfworld.com/";
     return env->NewStringUTF(s.c_str());
 }
 extern "C"

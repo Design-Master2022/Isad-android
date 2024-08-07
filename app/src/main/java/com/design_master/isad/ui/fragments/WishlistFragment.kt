@@ -52,53 +52,6 @@ class WishlistFragment : Fragment() {
                     mMainActivity.getMainActivityBinding().drawer.open()
                 }
             },
-            drawerItemsClickListener = object: MainActivity.Companion.DrawerItemsClickListener{
-                override fun onHomeClick() {
-                    findNavController().popBackStack(R.id.homeFragment,false)
-                }
-                override fun chairmanMessageClick() {
-                    findNavController().navigate(WebViewFragmentDirections.actionGlobalWebViewFragment(
-                        Constants.CHAIRMAN_MESSAGE_URL
-                    ))
-                }
-                override fun onCommitteeClick() {
-                    findNavController().navigate(WebViewFragmentDirections.actionGlobalWebViewFragment(
-                        Constants.COMMITTEE_URL
-                    ))
-                }
-                override fun onSpeakersClick() {
-                    findNavController().navigate(R.id.action_global_speakersAndModeratorsFragment)
-                }
-                override fun onSponsorsClick() {
-                    findNavController().navigate(WebViewFragmentDirections.actionGlobalWebViewFragment(
-                        Constants.SPONSORS_URL
-                    ))
-                }
-                override fun onEventLocationClick() {
-                    findNavController().navigate(R.id.action_global_locationFragment)
-                }
-                override fun onHostelsAndVisaClick() {
-                    findNavController().navigate(WebViewFragmentDirections.actionGlobalWebViewFragment(
-                        Constants.HOTELS_AND_VISA
-                    ))
-                }
-                override fun onAboutKuwaitClick() {
-                    findNavController().navigate(WebViewFragmentDirections.actionGlobalWebViewFragment(
-                        Constants.ABOUT_KUWAIT_URL
-                    ))
-                }
-                override fun onPostersClick() {
-                    findNavController().navigate(WebViewFragmentDirections.actionGlobalWebViewFragment(
-                        Constants.POSTERS_URL
-                    ))
-                }
-                override fun onFeedbackClick() {
-                    findNavController().navigate(R.id.action_global_feedbackFragment)
-                }
-                override fun onAskQuestionClick() {
-                    findNavController().navigate(R.id.action_global_askQuestionFragment)
-                }
-            },
             notificationBtnClickListener = object: MainActivity.Companion.NotificationClickListener{
                 override fun onClick() {
                     findNavController().navigate(R.id.action_global_notificationsFragment)

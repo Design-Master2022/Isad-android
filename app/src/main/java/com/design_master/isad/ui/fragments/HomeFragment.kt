@@ -4,19 +4,18 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.webkit.WebView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.design_master.isad.R
-import com.design_master.isad.adapter.SponsorAdapter
 import com.design_master.isad.databinding.FragmentHomeBinding
 import com.design_master.isad.extensions.hide
 import com.design_master.isad.extensions.invisible
 import com.design_master.isad.extensions.show
 import com.design_master.isad.model.constants.Constants
-import com.design_master.isad.model.listeners.SponsorListener
 import com.design_master.isad.model.network.response.GetHomeDataResponseClasses
 import com.design_master.isad.model.view_models.activities.MainActivityViewModel
 import com.design_master.isad.model.view_models.fragments.HomeFragmentViewModel
@@ -33,7 +32,6 @@ class HomeFragment : Fragment() {
     private val mViewModel: HomeFragmentViewModel by viewModels()
     private val mMainActivityViewModel: MainActivityViewModel by activityViewModels()
     private lateinit var mMainActivity: MainActivity
-    private lateinit var mSponsorAdapter: SponsorAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -52,65 +50,12 @@ class HomeFragment : Fragment() {
                     mMainActivity.getMainActivityBinding().drawer.open()
                 }
             },
-            drawerItemsClickListener = object: MainActivity.Companion.DrawerItemsClickListener{
-                override fun onHomeClick() {
-                }
-                override fun chairmanMessageClick() {
-                    findNavController().navigate(WebViewFragmentDirections.actionGlobalWebViewFragment(
-                        Constants.CHAIRMAN_MESSAGE_URL
-                    ))
-                }
-                override fun onCommitteeClick() {
-                    findNavController().navigate(WebViewFragmentDirections.actionGlobalWebViewFragment(
-                        Constants.COMMITTEE_URL
-                    ))
-                }
-                override fun onSpeakersClick() {
-                    findNavController().navigate(R.id.action_global_speakersAndModeratorsFragment)
-                }
-                override fun onSponsorsClick() {
-                    findNavController().navigate(WebViewFragmentDirections.actionGlobalWebViewFragment(
-                        Constants.SPONSORS_URL
-                    ))
-                }
-                override fun onEventLocationClick() {
-                    findNavController().navigate(R.id.action_global_locationFragment)
-                }
-                override fun onHostelsAndVisaClick() {
-                    findNavController().navigate(WebViewFragmentDirections.actionGlobalWebViewFragment(
-                        Constants.HOTELS_AND_VISA
-                    ))
-                }
-                override fun onAboutKuwaitClick() {
-                    findNavController().navigate(WebViewFragmentDirections.actionGlobalWebViewFragment(
-                        Constants.ABOUT_KUWAIT_URL
-                    ))
-                }
-                override fun onPostersClick() {
-                    findNavController().navigate(WebViewFragmentDirections.actionGlobalWebViewFragment(
-                        Constants.POSTERS_URL
-                    ))
-                }
-                override fun onFeedbackClick() {
-                    findNavController().navigate(R.id.action_global_feedbackFragment)
-                }
-                override fun onAskQuestionClick() {
-                    findNavController().navigate(R.id.action_global_askQuestionFragment)
-                }
-            },
             notificationBtnClickListener = object: MainActivity.Companion.NotificationClickListener{
                 override fun onClick() {
                     findNavController().navigate(R.id.action_global_notificationsFragment)
                 }
             }
         )
-        mSponsorAdapter = SponsorAdapter(
-            listener = object: SponsorListener{
-                override fun onClick(sponsor: GetHomeDataResponseClasses.Sponsor) {}
-            }
-        )
-        mBinding.recyclerSponsors.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL,false)
-        mBinding.recyclerSponsors.adapter = mSponsorAdapter
 
         mViewModel.fetchHomeDataState.observe(viewLifecycleOwner){
             mBinding.normalParent.visibility = if (it == FetchHomeDataState.FETCHING) View.GONE else View.VISIBLE
@@ -133,30 +78,16 @@ class HomeFragment : Fragment() {
 
         mViewModel.fetchHomeData(mViewModel.homeData == null)
 
-        mBinding.askQuestion.setOnClickListener {
-            findNavController().navigate(R.id.action_global_askQuestionFragment)
-        }
-        mBinding.conferenceRecommendation.setOnClickListener {
-            findNavController().navigate(R.id.action_global_feedbackFragment)
-        }
+//        mBinding.askQuestion.setOnClickListener {
+//            findNavController().navigate(R.id.action_global_askQuestionFragment)
+//        }
+//        mBinding.conferenceRecommendation.setOnClickListener {
+//            findNavController().navigate(R.id.action_global_feedbackFragment)
+//        }
 
         return mBinding.root
     }
     private fun loadData(data: GetHomeDataResponseClasses.Data){
-
-        data.buttons1?.let {
-            it.first()?.let { btn ->
-                mBinding.txtRegister.text = btn.name1
-                mBinding.txtSubmitAbstract.text = btn.name2
-
-                mBinding.register.setOnClickListener {
-                    findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToWebViewFragment(btn.url1))
-                }
-                mBinding.submitAbstract.setOnClickListener {
-                    findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToWebViewFragment(btn.url2))
-                }
-            }
-        }
 
         data.banners?.let {
             mBinding.layoutBannerSlider.visibility = if (it.isNotEmpty()) View.VISIBLE else View.GONE
@@ -166,7 +97,7 @@ class HomeFragment : Fragment() {
                 mBinding.bannerSlider.setImageListener { position, imageView ->
                     Helper.loadImage(
                         isCompleteURL = false,
-                        url = "images/${it[position].image}",
+                        url = "images/${it[position].logo}",
                         imageView = imageView,
                         listener = object: Helper.LoadImageListener{
                             override fun onImageLoaded() {
@@ -183,93 +114,102 @@ class HomeFragment : Fragment() {
             }
         }
 
-        mBinding.recyclerSponsors.visibility = if (data.sponsors.isNullOrEmpty()) View.GONE else View.VISIBLE
-        data.sponsors?.let {
-            mSponsorAdapter.setData(it)
-        }
+        data.buttons?.let {
+            it.first()?.let { btn ->
+                mBinding.txtRegister.text = btn.name
 
-        data.aboutConference?.let {
-            it.first()?.let {
-                mBinding.conferenceTitle.text = it.title
-                mBinding.conferenceMessage.text = it.message
+                mBinding.register.setOnClickListener {
+                    findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToWebViewFragment(btn.url))
+                }
+            }
 
-                mBinding.conferenceImg.invisible()
-                mBinding.shimmerConferenceImg.show()
-                Helper.loadImage(
-                    url = "settings/${it.image}",
-                    isCompleteURL = false,
-                    imageView = mBinding.conferenceImg,
-                    listener = object: Helper.LoadImageListener{
-                        override fun onImageLoaded() {
-                            mBinding.conferenceImg.show()
-                            mBinding.shimmerConferenceImg.invisible()
-                        }
-                        override fun onFailedToLoadImage() {
-                            mBinding.conferenceImg.show()
-                            mBinding.shimmerConferenceImg.invisible()
-                        }
-                    }
-                )
+            it[1]?.let { btn ->
+                mBinding.txtSubmitAbstract.text = btn.name
 
-                mBinding.conferenceReadMore.setOnClickListener {
-                    findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToWebViewFragment(
-                        Constants.CONFERENCE_READ_MORE_URL
-                    ))
+                mBinding.submitAbstract.setOnClickListener {
+                    findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToWebViewFragment(btn.url))
                 }
             }
         }
 
-        data.about?.let {
-            it.first()?.let {
-                mBinding.descriptionAbout.text = it.message
+        data.heading?.let {
+            mBinding.txt1.text = it.first().info
+        }
 
-                mBinding.imgAbout.invisible()
-                mBinding.shimmerImgAbout.show()
-                Helper.loadImage(
-                    url = "settings/${it.image}",
-                    isCompleteURL = false,
-                    imageView = mBinding.imgAbout,
-                    listener = object: Helper.LoadImageListener{
-                        override fun onImageLoaded() {
-                            mBinding.imgAbout.show()
-                            mBinding.shimmerImgAbout.invisible()
-                        }
-                        override fun onFailedToLoadImage() {
-                            mBinding.imgAbout.show()
-                            mBinding.shimmerImgAbout.invisible()
-                        }
+        data.personInfo1.first()?.let {
+            mBinding.titlePerson.text = it.title
+            mBinding.infoPerson.text = it.info
+
+            mBinding.imgPerson.invisible()
+            mBinding.shimmerImgPerson.show()
+            Helper.loadImage(
+                url = "settings/${it.img}",
+                isCompleteURL = false,
+                imageView = mBinding.imgPerson,
+                listener = object: Helper.LoadImageListener{
+                    override fun onImageLoaded() {
+                        mBinding.imgPerson.show()
+                        mBinding.shimmerImgPerson.invisible()
                     }
-                )
+                    override fun onFailedToLoadImage() {
+                        mBinding.imgPerson.show()
+                        mBinding.shimmerImgPerson.invisible()
+                    }
+                }
+            )
+        }
+
+        data.moreInfo.first()?.let { moreInfo ->
+            mBinding.txtMoreInfo1.text = moreInfo.info
+            mBinding.txtMoreInfo2.text = moreInfo.info1
+
+            mBinding.imgMoreInfo.invisible()
+            mBinding.shimmerImgMoreInfo.show()
+            Helper.loadImage(
+                url = "settings/${moreInfo.img}",
+                isCompleteURL = false,
+                imageView = mBinding.imgMoreInfo,
+                listener = object: Helper.LoadImageListener{
+                    override fun onImageLoaded() {
+                        mBinding.imgMoreInfo.show()
+                        mBinding.shimmerImgMoreInfo.invisible()
+                    }
+                    override fun onFailedToLoadImage() {
+                        mBinding.imgMoreInfo.show()
+                        mBinding.shimmerImgMoreInfo.invisible()
+                    }
+                }
+            )
+
+            mBinding.txtMoreInfoReadMore.setOnClickListener {
+                findNavController().navigate(WebViewFragmentDirections.actionGlobalWebViewFragment(moreInfo.readMore))
             }
         }
 
-        data.aboutKuwait?.let {
-            it.first()?.let {
-                mBinding.titleAboutKuwait.text = it.title
-                mBinding.descriptionAboutKuwait.text = it.message
+        data.footer.first()?.let {
+            mBinding.titleFooter1.text = it.title
+            mBinding.titleFooter2.text = it.message
 
-                mBinding.imgAboutKuwait.invisible()
-                mBinding.shimmerImgAboutKuwait.show()
-                Helper.loadImage(
-                    url = "settings/${it.image}",
-                    isCompleteURL = false,
-                    imageView = mBinding.imgAboutKuwait,
-                    listener = object : Helper.LoadImageListener {
-                        override fun onImageLoaded() {
-                            mBinding.imgAboutKuwait.show()
-                            mBinding.shimmerImgAboutKuwait.invisible()
-                        }
-
-                        override fun onFailedToLoadImage() {
-                            mBinding.imgAboutKuwait.show()
-                            mBinding.shimmerImgAboutKuwait.invisible()
-                        }
+            mBinding.imgFooter.invisible()
+            mBinding.shimmerImgFooter.show()
+            Helper.loadImage(
+                url = "settings/${it.image}",
+                isCompleteURL = false,
+                imageView = mBinding.imgFooter,
+                listener = object: Helper.LoadImageListener{
+                    override fun onImageLoaded() {
+                        mBinding.imgFooter.show()
+                        mBinding.shimmerImgFooter.invisible()
                     }
-                )
-            }
+                    override fun onFailedToLoadImage() {
+                        mBinding.imgFooter.show()
+                        mBinding.shimmerImgFooter.invisible()
+                    }
+                }
+            )
         }
 
-        data.info?.let {
+        data.information?.let {
             it.first()?.let {
                 mBinding.name1.text = "${it.count1}\n${it.name1}"
                 mBinding.name2.text = "${it.count2}\n${it.name2}"
