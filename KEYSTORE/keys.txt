@@ -1,0 +1,4 @@
+KeyStore password = kifmc@123
+Alias = kifmc
+Alias password = kifmc@123
+name = kifmc

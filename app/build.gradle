@@ -1,0 +1,273 @@
+plugins {
+    id("com.android.application")
+    id("kotlin-android")
+    id("kotlin-kapt")
+    id("dagger.hilt.android.plugin")
+    id("androidx.navigation.safeargs")
+    id("com.google.firebase.crashlytics")
+    id("com.google.gms.google-services")
+}
+
+android {
+    namespace = "com.design_master.isad"
+    compileSdk = 34
+
+    defaultConfig {
+        applicationId = "com.design_master.isad"
+        minSdk = 24
+        targetSdk = 34
+        versionCode = 6
+        versionName = "1.6"
+
+        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        externalNativeBuild {
+            cmake {
+                cppFlags += "-std=c++11"
+            }
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
+        }
+    }
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+    externalNativeBuild {
+        cmake {
+            path = file("src/main/cpp/CMakeLists.txt")
+            version = "3.22.1"
+        }
+    }
+    buildFeatures {
+        viewBinding = true
+    }
+}
+
+dependencies {
+
+    implementation fileTree(dir: 'libs', include: ['*.jar','*.aar'])
+
+    /**
+     * Legacy Support Library for AndroidX
+     * https://mvnrepository.com/artifact/androidx.legacy/legacy-support-v4
+     */
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+
+    /**
+     * Android KTX - Core
+     */
+    implementation 'androidx.core:core-ktx:1.6.0'
+
+    /**
+     * AndroidX AppCompat
+     */
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+
+    /**
+     * Material Library
+     */
+    implementation 'com.google.android.material:material:1.9.0'
+
+    /**
+     * Constraint Layout
+     */
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+
+    /**
+     * Unit Testing
+     */
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+
+    /**
+     * Multidex
+     * https://developer.android.com/studio/build/multidex
+     */
+    implementation "androidx.multidex:multidex:$multidex_version"
+
+    /**
+     * Hilt
+     * https://developer.android.com/training/dependency-injection/hilt-android
+     */
+
+    implementation"com.google.dagger:hilt-android:$hilt_version"
+    kapt "com.google.dagger:hilt-android-compiler:$hilt_version"
+
+    /**
+     * Navigation
+     * https://developer.android.com/jetpack/androidx/releases/navigation
+     */
+    implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
+    implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
+
+    /**
+     * Lifecycle Components
+     * https://developer.android.com/jetpack/androidx/releases/lifecycle
+     */
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version" // ViewModel
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version" // LiveData
+
+    /**
+     * OK HTTP Client
+     * https://github.com/square/okhttp
+     */
+    implementation "com.squareup.okhttp3:okhttp:$okhttp_version"
+    // Logging Interceptor
+    implementation "com.squareup.okhttp3:logging-interceptor:$okhttp_version"
+
+    /**
+     * Gson: Java serialization/deserialization library to convert Java Objects into JSON and back
+     * https://github.com/google/gson
+     */
+    implementation "com.google.code.gson:gson:$gson_version"
+
+    /**
+     * Retrofit
+     * https://square.github.io/retrofit/
+     */
+    implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
+    // Gson Converter Factory
+    implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
+
+    /**
+     * Glide
+     * https://github.com/bumptech/glide
+     */
+    implementation "com.github.bumptech.glide:glide:$glide_version"
+    kapt "com.github.bumptech.glide:compiler:$glide_version"
+
+    /**
+     * Dexter
+     * https://github.com/Karumi/Dexter
+     */
+    implementation "com.karumi:dexter:$dexter_version"
+
+    /**
+     * RxAndroid & RxJava3
+     * https://github.com/ReactiveX/RxAndroid
+     * RxAndroid releases are few and far between, it is recommended you also
+     * explicitly depend on RxJava's latest version for bug fixes and new features.
+     * (see https://github.com/ReactiveX/RxJava/releases for latest 3.x.x version)
+     */
+    implementation "io.reactivex.rxjava3:rxandroid:$rxjava_version" // RxAndroid
+    implementation "io.reactivex.rxjava3:rxjava:$rxjava_version" // RxJava
+
+    /**
+     * Room
+     * https://developer.android.com/jetpack/androidx/releases/room
+     */
+//    implementation "androidx.room:room-runtime:$room_version"
+//    kapt "androidx.room:room-compiler:$room_version"
+
+
+    /**
+     * Tink
+     * https://github.com/google/tink
+     */
+    implementation "com.google.crypto.tink:tink-android:$tink_version"
+
+    /**
+     * Country Code Picker
+     * https://github.com/joielechong/CountryCodePicker
+     * */
+    implementation "com.hbb20:ccp:$country_code_picker_version_b"
+
+    /**
+     * Circle Image View
+     * https://github.com/hdodenhof/CircleImageView
+     */
+    implementation "de.hdodenhof:circleimageview:$circle_image_view_version"
+
+    /**
+     * EasyImageLibrary
+     * https://github.com/jkwiecien/EasyImage
+     */
+    implementation "com.github.jkwiecien:EasyImage:$easy_image_lib_version"
+
+    /**
+     *  Image Compressor
+     *  https://github.com/zetbaitsu/Compressor
+     */
+    implementation "id.zelory:compressor:$image_compressor"
+
+    /**
+     * Carousel View
+     * https://github.com/sayyam/carouselview
+     * */
+
+    implementation 'com.synnapps:carouselview:0.1.5'
+
+
+    /**
+     * Firebase
+     * https://firebase.google.com/docs/build
+     */
+    implementation platform("com.google.firebase:firebase-bom:$firebase_boom_version")
+    implementation 'com.google.firebase:firebase-analytics-ktx'
+    implementation 'com.google.firebase:firebase-crashlytics-ktx'
+    implementation 'com.google.firebase:firebase-messaging-ktx'
+
+    /**
+     *  Shimmer
+     * */
+    implementation 'com.facebook.shimmer:shimmer:0.5.0'
+
+
+    implementation 'io.fotoapparat:fotoapparat:2.7.0'
+
+    /**
+     *  
+     *  https://github.com/delight-im/Android-AdvancedWebView
+     * */
+
+    implementation 'com.github.delight-im:Android-AdvancedWebView:v3.2.1'
+
+    /**
+     * Html Editor
+     * */
+
+    implementation 'jp.wasabeef:richeditor-android:2.0.0'
+
+    /**
+     *  Zoomable Imageview
+     *  https://github.com/Baseflow/PhotoView
+     * */
+//    implementation 'com.github.chrisbanes:PhotoView:2.0.0'
+
+
+    /**
+     * WorkManager
+     * */
+    implementation 'androidx.work:work-runtime:2.8.1'
+
+    /**
+     * WebView
+     * */
+    implementation "androidx.webkit:webkit:1.8.0"
+
+    /**
+     * Google Map
+     */
+    implementation 'com.google.android.gms:play-services-maps:18.2.0'
+    implementation 'com.google.android.gms:play-services-location:21.0.1'
+//    implementation 'com.google.android.gms:play-services-auth:20.7.0'
+
+
+    /**
+     * QrCode Generator
+     * https://github.com/androidmads/QRGenerator
+     * */
+    implementation 'com.github.androidmads:QRGenerator:1.0.1'
+}

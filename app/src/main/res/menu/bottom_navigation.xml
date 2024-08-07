@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/homeFragment"
+        android:icon="@drawable/ic_home"
+        android:enabled="true"
+        android:title="@string/home"/>
+
+    <item
+        android:id="@+id/programsFragment"
+        android:enabled="true"
+        android:icon="@drawable/ic_program"
+        android:title="@string/program"/>
+
+    <item
+        android:id="@+id/workShopsFragment"
+        android:enabled="true"
+        android:icon="@drawable/ic_workshop"
+        android:title="@string/workshop"/>
+
+    <item
+        android:id="@+id/wishlistFragment"
+        android:enabled="true"
+        android:icon="@drawable/ic_wishlist"
+        android:title="@string/wishlist"/>
+
+    <item
+        android:id="@+id/loginWithOtpFragment"
+        android:enabled="true"
+        android:icon="@drawable/ic_post"
+        android:title="@string/post"/>
+</menu>

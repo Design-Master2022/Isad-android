@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_margin="5dp"
+    app:cardElevation="2dp"
+    android:id="@+id/parent"
+    app:cardBackgroundColor="@color/primaryLight2"
+    app:cardCornerRadius="10dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginStart="10dp"
+        android:layout_marginVertical="10dp">
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="MOH Officials"
+            android:textColor="@color/blackTextColor"
+            android:textSize="14sp"
+            android:fontFamily="@font/bold"
+            android:layout_marginStart="10dp" />
+
+        <TextView
+            android:id="@+id/message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="Opening Speech"
+            android:textColor="@color/primaryTextColor"
+            android:textSize="13sp"
+            android:fontFamily="@font/regular"
+            android:layout_marginStart="10dp" />
+
+    </LinearLayout>
+
+</com.google.android.material.card.MaterialCardView>

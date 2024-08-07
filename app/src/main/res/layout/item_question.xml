@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/parent"
+    app:cardElevation="1dp"
+    app:cardCornerRadius="15dp"
+    android:layout_margin="5dp"
+    app:cardBackgroundColor="@color/primaryLight2">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/session_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:text="MOH Officials"
+            android:layout_gravity="center"
+            android:textColor="@color/blackTextColor"
+            android:textSize="15sp"
+            android:paddingTop="5dp"
+            android:fontFamily="@font/bold"
+            android:layout_marginStart="10dp" />
+
+        <TextView
+            android:id="@+id/question"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:text="MOH Officials"
+            android:paddingBottom="5dp"
+            android:layout_gravity="center"
+            android:textColor="@color/lightBlack"
+            android:textSize="14sp"
+            android:fontFamily="@font/regular"
+            android:layout_marginStart="10dp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/lightWhite"/>
+
+    </LinearLayout>
+
+</com.google.android.material.card.MaterialCardView>

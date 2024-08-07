@@ -1,0 +1,448 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/BottomNavigationHeight"
+    android:orientation="horizontal"
+    android:background="@color/transparent"
+    android:id="@+id/parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:id="@+id/layout_home"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_gravity="bottom"
+            android:background="@color/bottomNavigationBackgroundColor"
+            android:gravity="center"
+            android:elevation="5dp"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <ImageView
+                android:id="@+id/image_home"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:src="@drawable/ic_home"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:tint="@color/bottomNavigationInActiveTabIconColor" />
+
+            <TextView
+                android:id="@+id/name_home"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/home"
+                android:textColor="@color/bottomNavigationTextColor"
+                android:textAllCaps="false"
+                android:textSize="12sp"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:visibility="gone"
+                android:fontFamily="@font/regular"
+                app:layout_constraintEnd_toEndOf="@id/image_home"
+                app:layout_constraintStart_toStartOf="@id/image_home"
+                app:layout_constraintTop_toBottomOf="@id/image_home" />
+
+        </LinearLayout>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/image_home_activated"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:theme="@style/Theme.MaterialComponents"
+            app:cardCornerRadius="35dp"
+            app:cardElevation="5dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:theme="@style/Theme.MaterialComponents"
+                app:cardBackgroundColor="@color/bottomNavigationIconRoundBackgroundColor"
+                app:cardCornerRadius="35dp"
+                app:cardElevation="0dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/ic_home"
+                        app:tint="@color/bottomNavigationActiveTabIconColor" />
+
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+        </com.google.android.material.card.MaterialCardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:id="@+id/layout_program"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_gravity="bottom"
+            android:background="@color/bottomNavigationBackgroundColor"
+            android:gravity="center"
+            android:elevation="5dp"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <ImageView
+                android:id="@+id/image_program"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:src="@drawable/ic_program"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:tint="@color/bottomNavigationInActiveTabIconColor" />
+
+            <TextView
+                android:id="@+id/name_program"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/program"
+                android:textColor="@color/bottomNavigationTextColor"
+                android:textAllCaps="false"
+                android:textSize="12sp"
+                android:layout_marginTop="10dp"
+                android:visibility="gone"
+                android:fontFamily="@font/regular"
+                app:layout_constraintEnd_toEndOf="@id/image_program"
+                app:layout_constraintStart_toStartOf="@id/image_program"
+                app:layout_constraintTop_toBottomOf="@id/image_program" />
+
+        </LinearLayout>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/image_program_activated"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:theme="@style/Theme.MaterialComponents"
+            app:cardCornerRadius="35dp"
+            app:cardElevation="5dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:theme="@style/Theme.MaterialComponents"
+                app:cardBackgroundColor="@color/bottomNavigationIconRoundBackgroundColor"
+                app:cardCornerRadius="35dp"
+                app:cardElevation="0dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/ic_program"
+                        app:tint="@color/bottomNavigationActiveTabIconColor" />
+
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+        </com.google.android.material.card.MaterialCardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:id="@+id/layout_workshop"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_gravity="bottom"
+            android:background="@color/bottomNavigationBackgroundColor"
+            android:elevation="5dp"
+            android:gravity="center"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <ImageView
+                android:id="@+id/image_workshop"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:visibility="visible"
+                android:src="@drawable/ic_workshop"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:tint="@color/bottomNavigationInActiveTabIconColor" />
+
+            <TextView
+                android:id="@+id/name_workshop"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/regular"
+                android:text="@string/workshop"
+                android:layout_marginTop="10dp"
+                android:textAllCaps="false"
+                android:textColor="@color/bottomNavigationTextColor"
+                android:textSize="12sp"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="@id/image_workshop"
+                app:layout_constraintStart_toStartOf="@id/image_workshop"
+                app:layout_constraintTop_toBottomOf="@id/image_workshop" />
+
+        </LinearLayout>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/image_workshop_activated"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:theme="@style/Theme.MaterialComponents"
+            app:cardCornerRadius="35dp"
+            app:cardElevation="5dp"
+            app:layout_constraintBottom_toBottomOf="@+id/layout_workshop"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:theme="@style/Theme.MaterialComponents"
+                app:cardBackgroundColor="@color/bottomNavigationIconRoundBackgroundColor"
+                app:cardCornerRadius="35dp"
+                app:cardElevation="0dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/ic_workshop"
+                        app:tint="@color/bottomNavigationActiveTabIconColor" />
+
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+        </com.google.android.material.card.MaterialCardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:id="@+id/layout_wishlist"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_gravity="bottom"
+            android:background="@color/bottomNavigationBackgroundColor"
+            android:elevation="5dp"
+            android:gravity="center"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <ImageView
+                android:id="@+id/image_wishlist"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:src="@drawable/ic_wishlist"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:tint="@color/bottomNavigationInActiveTabIconColor" />
+
+            <TextView
+                android:id="@+id/name_wishlist"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/wishlist"
+                android:textColor="@color/bottomNavigationTextColor"
+                android:textAllCaps="false"
+                android:textSize="12sp"
+                android:layout_marginTop="10dp"
+                android:visibility="gone"
+                android:fontFamily="@font/regular"
+                app:layout_constraintEnd_toEndOf="@id/image_wishlist"
+                app:layout_constraintStart_toStartOf="@id/image_wishlist"
+                app:layout_constraintTop_toBottomOf="@id/image_wishlist" />
+
+        </LinearLayout>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/image_wishlist_activated"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:theme="@style/Theme.MaterialComponents"
+            app:cardCornerRadius="35dp"
+            app:cardElevation="5dp"
+            app:layout_constraintBottom_toBottomOf="@+id/layout_wishlist"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:theme="@style/Theme.MaterialComponents"
+                app:cardBackgroundColor="@color/bottomNavigationIconRoundBackgroundColor"
+                app:cardCornerRadius="35dp"
+                app:cardElevation="0dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/ic_wishlist"
+                        app:tint="@color/bottomNavigationActiveTabIconColor" />
+
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+        </com.google.android.material.card.MaterialCardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:id="@+id/layout_post"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_gravity="bottom"
+            android:background="@color/bottomNavigationBackgroundColor"
+            android:elevation="5dp"
+            android:gravity="center"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <ImageView
+                android:id="@+id/image_post"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:src="@drawable/ic_post"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:tint="@color/bottomNavigationInActiveTabIconColor" />
+
+            <TextView
+                android:id="@+id/name_post"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/post"
+                android:textColor="@color/bottomNavigationTextColor"
+                android:textAllCaps="false"
+                android:textSize="12sp"
+                android:layout_marginTop="10dp"
+                android:visibility="gone"
+                android:fontFamily="@font/regular"
+                app:layout_constraintEnd_toEndOf="@id/image_post"
+                app:layout_constraintStart_toStartOf="@id/image_post"
+                app:layout_constraintTop_toBottomOf="@id/image_post" />
+
+        </LinearLayout>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/image_post_activated"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:theme="@style/Theme.MaterialComponents"
+            app:cardCornerRadius="35dp"
+            app:cardElevation="5dp"
+            app:layout_constraintBottom_toBottomOf="@+id/layout_post"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:theme="@style/Theme.MaterialComponents"
+                app:cardBackgroundColor="@color/bottomNavigationIconRoundBackgroundColor"
+                app:cardCornerRadius="35dp"
+                app:cardElevation="0dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/ic_post"
+                        app:tint="@color/bottomNavigationActiveTabIconColor" />
+
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+        </com.google.android.material.card.MaterialCardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</LinearLayout>

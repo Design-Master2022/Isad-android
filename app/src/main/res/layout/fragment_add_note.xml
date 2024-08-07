@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    tools:context=".ui.fragments.AddNoteFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginStart="10dp">
+
+        <FrameLayout
+            android:layout_width="50dp"
+            android:layout_height="50dp">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/img"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@color/black" />
+
+            <com.facebook.shimmer.ShimmerFrameLayout
+                android:id="@+id/shimmer_img"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@color/shimmerColor" />
+
+            </com.facebook.shimmer.ShimmerFrameLayout>
+
+        </FrameLayout>
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="Opening Speech by SWAAC ELSO\nConfidence Chairperson"
+            android:textColor="@color/blackTextColor"
+            android:textSize="15sp"
+            android:layout_gravity="center_vertical"
+            android:fontFamily="@font/bold"
+            android:layout_marginStart="10dp" />
+
+    </LinearLayout>
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        app:cardBackgroundColor="@color/white"
+        app:cardElevation="2dp"
+        app:cardCornerRadius="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginHorizontal="10dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <HorizontalScrollView
+                android:id="@+id/tools"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginTop="10dp"
+                android:scrollbars="none">
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_height="wrap_content">
+
+                    <ImageButton android:id="@+id/bold"
+                        android:contentDescription="@null"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:src="@drawable/ic_format_bold"
+                        android:scaleType="center"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:background="?android:selectableItemBackground"/>
+
+                    <ImageButton android:id="@+id/italic"
+                        android:contentDescription="@null"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:src="@drawable/ic_format_italic"
+                        android:scaleType="center"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:background="?android:selectableItemBackground"/>
+
+                    <ImageButton android:id="@+id/underline"
+                        android:contentDescription="@null"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:src="@drawable/ic_format_underline"
+                        android:scaleType="center"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:background="?android:selectableItemBackground"/>
+
+                    <ImageButton android:id="@+id/bullet"
+                        android:contentDescription="@null"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:src="@drawable/ic_format_bullet"
+                        android:scaleType="center"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:background="?android:selectableItemBackground"/>
+
+                    <ImageButton android:id="@+id/quote"
+                        android:contentDescription="@null"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:src="@drawable/ic_format_quote"
+                        android:scaleType="center"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:background="?android:selectableItemBackground"/>
+
+                </LinearLayout>
+
+            </HorizontalScrollView>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <jp.wasabeef.richeditor.RichEditor
+                    android:id="@+id/editor"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="@string/enter_the_title"
+                    android:gravity="start"
+                    android:padding="10dp"
+                    android:textColorHint="@color/lightBlack"/>
+
+                <ProgressBar
+                    android:id="@+id/progress"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="10dp"
+                    android:layout_gravity="center"
+                    android:visibility="visible"
+                    android:indeterminateTint="@color/primary"/>
+
+            </FrameLayout>
+
+        </LinearLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/btn_save"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        app:cardCornerRadius="10dp"
+        android:layout_marginVertical="10dp"
+        android:layout_marginHorizontal="10dp"
+        android:clickable="true"
+        android:focusable="true"
+        app:cardBackgroundColor="@color/primary"
+        app:rippleColor="@color/rippleColorWhiteLight"
+        app:cardElevation="0dp"
+        android:layout_gravity="center_vertical"
+        android:theme="@style/Theme.MaterialComponents">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/save"
+            android:gravity="center"
+            android:textColor="@color/whiteTextColor"
+            android:background="@color/transparent"/>
+
+    </com.google.android.material.card.MaterialCardView>
+
+
+</LinearLayout>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="80dp"
+    android:layout_height="80dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/card"
+    android:layout_margin="5dp"
+    app:cardElevation="2dp"
+    app:strokeWidth="1dp"
+    app:strokeColor="@color/primary"
+    app:cardBackgroundColor="@color/white"
+    app:cardCornerRadius="50dp">
+
+    <TextView
+        android:id="@+id/day"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:textColor="@color/blackTextColor"
+        android:text="Day\n1"
+        android:textSize="17sp"
+        android:gravity="center"
+        android:fontFamily="@font/bold"/>
+
+</com.google.android.material.card.MaterialCardView>

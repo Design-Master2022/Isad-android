@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.fragments.LocationFragment">
+
+    <LinearLayout
+        android:id="@+id/normal_parent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:orientation="vertical">
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="400dp"
+            app:cardCornerRadius="15dp"
+            android:layout_margin="10dp"
+            app:rippleColor="@color/rippleColorLightBlack"
+            app:cardBackgroundColor="@color/transparent"
+            app:cardElevation="2dp"
+            android:theme="@style/Theme.MaterialComponents"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <androidx.fragment.app.FragmentContainerView
+                    android:id="@+id/map"
+                    android:name="com.google.android.gms.maps.SupportMapFragment"
+                    android:layout_width="match_parent"
+                    android:layout_height="400dp"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"/>
+
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/direction"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    app:cardCornerRadius="35dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginBottom="20dp"
+                    app:rippleColor="@color/rippleColorLightBlack"
+                    app:cardBackgroundColor="@color/primary"
+                    app:cardElevation="2dp"
+                    android:layout_gravity="bottom|end"
+                    android:theme="@style/Theme.MaterialComponents"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent">
+
+                    <ImageView
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:textSize="15sp"
+                        android:src="@drawable/ic_navigation"
+                        android:rotation="45"
+                        android:layout_gravity="center"
+                        app:tint="@color/white" />
+
+                </com.google.android.material.card.MaterialCardView>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_images"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"/>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="30dp"
+            android:layout_marginHorizontal="10dp"
+            android:fillViewport="true">
+
+            <TextView
+                android:id="@+id/description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:text="alshfvdvbs;dkvjb;skdjbv;DV"
+                android:textColor="@color/blackTextColor"
+                android:fontFamily="@font/regular" />
+
+        </ScrollView>
+
+    </LinearLayout>
+
+    <com.facebook.shimmer.ShimmerFrameLayout
+        android:id="@+id/shimmer_parent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="20dp"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="400dp"
+                app:cardCornerRadius="15dp"
+                android:layout_margin="10dp"
+                app:rippleColor="@color/rippleColorLightBlack"
+                app:cardBackgroundColor="@color/shimmerColor"
+                app:cardElevation="2dp"
+                android:theme="@style/Theme.MaterialComponents"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="400dp"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"/>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="170dp"
+                        android:background="@color/shimmerDarkColor"
+                        android:layout_margin="20dp"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"/>
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        app:cardCornerRadius="35dp"
+                        android:layout_marginEnd="20dp"
+                        android:layout_marginBottom="20dp"
+                        app:rippleColor="@color/rippleColorLightBlack"
+                        app:cardBackgroundColor="@color/shimmerDarkColor"
+                        android:layout_gravity="bottom|end"
+                        android:theme="@style/Theme.MaterialComponents"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"/>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:background="@color/shimmerColor"
+                android:layout_marginTop="30dp"
+                android:layout_marginHorizontal="10dp"/>
+
+            <View
+                android:layout_width="100dp"
+                android:layout_height="20dp"
+                android:background="@color/shimmerColor"
+                android:layout_marginTop="10dp"
+                android:layout_marginHorizontal="10dp"/>
+
+        </LinearLayout>
+
+    </com.facebook.shimmer.ShimmerFrameLayout>
+
+</FrameLayout>

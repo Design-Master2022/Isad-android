@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    tools:context=".ui.fragments.TabsFragment">
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginTop="17dp"
+        app:cardCornerRadius="0dp"
+        app:rippleColor="@color/rippleColorLightBlack"
+        app:cardBackgroundColor="@color/transparent"
+        app:cardElevation="0dp"
+        app:strokeWidth="1dp"
+        app:strokeColor="@color/primary"
+        android:layout_gravity="center_vertical"
+        android:theme="@style/Theme.MaterialComponents">
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tab_layout"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:background="@color/transparent"
+            app:tabSelectedTextColor="@color/primaryTextColor"
+            app:tabRippleColor="@color/rippleColorPrimaryLight"
+            android:fontFamily="@font/regular"
+            app:tabTextColor="@color/black"
+            android:textAlignment="center"
+            app:tabIndicatorHeight="0dp"/>
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/view_pager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+</LinearLayout>

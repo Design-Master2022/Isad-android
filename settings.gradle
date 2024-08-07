@@ -1,0 +1,18 @@
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+        mavenCentral()
+        maven { url "https://oss.jfrog.org/libs-snapshot" } // RxAndroid
+        jcenter() // Warning: this repository is going to shut down soon
+        /**
+         * Currently Used By
+         * 1. Country Code Picker
+         * 2. easyImage library
+         */
+        maven { url "https://jitpack.io" }
+    }
+}
+
+rootProject.name = "ISAD"
+include(":app")

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.fragments.LoginWithOtpFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:src="@drawable/logo_image"
+            android:layout_marginTop="40dp"
+            android:visibility="invisible"
+            android:layout_gravity="center_horizontal"/>
+
+        <TextView
+            android:id="@+id/txt_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="15sp"
+            android:text="@string/we_will_send_n_you_once_time_password_otp"
+            android:textColor="@color/blackTextColor"
+            android:fontFamily="@font/regular"
+            android:gravity="center"
+            android:layout_marginTop="20dp"/>
+
+        <EditText
+            android:id="@+id/email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:layout_marginHorizontal="40dp"
+            android:textColor="@color/blackTextColor"
+            android:textSize="15sp"
+            android:gravity="center"
+            android:textColorHint="@color/lightBlack"
+            android:hint="@string/email_address"
+            android:inputType="textEmailAddress"
+            android:backgroundTint="@color/primary"
+            android:fontFamily="@font/regular"/>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/submit"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            app:cardCornerRadius="10dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginHorizontal="50dp"
+            android:clickable="true"
+            android:focusable="true"
+            app:rippleColor="@color/rippleColorWhiteLight"
+            app:cardElevation="0dp"
+            android:layout_gravity="center_vertical"
+            android:theme="@style/Theme.MaterialComponents">
+
+            <TextView
+                android:id="@+id/txt_submit"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="@string/submit"
+                android:gravity="center"
+                android:textColor="@color/whiteTextColor"
+                android:background="@color/primary"/>
+
+        </com.google.android.material.card.MaterialCardView>
+
+
+    </LinearLayout>
+    
+</FrameLayout>

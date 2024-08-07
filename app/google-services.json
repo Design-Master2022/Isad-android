@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "765579438686",
+    "project_id": "isad-85c33",
+    "storage_bucket": "isad-85c33.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:765579438686:android:65a61cd1e74213088022cf",
+        "android_client_info": {
+          "package_name": "com.design_master.isad"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCOabKF3tkkkxto-8J4ZY3stjKvY1E5k54"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

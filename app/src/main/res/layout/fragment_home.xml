@@ -1,0 +1,656 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.fragments.HomeFragment">
+
+    <TextView
+        android:id="@+id/txt_status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:textColor="@color/blackTextColor"
+        android:fontFamily="@font/regular"/>
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/normal_parent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:layout_marginBottom="10dp"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <FrameLayout
+                android:id="@+id/layout_banner_slider"
+                android:layout_width="match_parent"
+                android:layout_height="250dp">
+
+                <com.synnapps.carouselview.CarouselView
+                    android:id="@+id/banner_slider"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:fillColor="@color/primary"
+                    app:pageColor="@color/white"
+                    app:radius="5dp"
+                    app:indicatorMarginVertical="10dp"
+                    app:slideInterval="2000"
+                    app:strokeColor="@color/primary"
+                    app:strokeWidth="0dp"/>
+
+                <com.facebook.shimmer.ShimmerFrameLayout
+                    android:id="@+id/shimmer_banner_slider"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:visibility="visible"
+                    android:background="@color/shimmerColor"/>
+
+            </FrameLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="@drawable/dotted_line"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/register"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    app:cardCornerRadius="10dp"
+                    android:layout_marginHorizontal="10dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:layout_weight="1"
+                    app:rippleColor="@color/rippleColorWhiteLight"
+                    app:cardElevation="0dp"
+                    android:layout_gravity="center_vertical"
+                    android:theme="@style/Theme.MaterialComponents">
+
+                    <TextView
+                        android:id="@+id/txt_register"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="@string/register_now"
+                        android:gravity="center"
+                        android:textSize="14sp"
+                        android:textAllCaps="true"
+                        android:fontFamily="@font/bold"
+                        android:textColor="@color/whiteTextColor"
+                        android:background="@color/blue"/>
+
+                </com.google.android.material.card.MaterialCardView>
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:background="@color/lightBlack"/>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/submit_abstract"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    app:cardCornerRadius="10dp"
+                    android:layout_marginHorizontal="10dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:layout_weight="1"
+                    app:rippleColor="@color/rippleColorWhiteLight"
+                    app:cardElevation="0dp"
+                    android:layout_gravity="center_vertical"
+                    android:theme="@style/Theme.MaterialComponents">
+
+                    <TextView
+                        android:id="@+id/txt_submit_abstract"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="@string/submit_abstract"
+                        android:gravity="center"
+                        android:textSize="14sp"
+                        android:textAllCaps="true"
+                        android:fontFamily="@font/bold"
+                        android:textColor="@color/whiteTextColor"
+                        android:background="@color/orange"/>
+
+                </com.google.android.material.card.MaterialCardView>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/conference_recommendation"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    app:cardCornerRadius="10dp"
+                    android:layout_marginHorizontal="10dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:layout_weight="1"
+                    app:rippleColor="@color/rippleColorWhiteLight"
+                    app:cardElevation="0dp"
+                    android:layout_gravity="center_vertical"
+                    android:theme="@style/Theme.MaterialComponents">
+
+                    <TextView
+                        android:id="@+id/txt_conference_recommendation"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="@string/conference_recommendation"
+                        android:gravity="center"
+                        android:textSize="13sp"
+                        android:textAllCaps="true"
+                        android:fontFamily="@font/bold"
+                        android:textColor="@color/whiteTextColor"
+                        android:background="@color/dark_blue"/>
+
+                </com.google.android.material.card.MaterialCardView>
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:background="@color/lightBlack"/>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/ask_question"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    app:cardCornerRadius="10dp"
+                    android:layout_marginHorizontal="10dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:layout_weight="1"
+                    app:rippleColor="@color/rippleColorWhiteLight"
+                    app:cardElevation="0dp"
+                    android:layout_gravity="center_vertical"
+                    android:theme="@style/Theme.MaterialComponents">
+
+                    <TextView
+                        android:id="@+id/txt_ask_question"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="@string/ask_a_question"
+                        android:gravity="center"
+                        android:textSize="13sp"
+                        android:textAllCaps="true"
+                        android:fontFamily="@font/bold"
+                        android:textColor="@color/whiteTextColor"
+                        android:background="@color/red"/>
+
+                </com.google.android.material.card.MaterialCardView>
+
+            </LinearLayout>
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="20dp"
+                android:layout_marginTop="40dp"
+                android:layout_marginHorizontal="10dp"
+                app:cardElevation="0dp"
+                app:cardBackgroundColor="@color/blue"
+                android:layout_gravity="center_vertical"
+                android:theme="@style/Theme.MaterialComponents">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:minHeight="200dp"
+                    android:paddingHorizontal="10dp"
+                    android:paddingVertical="5dp"
+                    android:orientation="horizontal">
+
+                    <FrameLayout
+                        android:layout_width="100dp"
+                        android:layout_height="150dp"
+                        android:layout_gravity="center">
+
+                        <ImageView
+                            android:id="@+id/conference_img"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/oval_shape"
+                            android:scaleType="centerCrop"/>
+
+                        <com.facebook.shimmer.ShimmerFrameLayout
+                            android:id="@+id/shimmer_conference_img"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:visibility="gone"
+                            android:background="@color/shimmerColor"/>
+
+                    </FrameLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/conference_title"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/register_now"
+                            android:textSize="15sp"
+                            android:fontFamily="@font/bold"
+                            android:textColor="@color/whiteTextColor" />
+
+                        <TextView
+                            android:id="@+id/conference_message"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/register_now"
+                            android:fontFamily="@font/light"
+                            android:layout_marginTop="5dp"
+                            android:textSize="13sp"
+                            android:textColor="@color/whiteTextColor" />
+
+                        <TextView
+                            android:id="@+id/conference_read_more"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/read_more"
+                            android:fontFamily="@font/bold"
+                            android:textSize="15sp"
+                            android:layout_marginTop="5dp"
+                            android:textColor="@color/whiteTextColor" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/under_the_patronage_of_his_excellency_minister_of_health_n_dr_ahmed_al_awadhi"
+                android:fontFamily="@font/bold"
+                android:gravity="center"
+                android:layout_marginTop="30dp"
+                android:layout_marginHorizontal="10dp"
+                android:textColor="@color/primaryTextColor" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_sponsors"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginHorizontal="10dp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginTop="30dp"
+                android:orientation="vertical">
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    app:cardElevation="0dp"
+                    app:cardCornerRadius="15dp">
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <ImageView
+                            android:id="@+id/img_about"
+                            android:layout_width="match_parent"
+                            android:layout_height="150dp"
+                            android:src="@drawable/image_1"
+                            android:scaleType="centerCrop"/>
+
+                        <com.facebook.shimmer.ShimmerFrameLayout
+                            android:id="@+id/shimmer_img_about"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@color/shimmerColor"/>
+
+                    </FrameLayout>
+
+                </com.google.android.material.card.MaterialCardView>
+
+                <TextView
+                    android:id="@+id/description_about"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    tools:text="State of the art workshops with hands on training on new technologies"
+                    android:textColor="@color/blackTextColor"
+                    android:textSize="13sp"
+                    android:layout_marginHorizontal="5dp"
+                    android:fontFamily="@font/regular"/>
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="30dp"
+                android:background="@color/lightWhite"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:id="@+id/layout_speakers"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_weight="1">
+
+                    <ImageView
+                        android:id="@+id/img1"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_gravity="center" />
+
+                    <TextView
+                        android:id="@+id/name1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        tools:text="60+\nSpeakers"
+                        android:gravity="center"
+                        android:layout_marginTop="5dp"
+                        android:textAllCaps="true"
+                        android:textSize="13sp"
+                        android:textColor="@color/blackTextColor"/>
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginVertical="10dp"
+                    android:background="@color/lightBlack"/>
+
+                <LinearLayout
+                    android:id="@+id/layout_workshops"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_weight="1">
+
+                    <ImageView
+                        android:id="@+id/img2"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_gravity="center" />
+
+                    <TextView
+                        android:id="@+id/name2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        tools:text="7+\nShops"
+                        android:gravity="center"
+                        android:layout_marginTop="5dp"
+                        android:textAllCaps="true"
+                        android:textSize="13sp"
+                        android:textColor="@color/blackTextColor"/>
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginVertical="10dp"
+                    android:background="@color/lightBlack"/>
+
+                <LinearLayout
+                    android:id="@+id/layout_accredited"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_weight="1">
+
+                    <ImageView
+                        android:id="@+id/img3"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_gravity="center" />
+
+                    <TextView
+                        android:id="@+id/name3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        tools:text="CME / CPD\nACCREDITED"
+                        android:gravity="center"
+                        android:layout_marginTop="5dp"
+                        android:textAllCaps="true"
+                        android:textSize="13sp"
+                        android:textColor="@color/blackTextColor"/>
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginVertical="10dp"
+                    android:background="@color/lightBlack"/>
+
+                <LinearLayout
+                    android:id="@+id/layout_topics"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_weight="1">
+
+                    <ImageView
+                        android:id="@+id/img4"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_gravity="center" />
+
+                    <TextView
+                        android:id="@+id/name4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        tools:text="100\nTopics"
+                        android:gravity="center"
+                        android:layout_marginTop="5dp"
+                        android:textAllCaps="true"
+                        android:textSize="13sp"
+                        android:textColor="@color/blackTextColor"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/about_kuwait"
+                android:fontFamily="@font/bold"
+                android:gravity="center"
+                android:layout_marginTop="30dp"
+                android:layout_marginHorizontal="10dp"
+                android:textColor="@color/primaryTextColor" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginBottom="20dp"
+                android:orientation="vertical">
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginHorizontal="5dp"
+                    app:cardElevation="0dp"
+                    app:cardCornerRadius="15dp">
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <ImageView
+                            android:id="@+id/img_about_kuwait"
+                            android:layout_width="match_parent"
+                            android:layout_height="150dp"
+                            android:src="@drawable/image_1"
+                            android:scaleType="centerCrop"/>
+
+                        <com.facebook.shimmer.ShimmerFrameLayout
+                            android:id="@+id/shimmer_img_about_kuwait"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@color/shimmerColor"/>
+
+                    </FrameLayout>
+
+                </com.google.android.material.card.MaterialCardView>
+
+                <TextView
+                    android:id="@+id/title_about_kuwait"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    tools:text="Pre Conference Workshops"
+                    android:textColor="@color/primaryTextColor"
+                    android:textSize="15sp"
+                    android:layout_margin="5dp"
+                    android:fontFamily="@font/bold"/>
+
+                <TextView
+                    android:id="@+id/description_about_kuwait"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    tools:text="State of the art workshops with hands on training on new technologies"
+                    android:textColor="@color/blackTextColor"
+                    android:textSize="13sp"
+                    android:layout_marginHorizontal="5dp"
+                    android:fontFamily="@font/regular"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+    <com.facebook.shimmer.ShimmerFrameLayout
+        android:id="@+id/shimmer_parent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                android:background="@color/shimmerColor"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:orientation="horizontal">
+
+                <include
+                    layout="@layout/shimmer_btn"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_marginEnd="2dp"
+                    android:layout_weight="1"/>
+
+                <include
+                    layout="@layout/shimmer_btn"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="2dp"
+                    android:layout_weight="1"/>
+
+            </LinearLayout>
+
+            <include layout="@layout/shimmer_conference"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="20dp"
+                android:orientation="horizontal">
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:background="@color/shimmerColor"
+                    android:layout_weight="1"
+                    android:layout_marginHorizontal="5dp"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:background="@color/shimmerColor"
+                    android:layout_weight="1"
+                    android:layout_marginHorizontal="5dp"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:background="@color/shimmerColor"
+                    android:layout_weight="1"
+                    android:layout_marginHorizontal="5dp"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:background="@color/shimmerColor"
+                    android:layout_weight="1"
+                    android:layout_marginHorizontal="5dp"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="20dp"
+                android:layout_marginHorizontal="10dp"
+                android:orientation="horizontal">
+
+                <include layout="@layout/shimmer_brand"/>
+
+                <include layout="@layout/shimmer_brand"/>
+
+                <include layout="@layout/shimmer_brand"/>
+
+            </LinearLayout>
+
+            <include layout="@layout/shimmer_conference"/>
+
+            <include layout="@layout/shimmer_conference"/>
+
+        </LinearLayout>
+
+    </com.facebook.shimmer.ShimmerFrameLayout>
+
+</FrameLayout>

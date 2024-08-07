@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="primary">#318DD4</color>
+    <color name="primaryLight">#4D9EDC</color>
+    <color name="primaryLight2">#F3F9FF</color>
+    <color name="black">#FF000000</color>
+
+    <color name="lightBlack">#2E2C2C</color>
+    <color name="lightBlackTextColor">#2E2C2C</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="blue">#318DD4</color>
+    <color name="dark_blue">#233B52</color>
+    <color name="orange">#EB7B28</color>
+    <color name="lightWhite">#CACACA</color>
+    <color name="transparent">#00FFFFFF</color>
+    <color name="splash_background">#EBF7FE</color>
+    <color name="primaryTextColor">@color/primary</color>
+    <color name="colorOnClick">#00326A</color>
+    <color name="colorBeforeClick">@color/primary</color>
+    <color name="colorWhiteBeforeClick">@color/white</color>
+    <color name="colorWhiteOnClick">#B7B7B7</color>
+
+    <color name="disabledPrimaryColor">#324A64</color>
+    <color name="disabledWhiteColor">#393939</color>
+
+    <color name="shimmerColor">#575757</color>
+    <color name="shimmerDarkColor">#393939</color>
+
+    <color name="rippleColorPrimaryLight">@color/primaryLight</color>
+    <color name="rippleColorWhiteLight">@color/white</color>
+    <color name="rippleColorLightBlack">@color/lightBlack</color>
+
+    <color name="actionBarTitleColor">@color/white</color>
+    <color name="normalActionBarIconColor">@color/white</color>
+
+    <color name="windowBackgroundColor">#EBF7FE</color>
+
+    <!-- TextColors -->
+    <color name="blackTextColor">@color/black</color>
+    <color name="whiteTextColor">@color/white</color>
+    <color name="primaryTextColors">@color/primary</color>
+
+    <!-- Register Button Background Gradient -->
+    <color name="registerButtonBackgroundStartColor">@color/primary</color>
+    <color name="registerButtonBackgroundEndColor">#E53B2A</color>
+
+    <!--  BottomNavigation Colors  -->
+    <color name="bottomNavigationTextColor">@color/whiteTextColor</color>
+    <color name="bottomNavigationActiveTabIconColor">@color/white</color>
+    <color name="bottomNavigationInActiveTabIconColor">@color/black</color>
+    <color name="bottomNavigationBackgroundColor">@color/white</color>
+    <color name="bottomNavigationIconRoundBackgroundColor">@color/primary</color>
+
+    
+    <color name="otpBoxBackColor">#EFEFEF</color>
+    <color name="red">#FF1100</color>
+</resources>

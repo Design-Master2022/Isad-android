@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_nav_graph"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.design_master.isad.ui.fragments.HomeFragment"
+        android:label="@string/home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_notificationsFragment"
+            app:destination="@id/notificationsFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_webViewFragment"
+            app:destination="@id/webViewFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_locationFragment"
+            app:destination="@id/locationFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/notificationsFragment"
+        android:name="com.design_master.isad.ui.fragments.NotificationsFragment"
+        android:label="@string/notifications"
+        tools:layout="@layout/fragment_notifications" >
+        <action
+            android:id="@+id/action_notificationsFragment_to_addNoteFragment"
+            app:destination="@id/addNoteFragment" />
+        <action
+            android:id="@+id/action_notificationsFragment_to_webViewFragment"
+            app:destination="@id/webViewFragment" />
+        <action
+            android:id="@+id/action_notificationsFragment_to_locationFragment"
+            app:destination="@id/locationFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/wishlistFragment"
+        android:name="com.design_master.isad.ui.fragments.WishlistFragment"
+        android:label="@string/wishlist"
+        tools:layout="@layout/fragment_wishlist" >
+        <action
+            android:id="@+id/action_wishlistFragment_to_notificationsFragment"
+            app:destination="@id/notificationsFragment" />
+        <action
+            android:id="@+id/action_wishlistFragment_to_webViewFragment"
+            app:destination="@id/webViewFragment" />
+        <action
+            android:id="@+id/action_wishlistFragment_to_addNoteFragment"
+            app:destination="@id/addNoteFragment" />
+        <action
+            android:id="@+id/action_wishlistFragment_to_locationFragment"
+            app:destination="@id/locationFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/programsFragment"
+        android:name="com.design_master.isad.ui.fragments.ProgramsFragment"
+        android:label="@string/scientific_programs"
+        tools:layout="@layout/fragment_programs" >
+        <action
+            android:id="@+id/action_programsFragment_to_notificationsFragment"
+            app:destination="@id/notificationsFragment" />
+        <action
+            android:id="@+id/action_programsFragment_to_webViewFragment"
+            app:destination="@id/webViewFragment" />
+        <action
+            android:id="@+id/action_programsFragment_to_addNoteFragment"
+            app:destination="@id/addNoteFragment" />
+        <action
+            android:id="@+id/action_programsFragment_to_locationFragment"
+            app:destination="@id/locationFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/workShopsFragment"
+        android:name="com.design_master.isad.ui.fragments.WorkShopsFragment"
+        android:label="@string/workshop"
+        tools:layout="@layout/fragment_work_shops" >
+        <action
+            android:id="@+id/action_workShopsFragment_to_notificationsFragment"
+            app:destination="@id/notificationsFragment" />
+        <action
+            android:id="@+id/action_workShopsFragment_to_webViewFragment"
+            app:destination="@id/webViewFragment" />
+        <action
+            android:id="@+id/action_workShopsFragment_to_addNoteFragment"
+            app:destination="@id/addNoteFragment" />
+        <action
+            android:id="@+id/action_workShopsFragment_to_locationFragment"
+            app:destination="@id/locationFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/webViewFragment"
+        android:name="com.design_master.isad.ui.fragments.WebViewFragment"
+        android:label="fragment_web_view"
+        tools:layout="@layout/fragment_web_view" >
+        <argument
+            android:name="url"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/otpVerifyFragment"
+        android:name="com.design_master.isad.ui.fragments.OtpVerifyFragment"
+        android:label="OTP Verify"
+        tools:layout="@layout/fragment_otp_verify" >
+        <argument
+            android:name="email"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_otpVerifyFragment_to_tabsFragment"
+            app:destination="@id/tabsFragment"
+            app:popUpTo="@id/homeFragment"
+            app:popUpToInclusive="false" />
+    </fragment>
+    <fragment
+        android:id="@+id/addNoteFragment"
+        android:name="com.design_master.isad.ui.fragments.AddNoteFragment"
+        android:label="Notes"
+        tools:layout="@layout/fragment_add_note" >
+        <argument
+            android:name="fromWhere"
+            app:argType="integer" />
+    </fragment>
+    <fragment
+        android:id="@+id/locationFragment"
+        android:name="com.design_master.isad.ui.fragments.LocationFragment"
+        android:label="fragment_location"
+        tools:layout="@layout/fragment_location" />
+    <fragment
+        android:id="@+id/speakersAndModeratorsFragment"
+        android:name="com.design_master.isad.ui.fragments.SpeakersAndModeratorsFragment"
+        android:label="Speakers and Moderators"
+        tools:layout="@layout/fragment_speakers_and_moderators">
+        <action
+            android:id="@+id/action_speakersAndModeratorsFragment_to_webViewFragment"
+            app:destination="@id/webViewFragment" />
+        <action
+            android:id="@+id/action_speakersAndModeratorsFragment_to_locationFragment"
+            app:destination="@id/locationFragment" />
+        <action
+            android:id="@+id/action_speakersAndModeratorsFragment_to_notificationsFragment"
+            app:destination="@id/notificationsFragment" />
+    </fragment>
+    <action android:id="@+id/action_global_speakersAndModeratorsFragment" app:destination="@id/speakersAndModeratorsFragment" />
+    <fragment
+        android:id="@+id/loginWithOtpFragment"
+        android:name="com.design_master.isad.ui.fragments.LoginWithOtpFragment"
+        android:label="@string/post_conference"
+        tools:layout="@layout/fragment_login_with_otp">
+        <action
+            android:id="@+id/action_loginWithOtpFragment_to_otpVerifyFragment"
+            app:destination="@id/otpVerifyFragment" />
+        <action
+            android:id="@+id/action_loginWithOtpFragment_to_notificationsFragment"
+            app:destination="@id/notificationsFragment" />
+        <action
+            android:id="@+id/action_loginWithOtpFragment_to_webViewFragment"
+            app:destination="@id/webViewFragment" />
+        <action
+            android:id="@+id/action_loginWithOtpFragment_to_locationFragment"
+            app:destination="@id/locationFragment" />
+        <action
+            android:id="@+id/action_loginWithOtpFragment_to_tabsFragment"
+            app:destination="@id/tabsFragment"
+            app:popUpTo="@id/loginWithOtpFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_loginWithOtpFragment_to_qrCodeFragment"
+            app:destination="@id/qrCodeFragment"
+            app:popUpTo="@id/homeFragment"
+            app:popUpToInclusive="false" />
+    </fragment>
+    <fragment
+        android:id="@+id/tabsFragment"
+        android:name="com.design_master.isad.ui.fragments.TabsFragment"
+        android:label="fragment_tabs"
+        tools:layout="@layout/fragment_tabs" >
+        <argument
+            android:name="cmeUrl"
+            app:argType="string" />
+        <argument
+            android:name="videosUrl"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/feedbackFragment"
+        android:name="com.design_master.isad.ui.fragments.FeedbackFragment"
+        android:label="@string/feedback"
+        tools:layout="@layout/fragment_feedback" />
+    <action android:id="@+id/action_global_feedbackFragment" app:destination="@id/feedbackFragment" /><action android:id="@+id/action_global_notificationsFragment" app:destination="@id/notificationsFragment"/><action android:id="@+id/action_global_webViewFragment" app:destination="@id/webViewFragment"/><action android:id="@+id/action_global_locationFragment" app:destination="@id/locationFragment"/>
+    <fragment
+        android:id="@+id/myQuestionsFragment"
+        android:name="com.design_master.isad.ui.fragments.MyQuestionsFragment"
+        android:label="@string/my_questions"
+        tools:layout="@layout/fragment_my_questions" />
+    <fragment
+        android:id="@+id/askQuestionFragment"
+        android:name="com.design_master.isad.ui.fragments.AskQuestionFragment"
+        android:label="Ask Question"
+        tools:layout="@layout/fragment_ask_question">
+        <action
+            android:id="@+id/action_askQuestionFragment_to_myQuestionsFragment"
+            app:destination="@id/myQuestionsFragment" />
+    </fragment><action android:id="@+id/action_global_askQuestionFragment" app:destination="@id/askQuestionFragment"/>
+    <fragment
+        android:id="@+id/qrCodeFragment"
+        android:name="com.design_master.isad.ui.fragments.QrCodeFragment"
+        android:label="@string/qr_code"
+        tools:layout="@layout/fragment_qr_code">
+        <argument
+            android:name="registrationCode"
+            app:argType="string" />
+    </fragment>
+    <action android:id="@+id/action_global_qrCodeFragment" app:destination="@id/qrCodeFragment" />
+    <action android:id="@+id/action_global_loginWithOtpFragment" app:destination="@id/loginWithOtpFragment" />
+</navigation>

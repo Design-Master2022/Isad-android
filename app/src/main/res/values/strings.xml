@@ -1,0 +1,94 @@
+<resources>
+    <string name="app_name">ISAD</string>
+    <string name="cancel">Cancel</string>
+    <string name="permission_required">Permission required</string>
+    <string name="permission_required_description">permission is required for app functionality.</string>
+    <string name="permission_permanently_denied_message">permission is permanently denied, Please go to setting and enable it manually.</string>
+    <string name="go_to_settings">Go to Settings</string>
+    <string name="ok">OK</string>
+    <string name="location">Location</string>
+    <string name="storage">Storage</string>
+    <string name="camera">Camera</string>
+    <string name="audio">Audio</string>
+    <string name="hello_blank_fragment">svbas;\n</string>
+    <string name="notes">Notes</string>
+    <string name="speakers">Speakers</string>
+    <string name="register_now">Register Now</string>
+    <string name="submit_your_abstract">Submit your Abstract</string>
+    <string name="chairman_s_message">Chairman\'s Message</string>
+    <string name="committee">Committee</string>
+    <string name="event_location">Event Location</string>
+    <string name="hostels_visa"><![CDATA[Hostels & Visa]]></string>
+    <string name="abstractt">Abstract</string>
+    <string name="follow_us">Follow us</string>
+    <string name="notifications">Notifications</string>
+    <string name="program">Program</string>
+    <string name="post">Post</string>
+
+    <!-- Don't Change these, These are related to BottomNavigationBar and fragment titles-->
+    <string name="wishlist">Wishlist</string>
+    <string name="home">Home</string>
+    <string name="scientific_programs">Scientific Programs</string>
+    <string name="post_conference">Post Conference</string>
+    <string name="workshop">Workshop</string>
+    <string name="we_will_send_n_you_once_time_password_otp">We will send \n you once time password (OTP)</string>
+
+
+    <string name="email_address">Email address</string>
+    <string name="submit">Submit</string>
+    <string name="we_have_sent_otp_at">We have sent OTP at %1$s******%2$s</string>
+    <string name="enter_the_title">Enter the Title</string>
+    <string name="something_went_wrong_try_again">Something went wrong. Try again!</string>
+    <string name="wishlist_is_empty">Wishlist is empty.</string>
+    <string name="added_to_wishlist">Added to wishlist.</string>
+    <string name="failed_to_remove_from_wishlist">Failed to remove from wishlist.</string>
+    <string name="not_available">Not available</string>
+    <string name="no_notifications">No Notifications</string>
+    <string name="failed_to_disable_notification_try_again">Failed to disable notification. Try again!</string>
+    <string name="no_speakers_found">No Speakers Found.</string>
+    <string name="enter_email">Enter email</string>
+    <string name="enter_valid_email">Enter valid email</string>
+    <string name="sending_otp">Sending OTP…</string>
+    <string name="failed_to_send_otp_try_again">Failed to send Otp, Try again.</string>
+    <string name="verifying">Verifying</string>
+    <string name="submitting">Submitting…</string>
+    <string name="failed_to_submit_try_again">Failed to submit. Try again!</string>
+    <string name="invalid_otp">Invalid Otp</string>
+    <string name="otp_verified">Otp Verified</string>
+    <string name="sending">Sending…</string>
+    <string name="resend">Resend</string>
+    <string name="resend_in">Resend in %1$s</string>
+    <string name="about_kuwait">About Kuwait</string>
+    <string name="cme">CME</string>
+    <string name="video">Video</string>
+    <string name="my_page">My Page</string>
+    <string name="save">Save</string>
+    <string name="sponsors">Sponsors</string>
+    <string name="navigate">Navigate</string>
+    <string name="posters">Posters</string>
+    <string name="submit_abstract">Submit Abstract</string>
+    <string name="our_sponsors">Our Sponsors</string>
+    <string name="pre_conference_workshops">Pre Conference\nWorkshops</string>
+    <string name="conference">Conference</string>
+    <string name="posters_competition">Posters Competition</string>
+    <string name="read_more"><u>Read More</u></string>
+    <string name="feedback">Feedback</string>
+    <string name="ask_question">Ask Question</string>
+    <string name="full_name">Full Name</string>
+    <string name="mobile_number">Mobile Number</string>
+    <string name="message">Message</string>
+    <string name="field_required">Field required</string>
+    <string name="failed_to_fetch_questions">Failed to fetch questions</string>
+    <string name="no_questions_found">No Questions found</string>
+    <string name="session_name">Session Name</string>
+    <string name="my_questions">My Questions</string>
+    <string name="we_are_sustainable_conference">We are Sustainable Conference</string>
+    <string name="conference_recommendation">Conference Recommendation</string>
+    <string name="ask_a_question">Ask a Question</string>
+    <string name="under_the_patronage_of_his_excellency_minister_of_health_n_dr_ahmed_al_awadhi">Under the patronage of His Excellency Minister of Health\n Dr. Ahmed Al-Awadhi</string>
+    <string name="qr_code">Qr Code</string>
+    <string name="my_qr_code">My QR Code</string>
+    <string name="please_enter_you_registered_email">Please Enter you Registered Email</string>
+
+
+</resources>
