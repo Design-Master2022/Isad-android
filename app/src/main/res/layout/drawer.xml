@@ -26,430 +26,444 @@
             android:orientation="vertical">
 
             <LinearLayout
-                android:id="@+id/welcome_word"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="15dp"
-                android:clickable="true"
-                android:focusable="true"
-                android:background="?attr/selectableItemBackground"
-                android:orientation="horizontal">
+                android:visibility="gone"
+                android:orientation="vertical">
 
-                <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:src="@drawable/ic_handshake"
-                    app:tint="@color/white" />
-
-                <TextView
+                <LinearLayout
+                    android:id="@+id/welcome_word"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/welcome_word"
-                    android:textColor="@color/whiteTextColor"
-                    android:layout_gravity="center"
-                    android:layout_marginStart="10dp"
-                    android:fontFamily="@font/bold"
-                    android:textSize="13sp"/>
+                    android:padding="15dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:background="?attr/selectableItemBackground"
+                    android:orientation="horizontal">
 
-            </LinearLayout>
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@drawable/ic_handshake"
+                        app:tint="@color/white" />
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="0.5dp"
-                android:background="@color/white"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/welcome_word"
+                        android:textColor="@color/whiteTextColor"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="10dp"
+                        android:fontFamily="@font/bold"
+                        android:textSize="13sp"/>
 
-            <LinearLayout
-                android:id="@+id/committees"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="15dp"
-                android:clickable="true"
-                android:focusable="true"
-                android:background="?attr/selectableItemBackground"
-                android:orientation="horizontal">
+                </LinearLayout>
 
-                <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:src="@drawable/ic_commettie"
-                    app:tint="@color/white" />
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:background="@color/white"/>
 
-                <TextView
+                <LinearLayout
+                    android:id="@+id/committees"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/committees"
-                    android:textColor="@color/whiteTextColor"
-                    android:layout_gravity="center"
-                    android:layout_marginStart="10dp"
-                    android:fontFamily="@font/bold"
-                    android:textSize="13sp"/>
+                    android:padding="15dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:background="?attr/selectableItemBackground"
+                    android:orientation="horizontal">
 
-            </LinearLayout>
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@drawable/ic_commettie"
+                        app:tint="@color/white" />
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="0.5dp"
-                android:background="@color/white"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/committees"
+                        android:textColor="@color/whiteTextColor"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="10dp"
+                        android:fontFamily="@font/bold"
+                        android:textSize="13sp"/>
 
-            <LinearLayout
-                android:id="@+id/dates_and_details"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="15dp"
-                android:clickable="true"
-                android:focusable="true"
-                android:background="?attr/selectableItemBackground"
-                android:orientation="horizontal">
+                </LinearLayout>
 
-                <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:src="@drawable/ic_dates_and_details"
-                    app:tint="@color/white" />
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:background="@color/white"/>
 
-                <TextView
+                <LinearLayout
+                    android:id="@+id/dates_and_details"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/important_dates_details"
-                    android:textColor="@color/whiteTextColor"
-                    android:layout_gravity="center"
-                    android:layout_marginStart="10dp"
-                    android:fontFamily="@font/bold"
-                    android:textSize="13sp"/>
+                    android:padding="15dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:background="?attr/selectableItemBackground"
+                    android:orientation="horizontal">
 
-            </LinearLayout>
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@drawable/ic_dates_and_details"
+                        app:tint="@color/white" />
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="0.5dp"
-                android:background="@color/white"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/important_dates_details"
+                        android:textColor="@color/whiteTextColor"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="10dp"
+                        android:fontFamily="@font/bold"
+                        android:textSize="13sp"/>
 
-            <LinearLayout
-                android:id="@+id/endorsements"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="15dp"
-                android:clickable="true"
-                android:focusable="true"
-                android:background="?attr/selectableItemBackground"
-                android:orientation="horizontal">
+                </LinearLayout>
 
-                <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:src="@drawable/ic_endorsments"
-                    app:tint="@color/white" />
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:background="@color/white"/>
 
-                <TextView
+                <LinearLayout
+                    android:id="@+id/endorsements"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/endorsements"
-                    android:textColor="@color/whiteTextColor"
-                    android:layout_gravity="center"
-                    android:layout_marginStart="10dp"
-                    android:fontFamily="@font/bold"
-                    android:textSize="13sp"/>
+                    android:padding="15dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:background="?attr/selectableItemBackground"
+                    android:orientation="horizontal">
 
-            </LinearLayout>
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@drawable/ic_endorsments"
+                        app:tint="@color/white" />
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="0.5dp"
-                android:background="@color/white"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/endorsements"
+                        android:textColor="@color/whiteTextColor"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="10dp"
+                        android:fontFamily="@font/bold"
+                        android:textSize="13sp"/>
 
-            <LinearLayout
-                android:id="@+id/sponsor_our_meeting"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="15dp"
-                android:clickable="true"
-                android:focusable="true"
-                android:background="?attr/selectableItemBackground"
-                android:orientation="horizontal">
+                </LinearLayout>
 
-                <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:src="@drawable/ic_sponsor_our_meeting"
-                    app:tint="@color/white" />
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:background="@color/white"/>
 
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:text="@string/sponsor_our_meeting"
-                    android:layout_weight="1"
-                    android:textColor="@color/whiteTextColor"
-                    android:layout_gravity="center"
-                    android:layout_marginStart="10dp"
-                    android:fontFamily="@font/bold"
-                    android:textSize="13sp"/>
-
-            </LinearLayout>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="0.5dp"
-                android:background="@color/white"/>
-
-            <LinearLayout
-                android:id="@+id/call_for_abstracts"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="15dp"
-                android:clickable="true"
-                android:focusable="true"
-                android:background="?attr/selectableItemBackground"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:src="@drawable/ic_call_for_abstracts"
-                    app:tint="@color/white" />
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:text="@string/call_for_abstracts"
-                    android:layout_weight="1"
-                    android:textColor="@color/whiteTextColor"
-                    android:layout_gravity="center"
-                    android:layout_marginStart="10dp"
-                    android:fontFamily="@font/bold"
-                    android:textSize="13sp"/>
-
-            </LinearLayout>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="0.5dp"
-                android:background="@color/white"/>
-
-            <LinearLayout
-                android:id="@+id/registration_info"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="15dp"
-                android:clickable="true"
-                android:focusable="true"
-                android:background="?attr/selectableItemBackground"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:src="@drawable/ic_registration_info"
-                    app:tint="@color/white" />
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:text="@string/registration_info"
-                    android:layout_weight="1"
-                    android:textColor="@color/whiteTextColor"
-                    android:layout_gravity="center"
-                    android:layout_marginStart="10dp"
-                    android:fontFamily="@font/bold"
-                    android:textSize="13sp"/>
-
-            </LinearLayout>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="0.5dp"
-                android:background="@color/white"/>
-
-            <LinearLayout
-                android:id="@+id/venue_and_accommodations"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="15dp"
-                android:clickable="true"
-                android:focusable="true"
-                android:background="?attr/selectableItemBackground"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    app:tint="@color/white" />
-
-                <TextView
+                <LinearLayout
+                    android:id="@+id/sponsor_our_meeting"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/venue_and_accommodations"
-                    android:textColor="@color/whiteTextColor"
-                    android:layout_gravity="center"
-                    android:layout_marginStart="10dp"
-                    android:fontFamily="@font/bold"
-                    android:textSize="13sp"/>
+                    android:padding="15dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:background="?attr/selectableItemBackground"
+                    android:orientation="horizontal">
 
-            </LinearLayout>
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@drawable/ic_sponsor_our_meeting"
+                        app:tint="@color/white" />
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="0.5dp"
-                android:background="@color/white"/>
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/sponsor_our_meeting"
+                        android:layout_weight="1"
+                        android:textColor="@color/whiteTextColor"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="10dp"
+                        android:fontFamily="@font/bold"
+                        android:textSize="13sp"/>
 
-            <LinearLayout
-                android:id="@+id/social_events"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="15dp"
-                android:clickable="true"
-                android:focusable="true"
-                android:background="?attr/selectableItemBackground"
-                android:orientation="horizontal">
+                </LinearLayout>
 
-                <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:src="@drawable/ic_social_events"
-                    app:tint="@color/white" />
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:background="@color/white"/>
 
-                <TextView
+                <LinearLayout
+                    android:id="@+id/call_for_abstracts"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/social_events"
-                    android:textColor="@color/whiteTextColor"
-                    android:layout_gravity="center"
-                    android:layout_marginStart="10dp"
-                    android:fontFamily="@font/bold"
-                    android:textSize="13sp"/>
+                    android:padding="15dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:background="?attr/selectableItemBackground"
+                    android:orientation="horizontal">
 
-            </LinearLayout>
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@drawable/ic_call_for_abstracts"
+                        app:tint="@color/white" />
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="0.5dp"
-                android:background="@color/white"/>
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/call_for_abstracts"
+                        android:layout_weight="1"
+                        android:textColor="@color/whiteTextColor"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="10dp"
+                        android:fontFamily="@font/bold"
+                        android:textSize="13sp"/>
 
-            <LinearLayout
-                android:id="@+id/what_to_do"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="15dp"
-                android:clickable="true"
-                android:focusable="true"
-                android:background="?attr/selectableItemBackground"
-                android:orientation="horizontal">
+                </LinearLayout>
 
-                <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:src="@drawable/ic_qatar"
-                    app:tint="@color/white" />
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:background="@color/white"/>
 
-                <TextView
+                <LinearLayout
+                    android:id="@+id/registration_info"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/what_to_do_in_qatar"
-                    android:textColor="@color/whiteTextColor"
-                    android:layout_gravity="center"
-                    android:layout_marginStart="10dp"
-                    android:fontFamily="@font/bold"
-                    android:textSize="13sp"/>
+                    android:padding="15dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:background="?attr/selectableItemBackground"
+                    android:orientation="horizontal">
 
-            </LinearLayout>
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@drawable/ic_registration_info"
+                        app:tint="@color/white" />
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="0.5dp"
-                android:background="@color/white"/>
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/registration_info"
+                        android:layout_weight="1"
+                        android:textColor="@color/whiteTextColor"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="10dp"
+                        android:fontFamily="@font/bold"
+                        android:textSize="13sp"/>
 
-            <LinearLayout
-                android:id="@+id/our_sponsors"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="15dp"
-                android:clickable="true"
-                android:focusable="true"
-                android:background="?attr/selectableItemBackground"
-                android:orientation="horizontal">
+                </LinearLayout>
 
-                <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:src="@drawable/ic_our_sponsors"
-                    app:tint="@color/white" />
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:background="@color/white"/>
 
-                <TextView
+                <LinearLayout
+                    android:id="@+id/venue_and_accommodations"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/our_sponsors"
-                    android:textColor="@color/whiteTextColor"
-                    android:layout_gravity="center"
-                    android:layout_marginStart="10dp"
-                    android:fontFamily="@font/bold"
-                    android:textSize="13sp"/>
+                    android:padding="15dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:background="?attr/selectableItemBackground"
+                    android:orientation="horizontal">
 
-            </LinearLayout>
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        app:tint="@color/white" />
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="0.5dp"
-                android:background="@color/white"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/venue_and_accommodations"
+                        android:textColor="@color/whiteTextColor"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="10dp"
+                        android:fontFamily="@font/bold"
+                        android:textSize="13sp"/>
 
-            <LinearLayout
-                android:id="@+id/visa_tips"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="15dp"
-                android:clickable="true"
-                android:focusable="true"
-                android:background="?attr/selectableItemBackground"
-                android:orientation="horizontal">
+                </LinearLayout>
 
-                <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:src="@drawable/ic_visa_tips"
-                    app:tint="@color/white" />
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:background="@color/white"/>
 
-                <TextView
+                <LinearLayout
+                    android:id="@+id/social_events"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/visa_tips"
-                    android:textColor="@color/whiteTextColor"
-                    android:layout_gravity="center"
-                    android:layout_marginStart="10dp"
-                    android:fontFamily="@font/bold"
-                    android:textSize="13sp"/>
+                    android:padding="15dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:background="?attr/selectableItemBackground"
+                    android:orientation="horizontal">
 
-            </LinearLayout>
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@drawable/ic_social_events"
+                        app:tint="@color/white" />
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="0.5dp"
-                android:background="@color/white"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/social_events"
+                        android:textColor="@color/whiteTextColor"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="10dp"
+                        android:fontFamily="@font/bold"
+                        android:textSize="13sp"/>
 
-            <LinearLayout
-                android:id="@+id/contacts"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="15dp"
-                android:clickable="true"
-                android:focusable="true"
-                android:background="?attr/selectableItemBackground"
-                android:orientation="horizontal">
+                </LinearLayout>
 
-                <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:src="@drawable/ic_contacts"
-                    app:tint="@color/white" />
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:background="@color/white"/>
 
-                <TextView
+                <LinearLayout
+                    android:id="@+id/what_to_do"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/contacts"
-                    android:textColor="@color/whiteTextColor"
-                    android:layout_gravity="center"
-                    android:layout_marginStart="10dp"
-                    android:fontFamily="@font/bold"
-                    android:textSize="13sp"/>
+                    android:padding="15dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:background="?attr/selectableItemBackground"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@drawable/ic_qatar"
+                        app:tint="@color/white" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/what_to_do_in_qatar"
+                        android:textColor="@color/whiteTextColor"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="10dp"
+                        android:fontFamily="@font/bold"
+                        android:textSize="13sp"/>
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:background="@color/white"/>
+
+                <LinearLayout
+                    android:id="@+id/our_sponsors"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="15dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:background="?attr/selectableItemBackground"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@drawable/ic_our_sponsors"
+                        app:tint="@color/white" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/our_sponsors"
+                        android:textColor="@color/whiteTextColor"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="10dp"
+                        android:fontFamily="@font/bold"
+                        android:textSize="13sp"/>
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:background="@color/white"/>
+
+                <LinearLayout
+                    android:id="@+id/visa_tips"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="15dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:background="?attr/selectableItemBackground"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@drawable/ic_visa_tips"
+                        app:tint="@color/white" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/visa_tips"
+                        android:textColor="@color/whiteTextColor"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="10dp"
+                        android:fontFamily="@font/bold"
+                        android:textSize="13sp"/>
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:background="@color/white"/>
+
+                <LinearLayout
+                    android:id="@+id/contacts"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="15dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:background="?attr/selectableItemBackground"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@drawable/ic_contacts"
+                        app:tint="@color/white" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/contacts"
+                        android:textColor="@color/whiteTextColor"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="10dp"
+                        android:fontFamily="@font/bold"
+                        android:textSize="13sp"/>
+
+                </LinearLayout>
 
             </LinearLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:nestedScrollingEnabled="false"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -513,7 +527,10 @@
 
             </LinearLayout>
 
+
         </LinearLayout>
+
+
 
     </ScrollView>
 

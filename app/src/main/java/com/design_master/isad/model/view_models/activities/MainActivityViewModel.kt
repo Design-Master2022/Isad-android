@@ -1,6 +1,7 @@
 package com.design_master.isad.model.view_models.activities
 
 import android.util.Log
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.design_master.isad.model.listeners.AddToWishlistListener
 import com.design_master.isad.model.listeners.DisableNotificationListener
@@ -12,6 +13,8 @@ import com.design_master.isad.model.network.response.AddToWishlistResponseClasse
 import com.design_master.isad.model.network.response.DisableNotificationResponse
 import com.design_master.isad.model.network.response.EnableNotificationResponse
 import com.design_master.isad.model.network.response.EnableNotificationResponseClasses
+import com.design_master.isad.model.network.response.FetchMenuResponse
+import com.design_master.isad.model.network.response.FetchMenuResponseClasses
 import com.design_master.isad.model.network.response.GetAllScientificProgramsResponseClasses
 import com.design_master.isad.model.network.response.GetAllWorkShopsResponseClasses
 import com.design_master.isad.model.network.response.GetWishlistResponseClasses
@@ -22,6 +25,8 @@ import com.design_master.isad.model.network.validator.DisableNotificationValidat
 import com.design_master.isad.model.network.validator.DisableNotificationValidatorCallbacks
 import com.design_master.isad.model.network.validator.EnableNotificationValidator
 import com.design_master.isad.model.network.validator.EnableNotificationValidatorCallbacks
+import com.design_master.isad.model.network.validator.FetchMenuValidator
+import com.design_master.isad.model.network.validator.FetchMenuValidatorCallbacks
 import com.design_master.isad.model.network.validator.RemoveFromWishlistValidator
 import com.design_master.isad.model.network.validator.RemoveFromWishlistValidatorCallbacks
 import com.design_master.isad.model.provider.ElectroLibAccessProvider
@@ -161,6 +166,42 @@ class MainActivityViewModel @Inject constructor(): ViewModel() {
             }
         })
     }
+
+    var menuData = MutableLiveData<MutableList<FetchMenuResponseClasses.MenuItem>>()
+
+    fun fetchMenu(){
+        mApiClient.fetchMenuService.fetch()
+            .enqueue(object: Callback<FetchMenuResponse>{
+            override fun onResponse(
+                call: Call<FetchMenuResponse>,
+                response: Response<FetchMenuResponse>
+            ) {
+                FetchMenuValidator.validate(
+                    response = response,
+                    callbacks = object: FetchMenuValidatorCallbacks{
+                        override fun onUnAuthorized() {
+                            Log.d(TAG, "onUnAuthorized: ")
+                            fetchMenu()
+                        }
+                        override fun onFailedToFetchMenu() {
+                            Log.d(TAG, "onFailedToFetchMenu: ")
+                            fetchMenu()
+                        }
+                        override fun onMenuFetched(data: List<FetchMenuResponseClasses.MenuItem>) {
+                            Log.d(TAG, "onMenuFetched: ")
+                            menuData.value = data.toMutableList()
+                        }
+                    }
+                )
+            }
+            override fun onFailure(call: Call<FetchMenuResponse>, t: Throwable) {
+                Log.d(TAG, "onFailure: ${t.message}")
+                t.printStackTrace()
+                fetchMenu()
+            }
+        })
+    }
+
     data class EnableNotificationParams(
         val deviceId: String,
         val programOrWorkshopId: String,

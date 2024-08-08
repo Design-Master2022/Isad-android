@@ -16,7 +16,7 @@ class PrefsControllerModule {
     @Singleton
     fun providePrefsController(application: Application): PrefsController {
         return PrefsController(
-            application.getSharedPreferences("swaac_elso_prefs_controller", Context.MODE_PRIVATE)
+            application.getSharedPreferences("isad_prefs_controller", Context.MODE_PRIVATE)
         )
     }
 }

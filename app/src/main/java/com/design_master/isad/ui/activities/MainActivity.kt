@@ -8,7 +8,9 @@ import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.Menu
 import android.view.View
+import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.core.view.isVisible
@@ -16,15 +18,19 @@ import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.NavigationUI
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.work.ExistingPeriodicWorkPolicy
 import androidx.work.PeriodicWorkRequest
 import androidx.work.WorkInfo
 import androidx.work.WorkManager
 import com.design_master.isad.R
+import com.design_master.isad.adapter.MenuAdapter
 import com.design_master.isad.databinding.ActivityMainBinding
 import com.design_master.isad.model.constants.Constants
 import com.design_master.isad.model.listeners.ActivityResultListener
 import com.design_master.isad.model.listeners.BackPressedListener
+import com.design_master.isad.model.listeners.MenuListener
+import com.design_master.isad.model.network.response.FetchMenuResponseClasses
 import com.design_master.isad.model.view_models.activities.MainActivityViewModel
 import com.design_master.isad.service.LocationUpdateService
 import com.design_master.isad.ui.fragments.QrCodeFragmentDirections
@@ -42,11 +48,15 @@ class MainActivity : AppCompatActivity() {
     private lateinit var mNavController: NavController
     private lateinit var mActivityResultListener: ActivityResultListener
     private lateinit var mBackPressedListener: BackPressedListener
+    private lateinit var mMenuAdapter: MenuAdapter
+    private lateinit var context: Context
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mBinding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(mBinding.root)
+
+        context = this
 
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
         mNavController = navHostFragment.navController
@@ -110,6 +120,23 @@ class MainActivity : AppCompatActivity() {
                 this.stopService(intent)
             }
         }
+
+        mMenuAdapter = MenuAdapter(object: MenuListener{
+            override fun onClick(menuItem: FetchMenuResponseClasses.MenuItem) {
+                mBinding.drawer.close()
+                mNavController.navigate(WebViewFragmentDirections.actionGlobalWebViewFragment(menuItem.redirectUrl))
+            }
+        })
+        mBinding.drawerLayout.recycler.layoutManager = LinearLayoutManager(context)
+        mBinding.drawerLayout.recycler.adapter = mMenuAdapter
+
+        mViewModel.menuData.observe(this){
+            it?.let {
+                mMenuAdapter.setData(it)
+            }
+        }
+
+        mViewModel.fetchMenu()
     }
     fun isMyServiceRunning(serviceClass: Class<*>): Boolean {
         val manager = this.getSystemService(Context.ACTIVITY_SERVICE) as ActivityManager
