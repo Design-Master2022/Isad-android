@@ -22,7 +22,7 @@ class MenuAdapter(
         holder.binding.title.text = menu[position].name
 
         Helper.loadImage(
-            url = "menu/${menu[position].image}",
+            url = "menus/${menu[position].image}",
             imageView = holder.binding.img,
             isCompleteURL = false,
             listener = object: Helper.LoadImageListener{

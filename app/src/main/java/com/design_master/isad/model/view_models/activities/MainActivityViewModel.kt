@@ -15,6 +15,8 @@ import com.design_master.isad.model.network.response.EnableNotificationResponse
 import com.design_master.isad.model.network.response.EnableNotificationResponseClasses
 import com.design_master.isad.model.network.response.FetchMenuResponse
 import com.design_master.isad.model.network.response.FetchMenuResponseClasses
+import com.design_master.isad.model.network.response.FetchSocialIconsResponse
+import com.design_master.isad.model.network.response.FetchSocialIconsResponseClasses
 import com.design_master.isad.model.network.response.GetAllScientificProgramsResponseClasses
 import com.design_master.isad.model.network.response.GetAllWorkShopsResponseClasses
 import com.design_master.isad.model.network.response.GetWishlistResponseClasses
@@ -27,6 +29,8 @@ import com.design_master.isad.model.network.validator.EnableNotificationValidato
 import com.design_master.isad.model.network.validator.EnableNotificationValidatorCallbacks
 import com.design_master.isad.model.network.validator.FetchMenuValidator
 import com.design_master.isad.model.network.validator.FetchMenuValidatorCallbacks
+import com.design_master.isad.model.network.validator.FetchSocialIconsValidator
+import com.design_master.isad.model.network.validator.FetchSocialIconsValidatorCallbacks
 import com.design_master.isad.model.network.validator.RemoveFromWishlistValidator
 import com.design_master.isad.model.network.validator.RemoveFromWishlistValidatorCallbacks
 import com.design_master.isad.model.provider.ElectroLibAccessProvider
@@ -200,6 +204,39 @@ class MainActivityViewModel @Inject constructor(): ViewModel() {
                 fetchMenu()
             }
         })
+    }
+
+    var socialUrls = MutableLiveData<FetchSocialIconsResponseClasses.SocialUrls>(null)
+    fun fetchSocial(){
+        mApiClient.fetchSocialIconsService.fetch()
+            .enqueue(object: Callback<FetchSocialIconsResponse>{
+                override fun onResponse(
+                    call: Call<FetchSocialIconsResponse>,
+                    response: Response<FetchSocialIconsResponse>
+                ) {
+                    FetchSocialIconsValidator.validate(
+                        response = response,
+                        callbacks = object: FetchSocialIconsValidatorCallbacks{
+                            override fun onUnAuthorized() {
+                                Log.d(TAG, "onUnAuthorized: ")
+                                fetchSocial()
+                            }
+                            override fun onFailedToFetch() {
+                                Log.d(TAG, "onFailedToFetch: ")
+                                fetchSocial()
+                            }
+                            override fun onSocialIconsFetched(data: FetchSocialIconsResponseClasses.SocialUrls) {
+                                Log.d(TAG, "onSocialIconsFetched: ")
+                                socialUrls.value = data
+                            }
+                        }
+                    )
+                }
+                override fun onFailure(call: Call<FetchSocialIconsResponse>, t: Throwable) {
+                    Log.d(TAG, "onFailure: ${t.message}")
+                    fetchSocial()
+                }
+            })
     }
 
     data class EnableNotificationParams(

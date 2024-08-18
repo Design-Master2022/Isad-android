@@ -97,7 +97,7 @@ class HomeFragment : Fragment() {
                 mBinding.bannerSlider.setImageListener { position, imageView ->
                     Helper.loadImage(
                         isCompleteURL = false,
-                        url = "images/${it[position].logo}",
+                        url = "home_banner/${it[position].logo}",
                         imageView = imageView,
                         listener = object: Helper.LoadImageListener{
                             override fun onImageLoaded() {

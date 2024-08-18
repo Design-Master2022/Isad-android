@@ -51,6 +51,13 @@ class MainActivity : AppCompatActivity() {
     private lateinit var mMenuAdapter: MenuAdapter
     private lateinit var context: Context
 
+    private var INSTAGRAM_URL = ""
+    private var LINKED_IN_URL = ""
+    private var YOUTUBE_URL = ""
+    private var FACEBOOK_URL = ""
+    private var TWITTER_URL = ""
+    private var WHATSAPP_URL = ""
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mBinding = ActivityMainBinding.inflate(layoutInflater)
@@ -135,8 +142,27 @@ class MainActivity : AppCompatActivity() {
                 mMenuAdapter.setData(it)
             }
         }
+        mViewModel.socialUrls.observe(this){
+            it?.let {
+                FACEBOOK_URL = it.facebook
+                INSTAGRAM_URL = it.instagram
+                YOUTUBE_URL = it.youtube
+                WHATSAPP_URL = it.whatsapp
+                TWITTER_URL = it.twitter
+                LINKED_IN_URL = it.linkedin
+
+                mBinding.drawerLayout.facebook.visibility = if (it.facebook.isNullOrEmpty()) View.GONE else View.VISIBLE
+                mBinding.drawerLayout.youtube.visibility = if (it.youtube.isNullOrEmpty()) View.GONE else View.VISIBLE
+                mBinding.drawerLayout.instagram.visibility = if (it.instagram.isNullOrEmpty()) View.GONE else View.VISIBLE
+                mBinding.drawerLayout.linkedIn.visibility = if (it.linkedin.isNullOrEmpty()) View.GONE else View.VISIBLE
+                mBinding.drawerLayout.whatsapp.visibility = if (it.whatsapp.isNullOrEmpty()) View.GONE else View.VISIBLE
+                mBinding.drawerLayout.twitter.visibility = if (it.twitter.isNullOrEmpty()) View.GONE else View.VISIBLE
+            }
+        }
 
         mViewModel.fetchMenu()
+
+        mViewModel.fetchSocial()
     }
     fun isMyServiceRunning(serviceClass: Class<*>): Boolean {
         val manager = this.getSystemService(Context.ACTIVITY_SERVICE) as ActivityManager
@@ -206,8 +232,7 @@ class MainActivity : AppCompatActivity() {
         backBtnClickListener: BackBtnClickListener? = null,
         notificationBtnClickListener: NotificationClickListener? = null,
         tickBtnClickListener: TickClickListener? = null,
-        drawerMenuBtnClickListener: DrawerMenuClickListener? = null,
-        drawerItemsClickListener: DrawerItemsClickListener? = null
+        drawerMenuBtnClickListener: DrawerMenuClickListener? = null
     ){
 
         mBinding.actionBarView.visibility = if (shouldShowActionBar) View.VISIBLE else View.GONE
@@ -247,120 +272,30 @@ class MainActivity : AppCompatActivity() {
         mBinding.actionBar.btnTick.setOnClickListener {
             tickBtnClickListener?.onClick()
         }
-        mBinding.drawerLayout.welcomeWord.setOnClickListener {
-            mBinding.drawer.close()
-            mNavController.navigate(
-                WebViewFragmentDirections.actionGlobalWebViewFragment(
-                    Constants.CHAIRMAN_MESSAGE_URL
-                )
-            )
-        }
-        mBinding.drawerLayout.committees.setOnClickListener {
-            mBinding.drawer.close()
-            mNavController.navigate(
-                WebViewFragmentDirections.actionGlobalWebViewFragment(
-                    Constants.COMMITTEE_URL
-                )
-            )
-        }
-        mBinding.drawerLayout.datesAndDetails.setOnClickListener {
-            mBinding.drawer.close()
-            mNavController.navigate(
-                WebViewFragmentDirections.actionGlobalWebViewFragment(
-                    Constants.CHAIRMAN_MESSAGE_URL
-                )
-            )
-        }
-        mBinding.drawerLayout.endorsements.setOnClickListener {
-            mBinding.drawer.close()
-            drawerItemsClickListener?.onEndorsementsClick()
-        }
-        mBinding.drawerLayout.sponsorOurMeeting.setOnClickListener {
-            mBinding.drawer.close()
-            drawerItemsClickListener?.onSponsorOurMeetingClick()
-        }
-        mBinding.drawerLayout.callForAbstracts.setOnClickListener {
-            mBinding.drawer.close()
-            drawerItemsClickListener?.onCallForAbstractsClick()
-        }
-        mBinding.drawerLayout.registrationInfo.setOnClickListener {
-            mBinding.drawer.close()
-            drawerItemsClickListener?.onRegistrationInfoClick()
-        }
-        mBinding.drawerLayout.venueAndAccommodations.setOnClickListener {
-            mBinding.drawer.close()
-            drawerItemsClickListener?.onVenueAndAccommodationsClick()
-        }
-        mBinding.drawerLayout.socialEvents.setOnClickListener {
-            mBinding.drawer.close()
-            drawerItemsClickListener?.onSocialEventsClick()
-        }
-        mBinding.drawerLayout.whatToDo.setOnClickListener {
-            mBinding.drawer.close()
-            drawerItemsClickListener?.onWhatToDoInQatarClick()
-        }
-        mBinding.drawerLayout.ourSponsors.setOnClickListener {
-            mBinding.drawer.close()
-            drawerItemsClickListener?.onOurSponsorsClick()
-        }
-        mBinding.drawerLayout.visaTips.setOnClickListener {
-            mBinding.drawer.close()
-            drawerItemsClickListener?.onVisaTipsClick()
-        }
-        mBinding.drawerLayout.contacts.setOnClickListener {
-            mBinding.drawer.close()
-            drawerItemsClickListener?.onContactsClick()
-        }
         mBinding.drawerLayout.facebook.setOnClickListener {
             mBinding.drawer.close()
-            openLink(Constants.FACEBOOK_URL)
+            openLink(FACEBOOK_URL)
         }
         mBinding.drawerLayout.instagram.setOnClickListener {
             mBinding.drawer.close()
-            openLink(Constants.INSTAGRAM_URL)
+            openLink(INSTAGRAM_URL)
         }
         mBinding.drawerLayout.twitter.setOnClickListener {
             mBinding.drawer.close()
-            openLink(Constants.TWITTER_URL)
+            openLink(TWITTER_URL)
         }
         mBinding.drawerLayout.linkedIn.setOnClickListener {
             mBinding.drawer.close()
-            openLink(Constants.LINKED_IN_URL)
+            openLink(LINKED_IN_URL)
         }
         mBinding.drawerLayout.youtube.setOnClickListener {
             mBinding.drawer.close()
-            openLink(Constants.YOUTUBE_URL)
+            openLink(YOUTUBE_URL)
         }
         mBinding.drawerLayout.whatsapp.setOnClickListener {
             mBinding.drawer.close()
-            openLink(Constants.WHATSAPP_URL)
+            openLink(WHATSAPP_URL)
         }
-//        mBinding.sideOptionsBtn.setOnClickListener {
-//            if (mBinding.drawer.isDrawerOpen(GravityCompat.END))
-//                mBinding.drawer.closeDrawer(GravityCompat.END)
-//            else
-//                mBinding.drawer.openDrawer(GravityCompat.END)
-//        }
-//        mBinding.sideOptions.facebook.setOnClickListener {
-//            mBinding.drawer.closeDrawer(GravityCompat.END)
-//            openLink(Constants.FACEBOOK_URL)
-//        }
-//        mBinding.sideOptions.instagram.setOnClickListener {
-//            mBinding.drawer.closeDrawer(GravityCompat.END)
-//            openLink(Constants.INSTAGRAM_URL)
-//        }
-//        mBinding.sideOptions.linkedIn.setOnClickListener {
-//            mBinding.drawer.closeDrawer(GravityCompat.END)
-//            openLink(Constants.LINKED_IN_URL)
-//        }
-//        mBinding.sideOptions.twitter.setOnClickListener {
-//            mBinding.drawer.closeDrawer(GravityCompat.END)
-//            openLink(Constants.TWITTER_URL)
-//        }
-//        mBinding.sideOptions.whatsapp.setOnClickListener {
-//            mBinding.drawer.closeDrawer(GravityCompat.END)
-//            openLink(Constants.WHATSAPP_URL)
-//        }
     }
     fun openLink(link: String){
         startActivity(
@@ -389,21 +324,6 @@ class MainActivity : AppCompatActivity() {
         }
         interface TickClickListener{
             fun onClick()
-        }
-        interface DrawerItemsClickListener{
-            fun onWelcomeClick()
-            fun onCommitteesClick()
-            fun onDatesAndDetailsClick()
-            fun onEndorsementsClick()
-            fun onSponsorOurMeetingClick()
-            fun onCallForAbstractsClick()
-            fun onRegistrationInfoClick()
-            fun onVenueAndAccommodationsClick()
-            fun onSocialEventsClick()
-            fun onWhatToDoInQatarClick()
-            fun onOurSponsorsClick()
-            fun onVisaTipsClick()
-            fun onContactsClick()
         }
     }
     private fun startWork(){

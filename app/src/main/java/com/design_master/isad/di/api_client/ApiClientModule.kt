@@ -10,6 +10,7 @@ import com.design_master.isad.model.network.service.FetchAllSpeakersService
 import com.design_master.isad.model.network.service.FetchLocationService
 import com.design_master.isad.model.network.service.FetchMenuService
 import com.design_master.isad.model.network.service.FetchQuestionsService
+import com.design_master.isad.model.network.service.FetchSocialIconsService
 import com.design_master.isad.model.network.service.GetNotificationsService
 import com.design_master.isad.model.network.service.GetAllScientificProgramsService
 import com.design_master.isad.model.network.service.GetAllWorkShopsService
@@ -54,7 +55,8 @@ class ApiClientModule {
             retrofit.create(AddFeedbackService::class.java),
             retrofit.create(FetchQuestionsService::class.java),
             retrofit.create(AskQuestionService::class.java),
-            retrofit.create(FetchMenuService::class.java)
+            retrofit.create(FetchMenuService::class.java),
+            retrofit.create(FetchSocialIconsService::class.java)
         )
     }
 }

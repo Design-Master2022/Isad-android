@@ -9,6 +9,7 @@ import com.design_master.isad.model.network.service.FetchAllSpeakersService
 import com.design_master.isad.model.network.service.FetchLocationService
 import com.design_master.isad.model.network.service.FetchMenuService
 import com.design_master.isad.model.network.service.FetchQuestionsService
+import com.design_master.isad.model.network.service.FetchSocialIconsService
 import com.design_master.isad.model.network.service.GetNotificationsService
 import com.design_master.isad.model.network.service.GetAllScientificProgramsService
 import com.design_master.isad.model.network.service.GetAllWorkShopsService
@@ -42,5 +43,6 @@ class ApiClient(
     val addFeedbackService: AddFeedbackService,
     val fetchQuestionsService: FetchQuestionsService,
     val askQuestionService: AskQuestionService,
-    val fetchMenuService: FetchMenuService
+    val fetchMenuService: FetchMenuService,
+    val fetchSocialIconsService: FetchSocialIconsService
 )
