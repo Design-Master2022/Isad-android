@@ -182,7 +182,7 @@ class LoginWithOtpFragmentViewModel @Inject constructor(): ViewModel(){
     }
     private fun getRetrofitSecondaryURL(): Retrofit {
         return Retrofit.Builder()
-            .baseUrl(/* baseUrl = */ " https://kifmc.com/")
+            .baseUrl(/* baseUrl = */ "https://app.medconfworld.com/")
             .addConverterFactory(GsonConverterFactory.create())
             .client(getOkHttpClient())
             .build()
