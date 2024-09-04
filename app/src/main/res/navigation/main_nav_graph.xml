@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.design_master.isad.ui.fragments.HomeFragment"
+        android:name="com.design_master1.isad.ui.fragments.HomeFragment"
         android:label="@string/home"
         tools:layout="@layout/fragment_home" >
         <action
@@ -22,7 +22,7 @@
     </fragment>
     <fragment
         android:id="@+id/notificationsFragment"
-        android:name="com.design_master.isad.ui.fragments.NotificationsFragment"
+        android:name="com.design_master1.isad.ui.fragments.NotificationsFragment"
         android:label="@string/notifications"
         tools:layout="@layout/fragment_notifications" >
         <action
@@ -37,7 +37,7 @@
     </fragment>
     <fragment
         android:id="@+id/wishlistFragment"
-        android:name="com.design_master.isad.ui.fragments.WishlistFragment"
+        android:name="com.design_master1.isad.ui.fragments.WishlistFragment"
         android:label="@string/wishlist"
         tools:layout="@layout/fragment_wishlist" >
         <action
@@ -55,7 +55,7 @@
     </fragment>
     <fragment
         android:id="@+id/programsFragment"
-        android:name="com.design_master.isad.ui.fragments.ProgramsFragment"
+        android:name="com.design_master1.isad.ui.fragments.ProgramsFragment"
         android:label="@string/scientific_programs"
         tools:layout="@layout/fragment_programs" >
         <action
@@ -73,7 +73,7 @@
     </fragment>
     <fragment
         android:id="@+id/workShopsFragment"
-        android:name="com.design_master.isad.ui.fragments.WorkShopsFragment"
+        android:name="com.design_master1.isad.ui.fragments.WorkShopsFragment"
         android:label="@string/workshop"
         tools:layout="@layout/fragment_work_shops" >
         <action
@@ -91,7 +91,7 @@
     </fragment>
     <fragment
         android:id="@+id/webViewFragment"
-        android:name="com.design_master.isad.ui.fragments.WebViewFragment"
+        android:name="com.design_master1.isad.ui.fragments.WebViewFragment"
         android:label="fragment_web_view"
         tools:layout="@layout/fragment_web_view" >
         <argument
@@ -100,7 +100,7 @@
     </fragment>
     <fragment
         android:id="@+id/otpVerifyFragment"
-        android:name="com.design_master.isad.ui.fragments.OtpVerifyFragment"
+        android:name="com.design_master1.isad.ui.fragments.OtpVerifyFragment"
         android:label="OTP Verify"
         tools:layout="@layout/fragment_otp_verify" >
         <argument
@@ -114,7 +114,7 @@
     </fragment>
     <fragment
         android:id="@+id/addNoteFragment"
-        android:name="com.design_master.isad.ui.fragments.AddNoteFragment"
+        android:name="com.design_master1.isad.ui.fragments.AddNoteFragment"
         android:label="Notes"
         tools:layout="@layout/fragment_add_note" >
         <argument
@@ -123,12 +123,12 @@
     </fragment>
     <fragment
         android:id="@+id/locationFragment"
-        android:name="com.design_master.isad.ui.fragments.LocationFragment"
+        android:name="com.design_master1.isad.ui.fragments.LocationFragment"
         android:label="fragment_location"
         tools:layout="@layout/fragment_location" />
     <fragment
         android:id="@+id/speakersAndModeratorsFragment"
-        android:name="com.design_master.isad.ui.fragments.SpeakersAndModeratorsFragment"
+        android:name="com.design_master1.isad.ui.fragments.SpeakersAndModeratorsFragment"
         android:label="Speakers and Moderators"
         tools:layout="@layout/fragment_speakers_and_moderators">
         <action
@@ -144,7 +144,7 @@
     <action android:id="@+id/action_global_speakersAndModeratorsFragment" app:destination="@id/speakersAndModeratorsFragment" />
     <fragment
         android:id="@+id/loginWithOtpFragment"
-        android:name="com.design_master.isad.ui.fragments.LoginWithOtpFragment"
+        android:name="com.design_master1.isad.ui.fragments.LoginWithOtpFragment"
         android:label="@string/post_conference"
         tools:layout="@layout/fragment_login_with_otp">
         <action
@@ -172,7 +172,7 @@
     </fragment>
     <fragment
         android:id="@+id/tabsFragment"
-        android:name="com.design_master.isad.ui.fragments.TabsFragment"
+        android:name="com.design_master1.isad.ui.fragments.TabsFragment"
         android:label="fragment_tabs"
         tools:layout="@layout/fragment_tabs" >
         <argument
@@ -184,18 +184,18 @@
     </fragment>
     <fragment
         android:id="@+id/feedbackFragment"
-        android:name="com.design_master.isad.ui.fragments.FeedbackFragment"
+        android:name="com.design_master1.isad.ui.fragments.FeedbackFragment"
         android:label="@string/feedback"
         tools:layout="@layout/fragment_feedback" />
     <action android:id="@+id/action_global_feedbackFragment" app:destination="@id/feedbackFragment" /><action android:id="@+id/action_global_notificationsFragment" app:destination="@id/notificationsFragment"/><action android:id="@+id/action_global_webViewFragment" app:destination="@id/webViewFragment"/><action android:id="@+id/action_global_locationFragment" app:destination="@id/locationFragment"/>
     <fragment
         android:id="@+id/myQuestionsFragment"
-        android:name="com.design_master.isad.ui.fragments.MyQuestionsFragment"
+        android:name="com.design_master1.isad.ui.fragments.MyQuestionsFragment"
         android:label="@string/my_questions"
         tools:layout="@layout/fragment_my_questions" />
     <fragment
         android:id="@+id/askQuestionFragment"
-        android:name="com.design_master.isad.ui.fragments.AskQuestionFragment"
+        android:name="com.design_master1.isad.ui.fragments.AskQuestionFragment"
         android:label="Ask Question"
         tools:layout="@layout/fragment_ask_question">
         <action
@@ -204,7 +204,7 @@
     </fragment><action android:id="@+id/action_global_askQuestionFragment" app:destination="@id/askQuestionFragment"/>
     <fragment
         android:id="@+id/qrCodeFragment"
-        android:name="com.design_master.isad.ui.fragments.QrCodeFragment"
+        android:name="com.design_master1.isad.ui.fragments.QrCodeFragment"
         android:label="@string/qr_code"
         tools:layout="@layout/fragment_qr_code">
         <argument

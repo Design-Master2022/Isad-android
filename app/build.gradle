@@ -9,11 +9,11 @@ plugins {
 }
 
 android {
-    namespace = "com.design_master.isad"
+    namespace = "com.design_master1.isad"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.design_master.isad"
+        applicationId = "com.design_master1.isad"
         minSdk = 24
         targetSdk = 34
         versionCode = 1
