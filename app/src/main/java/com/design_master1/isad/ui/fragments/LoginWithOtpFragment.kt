@@ -48,16 +48,10 @@ class LoginWithOtpFragment : Fragment() {
 
         mMainActivity.setActionBar(
             shouldShowDrawerMenuBtn = true,
-            shouldShowNotificationBtn = true,
             shouldShowBottomNavigation = true,
             drawerMenuBtnClickListener = object: MainActivity.Companion.DrawerMenuClickListener{
                 override fun onClick() {
                     mMainActivity.getMainActivityBinding().drawer.open()
-                }
-            },
-            notificationBtnClickListener = object: MainActivity.Companion.NotificationClickListener{
-                override fun onClick() {
-                    findNavController().navigate(R.id.action_global_notificationsFragment)
                 }
             }
         )

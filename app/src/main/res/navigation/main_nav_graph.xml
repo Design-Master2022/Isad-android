@@ -213,4 +213,9 @@
     </fragment>
     <action android:id="@+id/action_global_qrCodeFragment" app:destination="@id/qrCodeFragment" />
     <action android:id="@+id/action_global_loginWithOtpFragment" app:destination="@id/loginWithOtpFragment" />
+    <fragment
+        android:id="@+id/postersFragment"
+        android:name="com.design_master1.isad.ui.fragments.PostersFragment"
+        android:label="@string/posters"
+        tools:layout="@layout/fragment_posters" />
 </navigation>

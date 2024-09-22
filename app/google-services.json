@@ -7,9 +7,9 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:765579438686:android:65a61cd1e74213088022cf",
+        "mobilesdk_app_id": "1:765579438686:android:c982b2dc3cef82688022cf",
         "android_client_info": {
-          "package_name": "com.design_master.isad"
+          "package_name": "com.design_master1.isad"
         }
       },
       "oauth_client": [],
@@ -20,7 +20,7 @@
       ],
       "services": {
         "appinvite_service": {
-            "other_platform_oauth_client": []
+          "other_platform_oauth_client": []
         }
       }
     }

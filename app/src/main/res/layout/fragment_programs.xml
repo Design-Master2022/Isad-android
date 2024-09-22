@@ -19,43 +19,55 @@
             android:fontFamily="@font/regular"
             android:layout_gravity="center"/>
 
-        <androidx.core.widget.NestedScrollView
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:fillViewport="true">
+            android:orientation="vertical">
 
-            <LinearLayout
-                android:layout_width="match_parent"
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_days"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:orientation="vertical">
+                android:layout_gravity="center"
+                android:nestedScrollingEnabled="false"/>
 
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/recycler_days"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:nestedScrollingEnabled="false"/>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_tracks"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="5sp"
+                android:nestedScrollingEnabled="false"/>
 
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/recycler_tracks"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="5sp"
-                    android:nestedScrollingEnabled="false"/>
+            <!--                <androidx.recyclerview.widget.RecyclerView-->
+            <!--                    android:id="@+id/recycler_programs"-->
+            <!--                    android:layout_width="match_parent"-->
+            <!--                    android:layout_height="wrap_content"-->
+            <!--                    android:layout_marginTop="10dp"-->
+            <!--                    android:layout_marginHorizontal="10dp"-->
+            <!--                    android:nestedScrollingEnabled="false"/>-->
 
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/recycler_programs"
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <im.delight.android.webview.AdvancedWebView
+                    android:id="@+id/webview"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
+                    android:layout_height="match_parent"/>
+
+                <ProgressBar
+                    android:id="@+id/progress"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
                     android:layout_marginHorizontal="10dp"
-                    android:nestedScrollingEnabled="false"/>
+                    android:layout_gravity="center"
+                    android:visibility="gone"
+                    android:indeterminateTint="@color/primary"/>
 
-            </LinearLayout>
+            </FrameLayout>
 
-        </androidx.core.widget.NestedScrollView>
+        </LinearLayout>
 
     </FrameLayout>
 

@@ -1,10 +1,16 @@
 package com.design_master1.isad.ui.fragments
 
+import android.content.Intent
+import android.graphics.Bitmap
 import android.os.Bundle
+import android.os.Message
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.webkit.WebChromeClient
+import android.webkit.WebView
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -14,8 +20,12 @@ import com.design_master1.isad.adapter.DaysAdapter
 import com.design_master1.isad.adapter.ProgramsAdapter
 import com.design_master1.isad.adapter.TracksAdapter
 import com.design_master1.isad.databinding.FragmentProgramsBinding
+import com.design_master1.isad.extensions.hide
+import com.design_master1.isad.extensions.show
 import com.design_master1.isad.model.constants.Constants
+import com.design_master1.isad.model.listeners.ActivityResultListener
 import com.design_master1.isad.model.listeners.AddToWishlistListener
+import com.design_master1.isad.model.listeners.BackPressedListener
 import com.design_master1.isad.model.listeners.DayListener
 import com.design_master1.isad.model.listeners.DisableNotificationListener
 import com.design_master1.isad.model.listeners.EnableNotificationListener
@@ -27,9 +37,11 @@ import com.design_master1.isad.model.network.response.GetAllScientificProgramsRe
 import com.design_master1.isad.model.view_models.activities.MainActivityViewModel
 import com.design_master1.isad.model.view_models.fragments.ProgramsFragmentViewModel
 import com.design_master1.isad.model.view_models.fragments.ProgramsFragmentViewModel.GetAllScientificProgramsState
+import com.design_master1.isad.model.view_models.fragments.ProgramsFragmentViewModel.GetProgramWebLinksState
 import com.design_master1.isad.ui.activities.MainActivity
 import com.design_master1.isad.ui.fragments.AddNoteFragment.Companion.FROM_PROGRAMS
 import dagger.hilt.android.AndroidEntryPoint
+import im.delight.android.webview.AdvancedWebView
 
 @AndroidEntryPoint
 class ProgramsFragment : Fragment() {
@@ -38,7 +50,7 @@ class ProgramsFragment : Fragment() {
     private lateinit var mMainActivity: MainActivity
     private val mMainActivityViewModel: MainActivityViewModel by activityViewModels()
     private val mViewModel: ProgramsFragmentViewModel by viewModels()
-    private lateinit var mProgramsAdapter: ProgramsAdapter
+//    private lateinit var mProgramsAdapter: ProgramsAdapter
     private lateinit var mDaysAdapter: DaysAdapter
     private lateinit var mTrackAdapter: TracksAdapter
     private var mCurrentDay = DEFAULT_DAY
@@ -53,20 +65,68 @@ class ProgramsFragment : Fragment() {
 
         mMainActivity.setActionBar(
             shouldShowDrawerMenuBtn = true,
-            shouldShowNotificationBtn = true,
             shouldShowBottomNavigation = true,
             drawerMenuBtnClickListener = object: MainActivity.Companion.DrawerMenuClickListener{
                 override fun onClick() {
                     mMainActivity.getMainActivityBinding().drawer.open()
                 }
-            },
-            notificationBtnClickListener = object: MainActivity.Companion.NotificationClickListener{
-                override fun onClick() {
-                    findNavController().navigate(R.id.action_global_notificationsFragment)
-                }
             }
-
         )
+
+        mBinding.webview.setListener(requireActivity(), object: AdvancedWebView.Listener{
+            override fun onPageStarted(url: String?, favicon: Bitmap?) {
+                mBinding.progress.show()
+            }
+            override fun onPageFinished(url: String?) {
+                mBinding.progress.hide()
+            }
+            override fun onPageError(errorCode: Int, description: String?, failingUrl: String?) {}
+            override fun onDownloadRequested(
+                url: String?,
+                suggestedFilename: String?,
+                mimeType: String?,
+                contentLength: Long,
+                contentDisposition: String?,
+                userAgent: String?
+            ) {}
+            override fun onExternalPageRequest(url: String?) {}
+        })
+        mBinding.webview.setGeolocationEnabled(true)
+        mBinding.webview.settings.javaScriptEnabled = true
+        mBinding.webview.addHttpHeader("X-Requested-With", getString(R.string.app_name))
+//        mBinding.webview.addPermittedHostname(mMainActivityViewModel.mElectroLibAccessProvider.getServerBaseUrl())
+        mBinding.webview.setMixedContentAllowed(true)
+        mBinding.webview.setDesktopMode(false)
+        mBinding.webview.settings.setSupportMultipleWindows(true)
+        mBinding.webview.settings.setSupportZoom(false)
+        mBinding.webview.webChromeClient = object: WebChromeClient(){
+            override fun onCreateWindow(
+                view: WebView?,
+                isDialog: Boolean,
+                isUserGesture: Boolean,
+                resultMsg: Message?
+            ): Boolean {
+                val advancedWebView = AdvancedWebView(requireContext())
+                val transport = resultMsg?.obj as WebView.WebViewTransport
+                transport.webView = advancedWebView
+                resultMsg.sendToTarget()
+                return true
+            }
+        }
+
+        mMainActivity.initializeActivityResultListener(object: ActivityResultListener {
+            override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+                mBinding.webview.onActivityResult(requestCode, resultCode, data)
+            }
+        })
+        mMainActivity.initializeBackPressedListener(object: BackPressedListener {
+            override fun onBackPressed() {
+                if (mBinding.webview.canGoBack())
+                    mBinding.webview.goBack()
+                else
+                    findNavController().popBackStack()
+            }
+        })
 
         mTrackAdapter = TracksAdapter(
             context = requireContext(),
@@ -91,7 +151,7 @@ class ProgramsFragment : Fragment() {
         mBinding.recyclerDays.layoutManager = LinearLayoutManager(requireContext(),LinearLayoutManager.HORIZONTAL,false)
         mBinding.recyclerDays.adapter = mDaysAdapter
 
-        mProgramsAdapter = ProgramsAdapter(object: ScientificProgramListener{
+/*        mProgramsAdapter = ProgramsAdapter(object: ScientificProgramListener{
             override fun onClick(program: GetAllScientificProgramsResponseClasses.ScientificProgram) {
                 mMainActivityViewModel.mSelectedProgram = program
                 findNavController().navigate(ProgramsFragmentDirections.actionProgramsFragmentToAddNoteFragment(FROM_PROGRAMS))
@@ -170,7 +230,7 @@ class ProgramsFragment : Fragment() {
             }
         })
         mBinding.recyclerPrograms.layoutManager = LinearLayoutManager(requireContext())
-        mBinding.recyclerPrograms.adapter = mProgramsAdapter
+        mBinding.recyclerPrograms.adapter = mProgramsAdapter*/
 
         mViewModel.getAllScientificProgramsState.observe(viewLifecycleOwner){
             mBinding.shimmerParent.visibility = if (it == GetAllScientificProgramsState.FETCHING) View.VISIBLE else View.GONE
@@ -190,45 +250,74 @@ class ProgramsFragment : Fragment() {
             }
         }
 
-        mViewModel.getAllPrograms(mViewModel.programsData == null)
+        mViewModel.getProgramWebLinksState.observe(viewLifecycleOwner){
+            if (it == GetProgramWebLinksState.FETCHING) mBinding.progress.visibility = View.VISIBLE
+//            mBinding.shimmerParent.visibility = if (it == GetProgramWebLinksState.FETCHING) View.VISIBLE else View.GONE
+//            mBinding.normalParent.visibility = if (it == GetProgramWebLinksState.FETCHING) View.GONE else View.VISIBLE
+
+            mBinding.txtStatus.text = if (it == GetProgramWebLinksState.FAILURE) getString(R.string.something_went_wrong_try_again) else ""
+
+            if (it == GetProgramWebLinksState.FETCHED){
+                mViewModel.webLinksData?.let {
+//                    mMainActivityViewModel.programOrWorkShopId = it.id2
+                    setDayWisePrograms(DEFAULT_DAY, mCurrentTrack)
+                }
+            }
+        }
+
+//        mViewModel.getAllPrograms(mViewModel.programsData == null)
+        mViewModel.getProgramWebLinks(mViewModel.webLinksData == null)
 
         return mBinding.root
     }
     private fun setDayWisePrograms(day: Int, track: String){
-        mViewModel.programsData?.let { data ->
+//        mViewModel.programsData?.let { data ->
             when(day){
                 0 -> {
-                    if (data.dayWise.day1Tracks.isEmpty()) {
-                        mProgramsAdapter.setData(data.dayWise.day1Programs)
-                        mTrackAdapter.setData(emptyList())
-                    } else {
-                        mCurrentTrack = data.dayWise.day1Tracks.first().track
-                        mTrackAdapter.setData(data.dayWise.day1Tracks)
-                        mProgramsAdapter.setData(getProgramsOfTrack(data.dayWise.day1Programs, track.ifEmpty { mCurrentTrack }))
+//                    if (data.dayWise.day1Tracks.isEmpty()) {
+//                        mProgramsAdapter.setData(data.dayWise.day1Programs)
+//                        mTrackAdapter.setData(emptyList())
+//                    } else {
+//                        mCurrentTrack = data.dayWise.day1Tracks.first().track
+//                        mTrackAdapter.setData(data.dayWise.day1Tracks)
+//                        mProgramsAdapter.setData(getProgramsOfTrack(data.dayWise.day1Programs, track.ifEmpty { mCurrentTrack }))
+//                    }
+                    Log.d("TAG", "setDayWisePrograms: ${mViewModel.webLinksData!!.day1}")
+                    mViewModel.webLinksData?.let {
+                        mBinding.webview.loadUrl(it.day1)
                     }
                 }
                 1 -> {
-                    if (data.dayWise.day2Tracks.isEmpty()) {
-                        mProgramsAdapter.setData(data.dayWise.day2Programs)
-                        mTrackAdapter.setData(emptyList())
-                    } else {
-                        mCurrentTrack = data.dayWise.day2Tracks.first().track
-                        mTrackAdapter.setData(data.dayWise.day2Tracks)
-                        mProgramsAdapter.setData(getProgramsOfTrack(data.dayWise.day2Programs, track.ifEmpty { mCurrentTrack }))
+//                    if (data.dayWise.day2Tracks.isEmpty()) {
+//                        mProgramsAdapter.setData(data.dayWise.day2Programs)
+//                        mTrackAdapter.setData(emptyList())
+//                    } else {
+//                        mCurrentTrack = data.dayWise.day2Tracks.first().track
+//                        mTrackAdapter.setData(data.dayWise.day2Tracks)
+//                        mProgramsAdapter.setData(getProgramsOfTrack(data.dayWise.day2Programs, track.ifEmpty { mCurrentTrack }))
+//                    }
+                    Log.d("TAG", "setDayWisePrograms: ${mViewModel.webLinksData!!.day2}")
+                    mViewModel.webLinksData?.let {
+                        mBinding.webview.loadUrl(it.day2)
                     }
                 }
                 2 -> {
-                    if (data.dayWise.day3Tracks.isEmpty()) {
-                        mProgramsAdapter.setData(data.dayWise.day3Programs)
-                        mTrackAdapter.setData(emptyList())
-                    } else {
-                        mCurrentTrack = data.dayWise.day3Tracks.first().track
-                        mTrackAdapter.setData(data.dayWise.day3Tracks)
-                        mProgramsAdapter.setData(getProgramsOfTrack(data.dayWise.day3Programs, track.ifEmpty { mCurrentTrack }))
+//                    if (data.dayWise.day3Tracks.isEmpty()) {
+//                        mProgramsAdapter.setData(data.dayWise.day3Programs)
+//                        mTrackAdapter.setData(emptyList())
+//                    } else {
+//                        mCurrentTrack = data.dayWise.day3Tracks.first().track
+//                        mTrackAdapter.setData(data.dayWise.day3Tracks)
+//                        mProgramsAdapter.setData(getProgramsOfTrack(data.dayWise.day3Programs, track.ifEmpty { mCurrentTrack }))
+//                    }
+                    Log.d("TAG", "setDayWisePrograms: ${mViewModel.webLinksData!!.day3}")
+                    mViewModel.webLinksData?.let {
+                        mBinding.webview.loadUrl(it.day3)
                     }
                 }
+                else -> {}
             }
-        }
+//        }
     }
     private fun getProgramsOfTrack(programs: List<GetAllScientificProgramsResponseClasses.ScientificProgram>, track: String): List<GetAllScientificProgramsResponseClasses.ScientificProgram>{
         val filteredPrograms = mutableListOf<GetAllScientificProgramsResponseClasses.ScientificProgram>()
@@ -239,25 +328,19 @@ class ProgramsFragment : Fragment() {
         }
         return filteredPrograms
     }
+    override fun onResume() {
+        super.onResume()
+        mBinding.webview.onResume()
+    }
+    override fun onPause() {
+        mBinding.webview.onPause()
+        super.onPause()
+    }
+    override fun onDestroy() {
+        mBinding.webview.onDestroy()
+        super.onDestroy()
+    }
     companion object{
         const val DEFAULT_DAY = 0
     }
-//                        val programs = mutableListOf<GetAllScientificProgramsResponseClasses.ScientificProgram>()
-//                        val trackWithPrograms = mutableListOf<TrackWithPrograms>()
-//                        for (track in data.dayWise.day1Tracks){
-//                            programs.clear()
-//                            for (program in data.dayWise.day1Programs){
-//                                if (if(program.track == null) "1" == track.track else program.track == track.track){
-//                                    programs.add(program)
-//                                }
-//                            }
-//                            trackWithPrograms.add(
-//                                TrackWithPrograms(
-//                                    track = track,
-//                                    programs = programs
-//                                )
-//                            )
-//                        }
-//                        mDaysAdapter.setTracks(data.dayWise.day1Tracks)
-//                        mProgramsAdapter.setData(trackWithPrograms.first().programs)
 }

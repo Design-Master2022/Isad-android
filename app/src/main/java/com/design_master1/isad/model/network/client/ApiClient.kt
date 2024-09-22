@@ -14,6 +14,7 @@ import com.design_master1.isad.model.network.service.GetNotificationsService
 import com.design_master1.isad.model.network.service.GetAllScientificProgramsService
 import com.design_master1.isad.model.network.service.GetAllWorkShopsService
 import com.design_master1.isad.model.network.service.GetHomeDataService
+import com.design_master1.isad.model.network.service.GetScientificProgramsWebLinksService
 import com.design_master1.isad.model.network.service.GetWishlistService
 import com.design_master1.isad.model.network.service.LoginService
 import com.design_master1.isad.model.network.service.LoginWithOtpService
@@ -44,5 +45,6 @@ class ApiClient(
     val fetchQuestionsService: FetchQuestionsService,
     val askQuestionService: AskQuestionService,
     val fetchMenuService: FetchMenuService,
-    val fetchSocialIconsService: FetchSocialIconsService
+    val fetchSocialIconsService: FetchSocialIconsService,
+    val fetchScientificProgramsWebLinksService: GetScientificProgramsWebLinksService
 )

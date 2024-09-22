@@ -13,11 +13,17 @@ object GetHomeDataResponseClasses{
     data class Data(
         @SerializedName("isad_array_1") val banners: List<Banner>,
         @SerializedName("isad_array_2") val buttons: List<Button>,
+        @SerializedName("isad_array_8") val socialButtons: SocialButtons,
         @SerializedName("isad_array_3") val heading: List<Heading>,
         @SerializedName("isad_array_4") val personInfo1: List<PersonInfo>,
         @SerializedName("isad_array_5") val moreInfo: List<MoreInfo>,
         @SerializedName("isad_array_6") val information: List<Information>,
         @SerializedName("isad_array_7") val footer: List<Footer>
+    )
+    data class SocialButtons(
+        @SerializedName("button_3") val weChatButton: Button,
+        @SerializedName("button_4") val whatsAppButton: Button,
+        @SerializedName("button_5") val telegramButton: Button,
     )
     data class Button(
        val name: String,

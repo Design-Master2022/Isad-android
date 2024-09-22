@@ -6,8 +6,12 @@ import androidx.lifecycle.ViewModel
 import com.design_master1.isad.model.network.client.ApiClient
 import com.design_master1.isad.model.network.response.GetAllScientificProgramsResponse
 import com.design_master1.isad.model.network.response.GetAllScientificProgramsResponseClasses
+import com.design_master1.isad.model.network.response.GetScientificProgramWebLinksResponse
+import com.design_master1.isad.model.network.response.GetScientificProgramWebLinksResponseClasses
 import com.design_master1.isad.model.network.validator.GetAllScientificProgramsValidator
 import com.design_master1.isad.model.network.validator.GetAllScientificProgramsValidatorCallbacks
+import com.design_master1.isad.model.network.validator.GetScientificProgramWebLinksValidator
+import com.design_master1.isad.model.network.validator.GetScientificProgramWebLinksValidatorCallbacks
 import com.design_master1.isad.utils.magician.Magician
 import com.design_master1.isad.utils.prefs_controller.PrefsController
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -67,6 +71,48 @@ class ProgramsFragmentViewModel @Inject constructor(): ViewModel(){
                 }
             })
     }
+
+    enum class GetProgramWebLinksState{
+        IDLE, FAILURE, UNAUTHORIZED, FETCHING, FETCHED
+    }
+    var webLinksData: GetScientificProgramWebLinksResponseClasses.Data? = null
+    val getProgramWebLinksState = MutableLiveData(GetProgramWebLinksState.IDLE)
+    fun getProgramWebLinks(shouldRespond: Boolean = true){
+        if (shouldRespond) getProgramWebLinksState.value = GetProgramWebLinksState.FETCHING
+        mApiClient.fetchScientificProgramsWebLinksService.get()
+            .enqueue(object: Callback<GetScientificProgramWebLinksResponse>{
+            override fun onResponse(
+                call: Call<GetScientificProgramWebLinksResponse>,
+                response: Response<GetScientificProgramWebLinksResponse>
+            ) {
+                GetScientificProgramWebLinksValidator.validate(
+                    response = response,
+                    callbacks = object: GetScientificProgramWebLinksValidatorCallbacks{
+                        override fun onUnAuthorized() {
+                            Log.d(TAG, "onUnAuthorized: ")
+                            if (shouldRespond) getProgramWebLinksState.value = GetProgramWebLinksState.UNAUTHORIZED
+
+                        }
+                        override fun onFailedToFetchScientificProgramWebLinks() {
+                            Log.d(TAG, "onFailedToFetchScientificProgramWebLinks: ")
+                            if (shouldRespond) getProgramWebLinksState.value = GetProgramWebLinksState.FAILURE
+                        }
+                        override fun onScientificProgramWebLinksFetched(data: GetScientificProgramWebLinksResponseClasses.Data) {
+                            Log.d(TAG, "onScientificProgramWebLinksFetched: ")
+                            this@ProgramsFragmentViewModel.webLinksData = data
+                            getProgramWebLinksState.value = GetProgramWebLinksState.FETCHED
+                        }
+                    }
+                )
+            }
+            override fun onFailure(call: Call<GetScientificProgramWebLinksResponse>, t: Throwable) {
+                Log.d(TAG, "onFailure: ${t.message}")
+                t.printStackTrace()
+                if (shouldRespond) getProgramWebLinksState.value = GetProgramWebLinksState.FAILURE
+            }
+        })
+    }
+
     companion object{
         private const val TAG = "NotificationsFragmentVi"
     }

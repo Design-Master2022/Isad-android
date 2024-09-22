@@ -77,8 +77,8 @@ class MainActivity : AppCompatActivity() {
             else if (mBinding.bottomNavigation.selectedItemId == R.id.workShopsFragment) updateCustomNavigationLayout(
                 getString(R.string.workshop)
             )
-            else if (mBinding.bottomNavigation.selectedItemId == R.id.wishlistFragment) updateCustomNavigationLayout(
-                getString(R.string.wishlist)
+            else if (mBinding.bottomNavigation.selectedItemId == R.id.postersFragment) updateCustomNavigationLayout(
+                getString(R.string.posters)
             )
             else if (mBinding.bottomNavigation.selectedItemId == R.id.loginWithOtpFragment) updateCustomNavigationLayout(
                 getString(R.string.post_conference)
@@ -98,9 +98,9 @@ class MainActivity : AppCompatActivity() {
             mBinding.bottomNavigation.selectedItemId = R.id.workShopsFragment
             updateCustomNavigationLayout(getString(R.string.workshop))
         }
-        mBinding.customBottomNavigation.layoutWishlist.setOnClickListener {
-            mBinding.bottomNavigation.selectedItemId = R.id.wishlistFragment
-            updateCustomNavigationLayout(getString(R.string.wishlist))
+        mBinding.customBottomNavigation.layoutPosters.setOnClickListener {
+            mBinding.bottomNavigation.selectedItemId = R.id.postersFragment
+            updateCustomNavigationLayout(getString(R.string.posters))
         }
         mBinding.customBottomNavigation.layoutPost.setOnClickListener {
             mViewModel.isForQrCodeFragment = false
@@ -186,7 +186,7 @@ class MainActivity : AppCompatActivity() {
         setCustomBottomNavigationHome(label == getString(R.string.home))
         setCustomBottomNavigationPrograms(label == getString(R.string.scientific_programs))
         setCustomActionBarWorkShop(label == getString(R.string.workshop))
-        setCustomActionBarWishlist(label == getString(R.string.wishlist))
+        setCustomActionBarPosters(label == getString(R.string.posters))
         setCustomActionBarPost(label == getString(R.string.post_conference))
     }
     private fun setCustomBottomNavigationHome(isSelected: Boolean){
@@ -204,10 +204,10 @@ class MainActivity : AppCompatActivity() {
         mBinding.customBottomNavigation.imageWorkshop.visibility = if (isSelected) View.GONE else View.VISIBLE
         mBinding.customBottomNavigation.nameWorkshop.visibility = if (isSelected) View.VISIBLE else View.GONE
     }
-    private fun setCustomActionBarWishlist(isSelected: Boolean){
-        mBinding.customBottomNavigation.imageWishlistActivated.visibility = if (isSelected) View.VISIBLE else View.GONE
-        mBinding.customBottomNavigation.imageWishlist.visibility = if (isSelected) View.GONE else View.VISIBLE
-        mBinding.customBottomNavigation.nameWishlist.visibility = if (isSelected) View.VISIBLE else View.GONE
+    private fun setCustomActionBarPosters(isSelected: Boolean){
+        mBinding.customBottomNavigation.imagePostersActivated.visibility = if (isSelected) View.VISIBLE else View.GONE
+        mBinding.customBottomNavigation.imagePosters.visibility = if (isSelected) View.GONE else View.VISIBLE
+        mBinding.customBottomNavigation.namePosters.visibility = if (isSelected) View.VISIBLE else View.GONE
     }
     private fun setCustomActionBarPost(isSelected: Boolean){
         mBinding.customBottomNavigation.imagePostActivated.visibility = if (isSelected) View.VISIBLE else View.GONE

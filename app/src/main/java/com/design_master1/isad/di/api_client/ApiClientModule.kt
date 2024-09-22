@@ -15,6 +15,7 @@ import com.design_master1.isad.model.network.service.GetNotificationsService
 import com.design_master1.isad.model.network.service.GetAllScientificProgramsService
 import com.design_master1.isad.model.network.service.GetAllWorkShopsService
 import com.design_master1.isad.model.network.service.GetHomeDataService
+import com.design_master1.isad.model.network.service.GetScientificProgramsWebLinksService
 import com.design_master1.isad.model.network.service.GetWishlistService
 import com.design_master1.isad.model.network.service.LoginService
 import com.design_master1.isad.model.network.service.LoginWithOtpService
@@ -56,7 +57,8 @@ class ApiClientModule {
             retrofit.create(FetchQuestionsService::class.java),
             retrofit.create(AskQuestionService::class.java),
             retrofit.create(FetchMenuService::class.java),
-            retrofit.create(FetchSocialIconsService::class.java)
+            retrofit.create(FetchSocialIconsService::class.java),
+            retrofit.create(GetScientificProgramsWebLinksService::class.java)
         )
     }
 }

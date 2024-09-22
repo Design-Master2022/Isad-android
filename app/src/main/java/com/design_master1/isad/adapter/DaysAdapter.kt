@@ -18,7 +18,7 @@ class DaysAdapter(private val context: Context, private val listener: DayListene
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.binding.day.text = "Day \n${position.plus(1)}"
+        holder.binding.day.text = "Day ${position.plus(1)}"
         holder.binding.card.setCardBackgroundColor(ContextCompat.getColor(context, if (position == selectedPosition) R.color.primary else R.color.white))
         holder.binding.day.setTextColor(ContextCompat.getColor(context, if (position == selectedPosition) R.color.white else R.color.primary))
 

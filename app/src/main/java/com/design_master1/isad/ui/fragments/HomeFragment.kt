@@ -40,16 +40,10 @@ class HomeFragment : Fragment() {
 
         mMainActivity.setActionBar(
             shouldShowDrawerMenuBtn = true,
-            shouldShowNotificationBtn = true,
             shouldShowBottomNavigation = true,
             drawerMenuBtnClickListener = object: MainActivity.Companion.DrawerMenuClickListener{
                 override fun onClick() {
                     mMainActivity.getMainActivityBinding().drawer.open()
-                }
-            },
-            notificationBtnClickListener = object: MainActivity.Companion.NotificationClickListener{
-                override fun onClick() {
-                    findNavController().navigate(R.id.action_global_notificationsFragment)
                 }
             }
         )
@@ -111,21 +105,19 @@ class HomeFragment : Fragment() {
             }
         }
 
-        data.buttons?.let {
-            it.first()?.let { btn ->
-                mBinding.txtRegister.text = btn.name
+        data.socialButtons?.let { btns ->
+            mBinding.wechat.visibility = if (btns.weChatButton.url.isEmpty()) View.GONE else View.VISIBLE
+            mBinding.whatsapp.visibility = if (btns.whatsAppButton.url.isEmpty()) View.GONE else View.VISIBLE
+            mBinding.telegram.visibility = if (btns.telegramButton.url.isEmpty()) View.GONE else View.VISIBLE
 
-                mBinding.register.setOnClickListener {
-                    findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToWebViewFragment(btn.url))
-                }
+            mBinding.wechat.setOnClickListener {
+                mMainActivity.openLink(btns.weChatButton.url)
             }
-
-            it[1]?.let { btn ->
-                mBinding.txtSubmitAbstract.text = btn.name
-
-                mBinding.submitAbstract.setOnClickListener {
-                    findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToWebViewFragment(btn.url))
-                }
+            mBinding.whatsapp.setOnClickListener {
+                mMainActivity.openLink(btns.whatsAppButton.url)
+            }
+            mBinding.telegram.setOnClickListener {
+                mMainActivity.openLink(btns.telegramButton.url)
             }
         }
 

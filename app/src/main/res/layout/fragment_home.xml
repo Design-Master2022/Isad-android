@@ -40,17 +40,18 @@
                     app:indicatorMarginVertical="10dp"
                     app:slideInterval="2000"
                     app:strokeColor="@color/primary"
-                    app:strokeWidth="0dp"/>
+                    app:strokeWidth="0dp">
 
-                <com.facebook.shimmer.ShimmerFrameLayout
-                    android:id="@+id/shimmer_banner_slider"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:visibility="visible"
-                    android:background="@color/shimmerColor"/>
+                    <com.facebook.shimmer.ShimmerFrameLayout
+                        android:id="@+id/shimmer_banner_slider"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@color/shimmerColor"
+                        android:visibility="visible" />
+
+                </com.synnapps.carouselview.CarouselView>
 
             </FrameLayout>
-
             <View
                 android:layout_width="match_parent"
                 android:layout_height="2dp"
@@ -59,34 +60,28 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="30dp"
+                android:gravity="center"
                 android:orientation="horizontal">
 
                 <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/register"
-                    android:layout_width="match_parent"
+                    android:id="@+id/whatsapp"
+                    android:layout_width="40dp"
                     android:layout_height="40dp"
                     app:cardCornerRadius="10dp"
                     android:layout_marginHorizontal="10dp"
                     android:clickable="true"
                     android:focusable="true"
-                    android:layout_weight="1"
+                    app:cardBackgroundColor="@color/whatsAppColor"
                     app:rippleColor="@color/rippleColorWhiteLight"
                     app:cardElevation="0dp"
                     android:layout_gravity="center_vertical"
                     android:theme="@style/Theme.MaterialComponents">
 
-                    <TextView
-                        android:id="@+id/txt_register"
+                    <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:text="@string/register_now"
-                        android:gravity="center"
-                        android:textSize="14sp"
-                        android:textAllCaps="true"
-                        android:fontFamily="@font/bold"
-                        android:textColor="@color/whiteTextColor"
-                        android:background="@color/blue"/>
+                        android:src="@drawable/ic_whatsapp_green"/>
 
                 </com.google.android.material.card.MaterialCardView>
 
@@ -96,30 +91,49 @@
                     android:background="@color/lightBlack"/>
 
                 <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/submit_abstract"
-                    android:layout_width="match_parent"
+                    android:id="@+id/telegram"
+                    android:layout_width="40dp"
                     android:layout_height="40dp"
                     app:cardCornerRadius="10dp"
+                    app:cardBackgroundColor="@color/telegramColor"
                     android:layout_marginHorizontal="10dp"
                     android:clickable="true"
                     android:focusable="true"
-                    android:layout_weight="1"
                     app:rippleColor="@color/rippleColorWhiteLight"
                     app:cardElevation="0dp"
                     android:layout_gravity="center_vertical"
                     android:theme="@style/Theme.MaterialComponents">
 
-                    <TextView
-                        android:id="@+id/txt_submit_abstract"
+                    <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:text="@string/submit_abstract"
-                        android:gravity="center"
-                        android:textSize="14sp"
-                        android:textAllCaps="true"
-                        android:fontFamily="@font/bold"
-                        android:textColor="@color/whiteTextColor"
-                        android:background="@color/orange"/>
+                        android:src="@drawable/ic_telegram"/>
+
+                </com.google.android.material.card.MaterialCardView>
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:background="@color/lightBlack"/>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/wechat"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    app:cardCornerRadius="10dp"
+                    app:cardBackgroundColor="@color/weChatColor"
+                    android:layout_marginHorizontal="10dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    app:rippleColor="@color/rippleColorWhiteLight"
+                    app:cardElevation="0dp"
+                    android:layout_gravity="center_vertical"
+                    android:theme="@style/Theme.MaterialComponents">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/ic_wechat"/>
 
                 </com.google.android.material.card.MaterialCardView>
 
@@ -130,7 +144,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:cardCornerRadius="10dp"
-                android:layout_marginTop="40dp"
+                android:layout_marginTop="30dp"
                 android:layout_marginHorizontal="10dp"
                 app:cardElevation="0dp"
                 app:cardBackgroundColor="@color/blue"
