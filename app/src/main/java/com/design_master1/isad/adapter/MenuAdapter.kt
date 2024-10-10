@@ -1,6 +1,7 @@
 package com.design_master1.isad.adapter
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.design_master1.isad.databinding.DrawerItemBinding
@@ -30,6 +31,10 @@ class MenuAdapter(
                 override fun onFailedToLoadImage() {}
             }
         )
+
+        holder.binding.arrow.visibility =
+            if (menu[position].name.contains("Committ", ignoreCase = true)) View.VISIBLE
+            else View.GONE
 
         holder.binding.parent.setOnClickListener {
             listener.onClick(menu[position])

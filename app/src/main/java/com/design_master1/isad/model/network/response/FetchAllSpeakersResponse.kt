@@ -5,25 +5,23 @@ import com.design_master1.isad.model.constants.ApiResponseConstants
 
 data class FetchAllSpeakersResponse (
     @SerializedName(ApiResponseConstants.RESPONSE_STATUS) val responseStatus: Int,
-    @SerializedName("data") val speakers: List<FetchAllSpeakersResponseClasses.Speaker>?
+    @SerializedName("data") val data: FetchAllSpeakersResponseClasses.Data?
 )
 object FetchAllSpeakersResponseClasses{
 
+    data class Data(
+        val speakers: List<Speaker>
+    )
     data class Speaker(
         @SerializedName("_id") val id: String,
         val name: String,
-        val country: List<Country>,
         val image: String,
-        val detail: String,
-        @SerializedName(ApiResponseConstants.CREATED_DATE) val createdDate: String,
-        @SerializedName(ApiResponseConstants.UPDATED_DATE) val updatedDate: String
+        @SerializedName("items") val country: List<Country>
     )
     data class Country(
-        val id: String,
-        val name: String,
-        @SerializedName("country_code") val countryCode: String,
-        @SerializedName("country_code3") val countryCode3: String,
-        @SerializedName("flag_code") val flagCode: String
+        val detail: String,
+        @SerializedName("country_name") val countryName: String,
+        @SerializedName("country_code") val countryCode: String
     )
 }
 

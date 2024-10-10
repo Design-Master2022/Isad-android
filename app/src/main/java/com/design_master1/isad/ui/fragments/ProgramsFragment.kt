@@ -2,6 +2,7 @@ package com.design_master1.isad.ui.fragments
 
 import android.content.Intent
 import android.graphics.Bitmap
+import android.graphics.Color
 import android.os.Bundle
 import android.os.Message
 import android.util.Log
@@ -11,6 +12,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.webkit.WebChromeClient
 import android.webkit.WebView
+import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -93,12 +95,17 @@ class ProgramsFragment : Fragment() {
         })
         mBinding.webview.setGeolocationEnabled(true)
         mBinding.webview.settings.javaScriptEnabled = true
+        mBinding.webview.settings.domStorageEnabled = true
+        mBinding.webview.settings.allowFileAccess = true
+        mBinding.webview.settings.allowContentAccess = true
+        mBinding.webview.settings.mediaPlaybackRequiresUserGesture = false
         mBinding.webview.addHttpHeader("X-Requested-With", getString(R.string.app_name))
 //        mBinding.webview.addPermittedHostname(mMainActivityViewModel.mElectroLibAccessProvider.getServerBaseUrl())
         mBinding.webview.setMixedContentAllowed(true)
         mBinding.webview.setDesktopMode(false)
-        mBinding.webview.settings.setSupportMultipleWindows(true)
+//        mBinding.webview.settings.setSupportMultipleWindows(true)
         mBinding.webview.settings.setSupportZoom(false)
+        mBinding.webview.setBackgroundColor(Color.TRANSPARENT)
         mBinding.webview.webChromeClient = object: WebChromeClient(){
             override fun onCreateWindow(
                 view: WebView?,
@@ -119,8 +126,8 @@ class ProgramsFragment : Fragment() {
                 mBinding.webview.onActivityResult(requestCode, resultCode, data)
             }
         })
-        mMainActivity.initializeBackPressedListener(object: BackPressedListener {
-            override fun onBackPressed() {
+        mMainActivity.onBackPressedDispatcher.addCallback(viewLifecycleOwner, object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
                 if (mBinding.webview.canGoBack())
                     mBinding.webview.goBack()
                 else

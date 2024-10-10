@@ -24,10 +24,15 @@ class SpeakersAndModeratorsFragmentViewModel @Inject constructor(): ViewModel(){
         IDLE, FAILURE, UNAUTHORIZED, FETCHING, FETCHED
     }
     val getAllSpeakersState = MutableLiveData(GetAllSpeakersState.IDLE)
-    var speakers = mutableListOf<FetchAllSpeakersResponseClasses.Speaker>()
-    fun getAllSpeakers(shouldRespond: Boolean = true){
+    var localSpeakers = mutableListOf<FetchAllSpeakersResponseClasses.Speaker>()
+    var chairman = mutableListOf<FetchAllSpeakersResponseClasses.Speaker>()
+    var internationalSpeakers = mutableListOf<FetchAllSpeakersResponseClasses.Speaker>()
+    var type: Int = SPEAKER_TYPE_LOCAL
+    fun getAllSpeakers(shouldRespond: Boolean = true, type: Int){
         if (shouldRespond) getAllSpeakersState.value = GetAllSpeakersState.FETCHING
-        mApiClient.fetchAllSpeakersService.fetchAllSpeakers().enqueue(
+        mApiClient.fetchAllSpeakersService.fetchAllSpeakers(
+            type = type
+        ).enqueue(
             object: Callback<FetchAllSpeakersResponse>{
                 override fun onResponse(
                     call: Call<FetchAllSpeakersResponse>,
@@ -39,32 +44,33 @@ class SpeakersAndModeratorsFragmentViewModel @Inject constructor(): ViewModel(){
                             override fun onUnAuthorized() {
                                 Log.d(TAG, "onUnAuthorized: ")
                                 if (shouldRespond) getAllSpeakersState.value = GetAllSpeakersState.UNAUTHORIZED
-
                             }
-
                             override fun onFailedToFetchSpeakers() {
                                 Log.d(TAG, "onFailedToFetchSpeakers: ")
                                 if (shouldRespond) getAllSpeakersState.value = GetAllSpeakersState.FAILURE
                             }
-
                             override fun onSpeakersFetched(speakers: List<FetchAllSpeakersResponseClasses.Speaker>) {
                                 Log.d(TAG, "onSpeakersFetched: ")
-                                this@SpeakersAndModeratorsFragmentViewModel.speakers = speakers.toMutableList()
+                                this@SpeakersAndModeratorsFragmentViewModel.type = type
+                                if (type == SPEAKER_TYPE_LOCAL) localSpeakers = speakers.toMutableList()
+                                else if (type == SPEAKER_TYPE_INTERNATIONAL) internationalSpeakers = speakers.toMutableList()
+                                else chairman = speakers.toMutableList()
                                 getAllSpeakersState.value = GetAllSpeakersState.FETCHED
                             }
                         }
                     )
                 }
-
                 override fun onFailure(call: Call<FetchAllSpeakersResponse>, t: Throwable) {
                     Log.d(TAG, "onFailure: ${t.message}")
                     t.printStackTrace()
                     getAllSpeakersState.value = GetAllSpeakersState.FAILURE
                 }
-
             })
     }
     companion object{
         private const val TAG = "NotificationsFragmentVi"
+        const val CHAIRMAN = 3
+        const val SPEAKER_TYPE_LOCAL = 1
+        const val SPEAKER_TYPE_INTERNATIONAL = 2
     }
 }

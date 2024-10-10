@@ -10,6 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.webkit.WebChromeClient
 import android.webkit.WebView
+import androidx.activity.OnBackPressedCallback
 import androidx.navigation.fragment.findNavController
 import com.design_master1.isad.R
 import com.design_master1.isad.databinding.FragmentPostersBinding
@@ -91,8 +92,8 @@ class PostersFragment : Fragment() {
                 mBinding.webview.onActivityResult(requestCode, resultCode, data)
             }
         })
-        mMainActivity.initializeBackPressedListener(object: BackPressedListener {
-            override fun onBackPressed() {
+        mMainActivity.onBackPressedDispatcher.addCallback(viewLifecycleOwner, object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
                 if (mBinding.webview.canGoBack())
                     mBinding.webview.goBack()
                 else

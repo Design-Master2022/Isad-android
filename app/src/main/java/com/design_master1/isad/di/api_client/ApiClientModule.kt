@@ -21,7 +21,6 @@ import com.design_master1.isad.model.network.service.LoginService
 import com.design_master1.isad.model.network.service.LoginWithOtpService
 import com.design_master1.isad.model.network.service.RemoveFromWishlistService
 import com.design_master1.isad.model.network.service.SaveNotesService
-import com.design_master1.isad.model.network.service.SendWelcomeNotificationService
 import com.design_master1.isad.model.network.service.VerifyOtpService
 import dagger.Module
 import dagger.Provides
@@ -49,7 +48,6 @@ class ApiClientModule {
             retrofit.create(DisableNotificationService::class.java),
             retrofit.create(GetNotificationsService::class.java),
             retrofit.create(FetchAllSpeakersService::class.java),
-            retrofit.create(SendWelcomeNotificationService::class.java),
             retrofit.create(LoginWithOtpService::class.java),
             retrofit.create(VerifyOtpService::class.java),
             retrofit.create(FetchLocationService::class.java),

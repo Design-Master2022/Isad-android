@@ -2,6 +2,7 @@ package com.design_master1.isad.ui.fragments
 
 import android.content.Intent
 import android.graphics.Bitmap
+import android.graphics.Color
 import android.os.Bundle
 import android.os.Message
 import android.view.LayoutInflater
@@ -9,11 +10,15 @@ import android.view.View
 import android.view.ViewGroup
 import android.webkit.WebChromeClient
 import android.webkit.WebView
+import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.design_master1.isad.R
 import com.design_master1.isad.databinding.FragmentWebViewBinding
+import com.design_master1.isad.extensions.hide
+import com.design_master1.isad.extensions.show
 import com.design_master1.isad.model.listeners.ActivityResultListener
 import com.design_master1.isad.model.listeners.BackPressedListener
 import com.design_master1.isad.model.view_models.activities.MainActivityViewModel
@@ -36,21 +41,23 @@ class WebViewFragment : Fragment() {
 
         mMainActivity = requireActivity() as MainActivity
 
-        mMainActivity.setActionBar(shouldShowActionBar = false)
+        mMainActivity.setActionBar(
+            shouldShowDrawerMenuBtn = true,
+            shouldShowBottomNavigation = true
+        )
 
         mBinding.webview.setListener(requireActivity(), object: AdvancedWebView.Listener{
             override fun onPageStarted(url: String?, favicon: Bitmap?) {
-
+                mBinding.progress.show()
             }
 
             override fun onPageFinished(url: String?) {
-
+                mBinding.progress.hide()
             }
 
             override fun onPageError(errorCode: Int, description: String?, failingUrl: String?) {
-//                Log.d(TAG, "onPageError: $errorCode   $description         $failingUrl")
+                mBinding.progress.hide()
             }
-
             override fun onDownloadRequested(
                 url: String?,
                 suggestedFilename: String?,
@@ -58,10 +65,7 @@ class WebViewFragment : Fragment() {
                 contentLength: Long,
                 contentDisposition: String?,
                 userAgent: String?
-            ) {
-                if (AdvancedWebView.handleDownload(requireContext(),url,suggestedFilename)){}
-                else {}
-            }
+            ) {}
 
             override fun onExternalPageRequest(url: String?) {
 //                Log.d(TAG, "onExternalPageRequest: $url")
@@ -69,12 +73,17 @@ class WebViewFragment : Fragment() {
         })
         mBinding.webview.setGeolocationEnabled(true)
         mBinding.webview.settings.javaScriptEnabled = true
+        mBinding.webview.settings.domStorageEnabled = true
+        mBinding.webview.settings.allowFileAccess = true
+        mBinding.webview.settings.allowContentAccess = true
+        mBinding.webview.settings.mediaPlaybackRequiresUserGesture = false
         mBinding.webview.addHttpHeader("X-Requested-With", getString(R.string.app_name))
-        mBinding.webview.addPermittedHostname(mMainActivityViewModel.mElectroLibAccessProvider.getServerBaseUrl())
+//        mBinding.webview.addPermittedHostname(mMainActivityViewModel.mElectroLibAccessProvider.getServerBaseUrl())
         mBinding.webview.setMixedContentAllowed(true)
         mBinding.webview.setDesktopMode(false)
-        mBinding.webview.settings.setSupportMultipleWindows(true)
+//        mBinding.webview.settings.setSupportMultipleWindows(true)
         mBinding.webview.settings.setSupportZoom(false)
+        mBinding.webview.setBackgroundColor(Color.TRANSPARENT)
         mBinding.webview.webChromeClient = object: WebChromeClient(){
             override fun onCreateWindow(
                 view: WebView?,
@@ -95,13 +104,16 @@ class WebViewFragment : Fragment() {
                 mBinding.webview.onActivityResult(requestCode, resultCode, data)
             }
         })
-        mMainActivity.initializeBackPressedListener(object: BackPressedListener{
-            override fun onBackPressed() {
-//                if (mBinding.webview.canGoBack())
-//                    mBinding.webview.goBack()
+        mMainActivity.onBackPressedDispatcher.addCallback(viewLifecycleOwner, object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                if (mBinding.webview.canGoBack())
+                    mBinding.webview.goBack()
+                else
+                    findNavController().popBackStack()
             }
         })
 
+        mBinding.progress.visibility = View.VISIBLE
         mBinding.webview.loadUrl(mArgs.url)
 
         return mBinding.root

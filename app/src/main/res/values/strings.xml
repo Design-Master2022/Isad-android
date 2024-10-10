@@ -102,6 +102,9 @@
     <string name="contacts">Contacts</string>
     <string name="read_full_message"><u>Read Full Message</u></string>
     <string name="day_1">Day 1</string>
+    <string name="local_organizing">Local Organizing</string>
+    <string name="international_scientific">International Scientific</string>
+    <string name="chairman">Chairman</string>
 
 
 </resources>

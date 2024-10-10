@@ -20,8 +20,8 @@ class FetchAllSpeakersValidator {
             when {
                 response.isSuccessful -> {
                     response.body()?.let { trendalResponse ->
-                        trendalResponse.speakers?.let {
-                            callbacks.onSpeakersFetched(it)
+                        trendalResponse.data?.let {
+                            callbacks.onSpeakersFetched(it.speakers)
                         }
                     }
                 }

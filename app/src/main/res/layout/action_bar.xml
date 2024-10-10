@@ -9,7 +9,7 @@
     <LinearLayout
         android:id="@+id/action_bar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="112dp"
         android:orientation="horizontal"
         android:paddingHorizontal="10dp"
         android:visibility="visible"
@@ -57,7 +57,6 @@
 
         </com.google.android.material.card.MaterialCardView>
 
-
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -69,6 +68,7 @@
                 android:id="@+id/logo_image"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
+                android:layout_marginHorizontal="5dp"
                 android:layout_gravity="center"
                 android:src="@drawable/action_bar_logo" />
 
@@ -79,7 +79,7 @@
                 tools:text="Home"
                 android:singleLine="true"
                 android:maxLines="1"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="5dp"
                 android:gravity="center"
                 android:fontFamily="@font/regular"
                 android:layout_marginHorizontal="10dp"

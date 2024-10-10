@@ -23,14 +23,11 @@ class SpeakersAdapter: RecyclerView.Adapter<SpeakersAdapter.ViewHolder>() {
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.binding.name.text = speakers[position].name
-        holder.binding.description.text = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) Html.fromHtml(speakers[position].detail, Html.FROM_HTML_MODE_COMPACT)
-        else Html.fromHtml(speakers[position].detail)
-
 
         holder.binding.img.invisible()
         holder.binding.shimmerImg.show()
         Helper.loadImage(
-            url = "speakers/${speakers[position].image}",
+            url = "committe/${speakers[position].image}",
             imageView = holder.binding.img,
             isCompleteURL = false,
             listener = object: Helper.LoadImageListener{
@@ -49,9 +46,9 @@ class SpeakersAdapter: RecyclerView.Adapter<SpeakersAdapter.ViewHolder>() {
             holder.binding.imgFlag.invisible()
             holder.binding.shimmerImgFlag.show()
             Helper.loadImage(
-                url = "flags/${speakers[position].country.first().flagCode}.png",
+                url = "https://flagcdn.com/48x36/${speakers[position].country.first().countryCode.toLowerCase()}.png",
                 imageView = holder.binding.imgFlag,
-                isCompleteURL = false,
+                isCompleteURL = true,
                 listener = object: Helper.LoadImageListener{
                     override fun onImageLoaded() {
                         holder.binding.imgFlag.show()
@@ -66,9 +63,9 @@ class SpeakersAdapter: RecyclerView.Adapter<SpeakersAdapter.ViewHolder>() {
             )
         }
 
-        holder.binding.parent.setOnClickListener {
-            holder.binding.description.visibility = if (holder.binding.description.isVisible) View.GONE else View.VISIBLE
-        }
+//        holder.binding.parent.setOnClickListener {
+//            holder.binding.description.visibility = if (holder.binding.description.isVisible) View.GONE else View.VISIBLE
+//        }
     }
 
     override fun getItemCount(): Int = speakers.size

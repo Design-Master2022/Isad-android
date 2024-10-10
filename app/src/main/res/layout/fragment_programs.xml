@@ -54,7 +54,8 @@
                 <im.delight.android.webview.AdvancedWebView
                     android:id="@+id/webview"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"/>
+                    android:layout_height="match_parent"
+                    android:background="@color/primary"/>
 
                 <ProgressBar
                     android:id="@+id/progress"
@@ -63,7 +64,7 @@
                     android:layout_marginHorizontal="10dp"
                     android:layout_gravity="center"
                     android:visibility="gone"
-                    android:indeterminateTint="@color/primary"/>
+                    android:indeterminateTint="@color/white"/>
 
             </FrameLayout>
 

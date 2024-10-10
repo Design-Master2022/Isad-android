@@ -96,11 +96,6 @@ class CmeFragment : Fragment() {
                 mBinding.webview.onActivityResult(requestCode, resultCode, data)
             }
         })
-        mMainActivity.initializeBackPressedListener(object: BackPressedListener {
-            override fun onBackPressed() {
-
-            }
-        })
 
         mBinding.webview.loadUrl(mMainActivityViewModel.cmeUrl)
 

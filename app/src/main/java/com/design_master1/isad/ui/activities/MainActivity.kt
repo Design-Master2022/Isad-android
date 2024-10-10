@@ -29,10 +29,9 @@ import com.design_master1.isad.model.listeners.BackPressedListener
 import com.design_master1.isad.model.listeners.MenuListener
 import com.design_master1.isad.model.network.response.FetchMenuResponseClasses
 import com.design_master1.isad.model.view_models.activities.MainActivityViewModel
-import com.design_master1.isad.service.LocationUpdateService
+import com.design_master1.isad.ui.fragments.SpeakersAndModeratorsFragmentDirections
 import com.design_master1.isad.ui.fragments.WebViewFragmentDirections
 import com.design_master1.isad.utils.helper.PermissionHelper
-import com.design_master1.isad.utils.worker.MyWorker
 import dagger.hilt.android.AndroidEntryPoint
 import java.util.concurrent.TimeUnit
 
@@ -43,7 +42,6 @@ class MainActivity : AppCompatActivity() {
     private val mViewModel: MainActivityViewModel by viewModels()
     private lateinit var mNavController: NavController
     private lateinit var mActivityResultListener: ActivityResultListener
-    private lateinit var mBackPressedListener: BackPressedListener
     private lateinit var mMenuAdapter: MenuAdapter
     private lateinit var context: Context
 
@@ -53,6 +51,7 @@ class MainActivity : AppCompatActivity() {
     private var FACEBOOK_URL = ""
     private var TWITTER_URL = ""
     private var WHATSAPP_URL = ""
+    private var TELEGRAM_URL = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -108,26 +107,15 @@ class MainActivity : AppCompatActivity() {
             updateCustomNavigationLayout(getString(R.string.post_conference))
         }
 
-
-        Log.d(TAG, "WORKER: IsWelcomeMessageSent = ${mViewModel.mPrefsController.isWelcomeNotificationSent()}")
-
-        if (!mViewModel.mPrefsController.isWelcomeNotificationSent()){
-            Log.d(TAG, "WORKER: IsWorkScheduled = ${isWorkScheduled(WorkManager.getInstance(this).getWorkInfosByTag(WORKER_TAG).get())}")
-            checkLocationPermissions()
-        }else{
-            if (isWorkScheduled(WorkManager.getInstance(this).getWorkInfosByTag(WORKER_TAG).get()))
-                WorkManager.getInstance().cancelAllWorkByTag(WORKER_TAG)
-
-            if (isMyServiceRunning(LocationUpdateService::class.java)){
-                val intent = Intent(this, LocationUpdateService::class.java)
-                this.stopService(intent)
-            }
-        }
-
         mMenuAdapter = MenuAdapter(object: MenuListener{
             override fun onClick(menuItem: FetchMenuResponseClasses.MenuItem) {
                 mBinding.drawer.close()
-                mNavController.navigate(WebViewFragmentDirections.actionGlobalWebViewFragment(menuItem.redirectUrl))
+                if (menuItem.name.contains( "Home", ignoreCase = true))
+                    mNavController.popBackStack(R.id.homeFragment, false)
+                else if (menuItem.name.contains( "Committ", ignoreCase = true))
+                    mNavController.navigate(R.id.action_global_speakersAndModeratorsFragment)
+                else
+                    mNavController.navigate(WebViewFragmentDirections.actionGlobalWebViewFragment(menuItem.redirectUrl))
             }
         })
         mBinding.drawerLayout.recycler.layoutManager = LinearLayoutManager(context)
@@ -140,12 +128,13 @@ class MainActivity : AppCompatActivity() {
         }
         mViewModel.socialUrls.observe(this){
             it?.let {
-                FACEBOOK_URL = it.facebook
-                INSTAGRAM_URL = it.instagram
-                YOUTUBE_URL = it.youtube
-                WHATSAPP_URL = it.whatsapp
-                TWITTER_URL = it.twitter
-                LINKED_IN_URL = it.linkedin
+                FACEBOOK_URL = it.facebook?:""
+                INSTAGRAM_URL = it.instagram?:""
+                YOUTUBE_URL = it.youtube?:""
+                WHATSAPP_URL = it.whatsapp?:""
+                TWITTER_URL = it.twitter?:""
+                LINKED_IN_URL = it.linkedin?:""
+                TELEGRAM_URL = it.telegram?:""
 
                 mBinding.drawerLayout.facebook.visibility = if (it.facebook.isNullOrEmpty()) View.GONE else View.VISIBLE
                 mBinding.drawerLayout.youtube.visibility = if (it.youtube.isNullOrEmpty()) View.GONE else View.VISIBLE
@@ -153,6 +142,7 @@ class MainActivity : AppCompatActivity() {
                 mBinding.drawerLayout.linkedIn.visibility = if (it.linkedin.isNullOrEmpty()) View.GONE else View.VISIBLE
                 mBinding.drawerLayout.whatsapp.visibility = if (it.whatsapp.isNullOrEmpty()) View.GONE else View.VISIBLE
                 mBinding.drawerLayout.twitter.visibility = if (it.twitter.isNullOrEmpty()) View.GONE else View.VISIBLE
+                mBinding.drawerLayout.telegram.visibility = if (it.telegram.isNullOrEmpty()) View.GONE else View.VISIBLE
             }
         }
 
@@ -160,20 +150,9 @@ class MainActivity : AppCompatActivity() {
 
         mViewModel.fetchSocial()
     }
-    fun isMyServiceRunning(serviceClass: Class<*>): Boolean {
-        val manager = this.getSystemService(Context.ACTIVITY_SERVICE) as ActivityManager
-        for (service in manager.getRunningServices(Int.MAX_VALUE)) {
-            if (serviceClass.name == service.service.className) {
-                return true
-            }
-        }
-        return false
-    }
+
     fun initializeActivityResultListener(listener: ActivityResultListener){
         mActivityResultListener = listener
-    }
-    fun initializeBackPressedListener(listener: BackPressedListener){
-        mBackPressedListener = listener
     }
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
@@ -292,6 +271,10 @@ class MainActivity : AppCompatActivity() {
             mBinding.drawer.close()
             openLink(WHATSAPP_URL)
         }
+        mBinding.drawerLayout.telegram.setOnClickListener {
+            mBinding.drawer.close()
+            openLink(TELEGRAM_URL)
+        }
     }
     fun openLink(link: String){
         startActivity(
@@ -301,10 +284,6 @@ class MainActivity : AppCompatActivity() {
     }
     fun showToast(message: String){
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
-    }
-    override fun onBackPressed() {
-        if (this::mBackPressedListener.isInitialized) mBackPressedListener.onBackPressed()
-        super.onBackPressed()
     }
     companion object{
         private const val TAG = "MainActivity"
@@ -320,47 +299,6 @@ class MainActivity : AppCompatActivity() {
         }
         interface TickClickListener{
             fun onClick()
-        }
-    }
-    private fun startWork(){
-        val periodicWork = PeriodicWorkRequest.Builder(MyWorker::class.java, 60, TimeUnit.MINUTES)
-            .addTag(WORKER_TAG)
-            .build()
-        WorkManager.getInstance().enqueueUniquePeriodicWork("welcome_notification_work", ExistingPeriodicWorkPolicy.KEEP, periodicWork)
-    }
-    private fun checkLocationPermissions(){
-        val permissions = listOf(
-            Constants.COURSE_LOCATION_PERMISSION,
-            Constants.FINE_LOCATION_PERMISSION
-        )
-        val deniedPermissions = mViewModel.mHelper.checkPermissions(
-            permissions.toTypedArray(),
-            this
-        )
-        if(deniedPermissions.isNotEmpty()){
-            mViewModel.mPermissionHelper.askForPermission(
-                context = this,
-                helper = mViewModel.mHelper,
-                layoutInflater = layoutInflater,
-                permissionToBeAsked = deniedPermissions,
-                listener = object: PermissionHelper.PermissionListener{
-                    override fun onAllPermissionsGranted() {
-                        Log.d(TAG, "onAllPermissionsGranted: ")
-                        askNotificationPermission()
-                        if (!mViewModel.mHelper.isLocationProviderIsEnabled(this@MainActivity))
-                            startActivity(Intent(android.provider.Settings.ACTION_LOCATION_SOURCE_SETTINGS))
-                        startWork()
-                    }
-
-                    override fun onPermissionRefusedByDialog() {
-                        Log.d(TAG, "onPermissionRefusedByDialog: ")
-                    }
-                }
-            )
-        }else{
-            startWork()
-            if (!mViewModel.mHelper.isLocationProviderIsEnabled(this@MainActivity))
-                startActivity(Intent(android.provider.Settings.ACTION_LOCATION_SOURCE_SETTINGS))
         }
     }
     fun askNotificationPermission(){

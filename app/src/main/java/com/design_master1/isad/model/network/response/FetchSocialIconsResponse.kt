@@ -9,12 +9,13 @@ data class FetchSocialIconsResponse (
 )
 class FetchSocialIconsResponseClasses {
     data class SocialUrls(
-        val facebook: String,
-        val instagram: String,
-        val twitter: String,
-        val linkedin: String,
-        val youtube: String,
-        val whatsapp: String
+        val facebook: String?,
+        val instagram: String?,
+        val twitter: String?,
+        val linkedin: String?,
+        val youtube: String?,
+        val whatsapp: String?,
+        val telegram: String?
     )
 }
 

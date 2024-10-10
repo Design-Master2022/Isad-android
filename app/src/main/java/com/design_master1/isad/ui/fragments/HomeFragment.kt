@@ -106,19 +106,33 @@ class HomeFragment : Fragment() {
         }
 
         data.socialButtons?.let { btns ->
-            mBinding.wechat.visibility = if (btns.weChatButton.url.isEmpty()) View.GONE else View.VISIBLE
-            mBinding.whatsapp.visibility = if (btns.whatsAppButton.url.isEmpty()) View.GONE else View.VISIBLE
-            mBinding.telegram.visibility = if (btns.telegramButton.url.isEmpty()) View.GONE else View.VISIBLE
+//            mBinding.wechat.visibility = if (btns.weChatButton.url.isEmpty()) View.GONE else View.VISIBLE
+//            mBinding.whatsapp.visibility = if (btns.whatsAppButton.url.isEmpty()) View.GONE else View.VISIBLE
+//            mBinding.telegram.visibility = if (btns.telegramButton.url.isEmpty()) View.GONE else View.VISIBLE
 
-            mBinding.wechat.setOnClickListener {
-                mMainActivity.openLink(btns.weChatButton.url)
+            mBinding.layoutJoinUs.visibility = if (btns.joinUsButton.url.isNullOrEmpty()) View.GONE else View.VISIBLE
+
+            mBinding.txtJoinUs.text = btns.joinUsButton.name
+
+            Helper.loadImage(
+                url = "settings/${btns.joinUsButton.image}",
+                isCompleteURL = false,
+                imageView = mBinding.imgJoinUs,
+                listener = object: Helper.LoadImageListener{
+                    override fun onImageLoaded() {}
+                    override fun onFailedToLoadImage() {}
+                }
+            )
+
+            mBinding.imgJoinUs.setOnClickListener {
+                mMainActivity.openLink(btns.joinUsButton.url)
             }
-            mBinding.whatsapp.setOnClickListener {
-                mMainActivity.openLink(btns.whatsAppButton.url)
-            }
-            mBinding.telegram.setOnClickListener {
-                mMainActivity.openLink(btns.telegramButton.url)
-            }
+//            mBinding.whatsapp.setOnClickListener {
+//                mMainActivity.openLink(btns.whatsAppButton.url)
+//            }
+//            mBinding.telegram.setOnClickListener {
+//                mMainActivity.openLink(btns.telegramButton.url)
+//            }
         }
 
         data.heading?.let {
@@ -126,6 +140,7 @@ class HomeFragment : Fragment() {
         }
 
         data.personInfo1.first()?.let {
+            mBinding.headingPerson.text = it.heading
             mBinding.titlePerson.text = it.title
             mBinding.infoPerson.text = it.info
 
@@ -176,6 +191,9 @@ class HomeFragment : Fragment() {
         }
 
         data.footer.first()?.let {
+            mBinding.titleFooter1.visibility = if (it.title.isEmpty() || it.title.equals("-")) View.GONE else View.VISIBLE
+            mBinding.titleFooter2.visibility = if (it.message.isEmpty() || it.message.equals("-")) View.GONE else View.VISIBLE
+
             mBinding.titleFooter1.text = it.title
             mBinding.titleFooter2.text = it.message
 
@@ -184,7 +202,7 @@ class HomeFragment : Fragment() {
             Helper.loadImage(
                 url = "settings/${it.image}",
                 isCompleteURL = false,
-                imageView = mBinding.imgFooter,
+                imageView = if (it.title.isEmpty() || it.title.equals("-")) mBinding.imgFooter2 else mBinding.imgFooter,
                 listener = object: Helper.LoadImageListener{
                     override fun onImageLoaded() {
                         mBinding.imgFooter.show()
@@ -200,6 +218,12 @@ class HomeFragment : Fragment() {
 
         data.information?.let {
             it.first()?.let {
+
+                mBinding.layoutSpeakers.visibility = if (it.count1.isEmpty()) View.GONE else View.VISIBLE
+                mBinding.layoutWorkshops.visibility = if (it.count2.isEmpty()) View.GONE else View.VISIBLE
+                mBinding.layoutAccredited.visibility = if (it.count3.isEmpty()) View.GONE else View.VISIBLE
+                mBinding.layoutTopics.visibility = if (it.count4.isEmpty()) View.GONE else View.VISIBLE
+
                 mBinding.name1.text = "${it.count1}\n${it.name1}"
                 mBinding.name2.text = "${it.count2}\n${it.name2}"
                 mBinding.name3.text = "${it.count3}\n${it.name3}"

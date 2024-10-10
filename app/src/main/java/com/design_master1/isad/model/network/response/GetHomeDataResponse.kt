@@ -24,10 +24,12 @@ object GetHomeDataResponseClasses{
         @SerializedName("button_3") val weChatButton: Button,
         @SerializedName("button_4") val whatsAppButton: Button,
         @SerializedName("button_5") val telegramButton: Button,
+        @SerializedName("button_6") val joinUsButton: Button,
     )
     data class Button(
-       val name: String,
-       val url: String
+        val name: String,
+        val url: String,
+        val image: String?
     )
     data class Heading(
         val info: String
@@ -42,6 +44,7 @@ object GetHomeDataResponseClasses{
     data class PersonInfo(
         val title: String,
         val info: String,
+        val heading: String,
         val img: String
     )
     data class MoreInfo(

@@ -29,11 +29,20 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             tools:text="@string/welcome_word"
+            android:layout_weight="1"
             android:textColor="@color/whiteTextColor"
             android:layout_gravity="center"
             android:layout_marginStart="10dp"
             android:fontFamily="@font/bold"
             android:textSize="13sp"/>
+
+        <ImageView
+            android:id="@+id/arrow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:src="@drawable/ic_arrow"
+            app:tint="@color/white" />
 
     </LinearLayout>
 

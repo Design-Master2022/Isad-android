@@ -20,7 +20,6 @@ import com.design_master1.isad.model.network.service.LoginService
 import com.design_master1.isad.model.network.service.LoginWithOtpService
 import com.design_master1.isad.model.network.service.RemoveFromWishlistService
 import com.design_master1.isad.model.network.service.SaveNotesService
-import com.design_master1.isad.model.network.service.SendWelcomeNotificationService
 import com.design_master1.isad.model.network.service.VerifyOtpService
 
 
@@ -37,7 +36,6 @@ class ApiClient(
     val disableNotificationService: DisableNotificationService,
     val getNotificationsService: GetNotificationsService,
     val fetchAllSpeakersService: FetchAllSpeakersService,
-    val sendWelcomeNotificationService: SendWelcomeNotificationService,
     val loginWithOtpService: LoginWithOtpService,
     val verifyOtpService: VerifyOtpService,
     val fetchLocationService: FetchLocationService,
