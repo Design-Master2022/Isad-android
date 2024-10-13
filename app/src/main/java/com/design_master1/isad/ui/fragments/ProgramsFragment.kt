@@ -267,7 +267,8 @@ class ProgramsFragment : Fragment() {
             if (it == GetProgramWebLinksState.FETCHED){
                 mViewModel.webLinksData?.let {
 //                    mMainActivityViewModel.programOrWorkShopId = it.id2
-                    setDayWisePrograms(DEFAULT_DAY, mCurrentTrack)
+                    mBinding.webview.loadUrl(it.day1)
+//                    setDayWisePrograms(DEFAULT_DAY, mCurrentTrack)
                 }
             }
         }

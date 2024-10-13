@@ -29,6 +29,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                android:visibility="gone"
                 android:nestedScrollingEnabled="false"/>
 
             <androidx.recyclerview.widget.RecyclerView
@@ -37,6 +38,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="5sp"
+                android:visibility="gone"
                 android:nestedScrollingEnabled="false"/>
 
             <!--                <androidx.recyclerview.widget.RecyclerView-->
