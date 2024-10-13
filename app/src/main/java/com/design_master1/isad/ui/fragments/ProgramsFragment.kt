@@ -343,10 +343,6 @@ class ProgramsFragment : Fragment() {
         mBinding.webview.onPause()
         super.onPause()
     }
-    override fun onDestroy() {
-        mBinding.webview.onDestroy()
-        super.onDestroy()
-    }
     companion object{
         const val DEFAULT_DAY = 0
     }

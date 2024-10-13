@@ -88,23 +88,48 @@ class MainActivity : AppCompatActivity() {
         mBinding.customBottomNavigation.layoutHome.setOnClickListener {
             mBinding.bottomNavigation.selectedItemId = R.id.homeFragment
             updateCustomNavigationLayout(getString(R.string.home))
+            mNavController.currentDestination?.let {
+                if (it.id != R.id.homeFragment) {
+                    mNavController.popBackStack(R.id.homeFragment, false)
+                }
+            }
         }
         mBinding.customBottomNavigation.layoutProgram.setOnClickListener {
             mBinding.bottomNavigation.selectedItemId = R.id.programsFragment
             updateCustomNavigationLayout(getString(R.string.scientific_programs))
+            mNavController.currentDestination?.let {
+                if (it.id != R.id.programsFragment) {
+                    mNavController.popBackStack(R.id.programsFragment, false)
+                }
+            }
         }
         mBinding.customBottomNavigation.layoutWorkshop.setOnClickListener {
             mBinding.bottomNavigation.selectedItemId = R.id.workShopsFragment
             updateCustomNavigationLayout(getString(R.string.workshop))
+            mNavController.currentDestination?.let {
+                if (it.id != R.id.workShopsFragment) {
+                    mNavController.popBackStack(R.id.workShopsFragment, false)
+                }
+            }
         }
         mBinding.customBottomNavigation.layoutPosters.setOnClickListener {
             mBinding.bottomNavigation.selectedItemId = R.id.postersFragment
             updateCustomNavigationLayout(getString(R.string.posters))
+            mNavController.currentDestination?.let {
+                if (it.id != R.id.postersFragment) {
+                    mNavController.popBackStack(R.id.postersFragment, false)
+                }
+            }
         }
         mBinding.customBottomNavigation.layoutPost.setOnClickListener {
             mViewModel.isForQrCodeFragment = false
             mBinding.bottomNavigation.selectedItemId = R.id.loginWithOtpFragment
             updateCustomNavigationLayout(getString(R.string.post_conference))
+            mNavController.currentDestination?.let {
+                if (it.id != R.id.loginWithOtpFragment) {
+                    mNavController.popBackStack(R.id.loginWithOtpFragment, false)
+                }
+            }
         }
 
         mMenuAdapter = MenuAdapter(object: MenuListener{
