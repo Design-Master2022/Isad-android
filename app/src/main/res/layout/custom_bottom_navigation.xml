@@ -18,7 +18,6 @@
             android:id="@+id/layout_home"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:layout_gravity="bottom"
             android:background="@color/bottomNavigationBackgroundColor"
             android:gravity="center"
             android:elevation="5dp"
@@ -32,10 +31,16 @@
                 android:layout_width="25dp"
                 android:layout_height="25dp"
                 android:src="@drawable/ic_home"
+                android:layout_marginTop="2dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:tint="@color/bottomNavigationInActiveTabIconColor" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1"/>
 
             <TextView
                 android:id="@+id/name_home"
@@ -45,9 +50,9 @@
                 android:textColor="@color/bottomNavigationTextColor"
                 android:textAllCaps="false"
                 android:textSize="15sp"
-                android:layout_marginTop="10dp"
+                android:layout_marginBottom="5dp"
+                android:layout_gravity="bottom|center_horizontal"
                 android:gravity="center"
-                android:visibility="gone"
                 android:fontFamily="@font/regular"
                 app:layout_constraintEnd_toEndOf="@id/image_home"
                 app:layout_constraintStart_toStartOf="@id/image_home"
@@ -108,10 +113,9 @@
             android:id="@+id/layout_program"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:layout_gravity="bottom"
             android:background="@color/bottomNavigationBackgroundColor"
-            android:gravity="center"
             android:elevation="5dp"
+            android:gravity="center"
             android:orientation="vertical"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -121,11 +125,18 @@
                 android:id="@+id/image_program"
                 android:layout_width="25dp"
                 android:layout_height="25dp"
+                android:layout_gravity="center_horizontal"
                 android:src="@drawable/ic_program"
+                android:layout_marginTop="2dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:tint="@color/bottomNavigationInActiveTabIconColor" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1"/>
 
             <TextView
                 android:id="@+id/name_program"
@@ -135,8 +146,8 @@
                 android:textColor="@color/bottomNavigationTextColor"
                 android:textAllCaps="false"
                 android:textSize="15sp"
-                android:layout_marginTop="10dp"
-                android:visibility="gone"
+                android:layout_marginBottom="5dp"
+                android:layout_gravity="bottom|center_horizontal"
                 android:fontFamily="@font/regular"
                 app:layout_constraintEnd_toEndOf="@id/image_program"
                 app:layout_constraintStart_toStartOf="@id/image_program"
@@ -214,10 +225,16 @@
                 android:layout_height="25dp"
                 android:visibility="visible"
                 android:src="@drawable/ic_workshop"
+                android:layout_marginTop="2dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:tint="@color/bottomNavigationInActiveTabIconColor" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1"/>
 
             <TextView
                 android:id="@+id/name_workshop"
@@ -225,11 +242,10 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/regular"
                 android:text="@string/workshop"
-                android:layout_marginTop="10dp"
+                android:layout_marginBottom="5dp"
                 android:textColor="@color/bottomNavigationTextColor"
                 android:textAllCaps="false"
                 android:textSize="15sp"
-                android:visibility="gone"
                 app:layout_constraintEnd_toEndOf="@id/image_workshop"
                 app:layout_constraintStart_toStartOf="@id/image_workshop"
                 app:layout_constraintTop_toBottomOf="@id/image_workshop" />
@@ -290,7 +306,6 @@
             android:id="@+id/layout_posters"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:layout_gravity="bottom"
             android:background="@color/bottomNavigationBackgroundColor"
             android:elevation="5dp"
             android:gravity="center"
@@ -304,21 +319,26 @@
                 android:layout_width="25dp"
                 android:layout_height="25dp"
                 android:src="@drawable/ic_poster"
+                android:layout_marginTop="2dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:tint="@color/bottomNavigationInActiveTabIconColor" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1"/>
 
             <TextView
                 android:id="@+id/name_posters"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/posters"
+                android:layout_marginBottom="5dp"
                 android:textColor="@color/bottomNavigationTextColor"
                 android:textAllCaps="false"
                 android:textSize="15sp"
-                android:layout_marginTop="10dp"
-                android:visibility="gone"
                 android:fontFamily="@font/regular"
                 app:layout_constraintEnd_toEndOf="@id/image_posters"
                 app:layout_constraintStart_toStartOf="@id/image_posters"
@@ -380,7 +400,6 @@
             android:id="@+id/layout_post"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:layout_gravity="bottom"
             android:background="@color/bottomNavigationBackgroundColor"
             android:elevation="5dp"
             android:gravity="center"
@@ -394,21 +413,26 @@
                 android:layout_width="25dp"
                 android:layout_height="25dp"
                 android:src="@drawable/ic_post"
+                android:layout_marginTop="2dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:tint="@color/bottomNavigationInActiveTabIconColor" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1"/>
 
             <TextView
                 android:id="@+id/name_post"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/post"
+                android:layout_marginBottom="5dp"
                 android:textColor="@color/bottomNavigationTextColor"
                 android:textAllCaps="false"
                 android:textSize="15sp"
-                android:layout_marginTop="10dp"
-                android:visibility="gone"
                 android:fontFamily="@font/regular"
                 app:layout_constraintEnd_toEndOf="@id/image_post"
                 app:layout_constraintStart_toStartOf="@id/image_post"

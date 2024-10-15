@@ -124,7 +124,7 @@ class HomeFragment : Fragment() {
                 }
             )
 
-            mBinding.imgJoinUs.setOnClickListener {
+            mBinding.layoutJoinUs.setOnClickListener {
                 mMainActivity.openLink(btns.joinUsButton.url)
             }
 //            mBinding.whatsapp.setOnClickListener {

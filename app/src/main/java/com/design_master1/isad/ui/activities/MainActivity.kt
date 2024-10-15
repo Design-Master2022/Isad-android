@@ -196,27 +196,27 @@ class MainActivity : AppCompatActivity() {
     private fun setCustomBottomNavigationHome(isSelected: Boolean){
         mBinding.customBottomNavigation.imageHomeActivated.visibility = if (isSelected) View.VISIBLE else View.GONE
         mBinding.customBottomNavigation.imageHome.visibility = if (isSelected) View.GONE else View.VISIBLE
-        mBinding.customBottomNavigation.nameHome.visibility = if (isSelected) View.VISIBLE else View.GONE
+//        mBinding.customBottomNavigation.nameHome.visibility = if (isSelected) View.VISIBLE else View.GONE
     }
     private fun setCustomBottomNavigationPrograms(isSelected: Boolean){
         mBinding.customBottomNavigation.imageProgramActivated.visibility = if (isSelected) View.VISIBLE else View.GONE
         mBinding.customBottomNavigation.imageProgram.visibility = if (isSelected) View.GONE else View.VISIBLE
-        mBinding.customBottomNavigation.nameProgram.visibility = if (isSelected) View.VISIBLE else View.GONE
+//        mBinding.customBottomNavigation.nameProgram.visibility = if (isSelected) View.VISIBLE else View.GONE
     }
     private fun setCustomActionBarWorkShop(isSelected: Boolean){
         mBinding.customBottomNavigation.imageWorkshopActivated.visibility = if (isSelected) View.VISIBLE else View.GONE
         mBinding.customBottomNavigation.imageWorkshop.visibility = if (isSelected) View.GONE else View.VISIBLE
-        mBinding.customBottomNavigation.nameWorkshop.visibility = if (isSelected) View.VISIBLE else View.GONE
+//        mBinding.customBottomNavigation.nameWorkshop.visibility = if (isSelected) View.VISIBLE else View.GONE
     }
     private fun setCustomActionBarPosters(isSelected: Boolean){
         mBinding.customBottomNavigation.imagePostersActivated.visibility = if (isSelected) View.VISIBLE else View.GONE
         mBinding.customBottomNavigation.imagePosters.visibility = if (isSelected) View.GONE else View.VISIBLE
-        mBinding.customBottomNavigation.namePosters.visibility = if (isSelected) View.VISIBLE else View.GONE
+//        mBinding.customBottomNavigation.namePosters.visibility = if (isSelected) View.VISIBLE else View.GONE
     }
     private fun setCustomActionBarPost(isSelected: Boolean){
         mBinding.customBottomNavigation.imagePostActivated.visibility = if (isSelected) View.VISIBLE else View.GONE
         mBinding.customBottomNavigation.imagePost.visibility = if (isSelected) View.GONE else View.VISIBLE
-        mBinding.customBottomNavigation.namePost.visibility = if (isSelected) View.VISIBLE else View.GONE
+//        mBinding.customBottomNavigation.namePost.visibility = if (isSelected) View.VISIBLE else View.GONE
     }
     fun setActionBar(
         shouldShowStatusBar: Boolean = true,
